@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\publicationRequest;
 use Illuminate\Http\Request;
-use App\Models\publications;
+use App\Models\Publication;
 use Illuminate\Support\Carbon;
 
 
@@ -21,7 +21,15 @@ class publicationController extends Controller
         if($img!==null){
             $req["imagepub"]=$img->store('publicaion','public');
         }
-        publications::create($req);
+        Publication::create($req);
         return to_route('home');
+    }
+    public function destroy(Publication $pub){
+        dd($pub);
+        if($pub->delete()){
+            return to_route('home');
+        }else{
+            return 'hello';
+        }
     }
 }

@@ -5,6 +5,7 @@ use \App\Http\Controllers\homeController;
 use \App\Http\Controllers\publicationController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,3 +20,4 @@ use \App\Http\Controllers\publicationController;
 Route::get('/',[homeController::class,'index'])->name('home');
 Route::get('publications/addPublicaion',[publicationController::class,'create'])->name('publication.create');
 Route::post('publications/storePublication',[publicationController::class,'store'])->name('publication.store');
+Route::delete('publications/delete/{publications}',[publicationController::class,'destroy'])->name('publication.destroy');

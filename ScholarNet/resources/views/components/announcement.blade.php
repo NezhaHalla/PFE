@@ -168,6 +168,11 @@
                     <div class="card-content">
                         <h2 class="name">{{ $announce->titre }}</h2>
                         <p class="description">{{ $announce->description }}</p>
+                        <form action="{{ route('publication.destroy',$announce->id) }}" method="post">
+                            @method('DELETE')
+                            @csrf
+                            <button onclick="return confirm('are u sure u want to delete this publication ?')" >Delete</button>
+                        </form>
                     </div>
                 </div>
             @endforeach
