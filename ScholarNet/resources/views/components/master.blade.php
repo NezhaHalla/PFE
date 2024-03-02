@@ -1,4 +1,3 @@
-@props(['title'])
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,11 +8,17 @@
     <title>ScolarNet | {{ $title }}</title>
 </head>
 <body>
-    <div style="position: absolute; top:0px;width:100%;">@include('partials.bar')</div>
+    <div style="position: absolute; top:0px; width:100%;">
+        @include('partials.bar')
+    </div>
 
+    <div style="margin-top: 100px; margin-bottom: 50px;">
+        {{ $slot }}
+    </div>
 
-    {{ $slot }}
-
+    <footer style="position: relative; bottom: 0; width: 100%;">
+        @include('partials.footer')
+    </footer>
 
 </body>
 </html>

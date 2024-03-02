@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\homeController;
+use App\Http\Controllers\UserController;
 use \App\Http\Controllers\publicationController;
 use App\Models\Publication;
 
@@ -23,3 +24,10 @@ Route::get('/',[homeController::class,'index'])->name('home');
 Route::get('publications/addPublicaion',[publicationController::class,'create'])->name('publication.create');
 Route::post('publications/storePublication',[publicationController::class,'store'])->name('publication.store');
 Route::delete('publications/delete/{publication}',[publicationController::class,'destroy'])->name('publication.destroy');
+
+
+Route::get('/login', [UserController::class, 'showLogin'])->name('showlogin');
+Route::post('/login', [UserController::class, 'login'])->name('login');
+
+Route::get('/adduser', [UserController::class, 'showadduser'])->name('adduser');
+Route::post('/adduser', [UserController::class, 'adduser'])->name('adduser');
