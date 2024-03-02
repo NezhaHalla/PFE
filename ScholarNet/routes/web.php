@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\homeController;
+use \App\Http\Controllers\publicationController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[homeController::class,'index'])->name('home');
+Route::get('publications/addPublicaion',[publicationController::class,'create'])->name('publication.create');
+Route::post('publications/storePublication',[publicationController::class,'store'])->name('publication.store');
