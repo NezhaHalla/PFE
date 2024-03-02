@@ -24,12 +24,8 @@ class publicationController extends Controller
         Publication::create($req);
         return to_route('home');
     }
-    public function destroy(Publication $pub){
-        dd($pub);
-        if($pub->delete()){
-            return to_route('home');
-        }else{
-            return 'hello';
-        }
-    }
+    public function destroy(Publication $publication){
+        $publication->delete();
+        return to_route('home');
+}
 }

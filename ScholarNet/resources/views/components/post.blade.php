@@ -169,6 +169,11 @@
                 </div>
             </article>
         </div>
+        <form action="{{ route('publication.destroy',$pub->id) }}" method="post">
+            @method('DELETE')
+            @csrf
+            <button onclick="return confirm('are u sure u want to delete this publication ?')" >Delete</button>
+        </form>
     </div>
 </div>
 @endforeach
