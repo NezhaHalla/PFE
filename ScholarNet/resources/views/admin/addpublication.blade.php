@@ -1,5 +1,5 @@
 <x-master title="Add Publication">
-    <div >
+    <div style="padding:20px;">
       <div class="formbold-main-wrapper">
         <div class="formbold-form-wrapper">
           <form action="{{ route('publication.store') }}" method="POST" enctype="multipart/form-data">
@@ -143,8 +143,7 @@
         border-radius: 50%;
       }
       .formbold-radio-label .formbold-input-radio:checked ~ .formbold-radio-checkmark {
-        background-color: #063247;
-
+        background-color: #6A64F1;
       }
       .formbold-radio-checkmark:after {
         content: "";

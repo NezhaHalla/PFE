@@ -177,6 +177,5 @@
     </div>
 </div>
 @endforeach
-
 </body>
 </html>
