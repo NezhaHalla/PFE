@@ -27,7 +27,7 @@
             color: white;
             text-align: center;
             padding: 20px 0;
-            margin-top: auto;
+            margin-top: 100%;
             width: 100%;
         }
 
@@ -79,27 +79,12 @@
             font-weight: 300;
         }
 
-        @keyframes animateWaves {
-            0% {
-                background-position-x: 1000px;
-            }
-            100% {
-                background-positon-x: 0px;
-            }
-        }
 
-        @keyframes animate {
-            0% {
-                background-position-x: -1000px;
-            }
-            100% {
-                background-positon-x: 0px;
-            }
-        }
+
     </style>
 </head>
 <body>
-    @include('partials.bar') 
+    @include('partials.bar')
 
     {{ $slot }}
 
