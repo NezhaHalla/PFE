@@ -45,7 +45,14 @@ nav ul {
 
 nav ul li {
     display: inline-block;
-    position: relative; /* Added position relative to create stacking context */
+    position: relative;
+    margin-left: 20px;
+}
+
+nav ul li li {
+    margin-left: -32px; 
+    font-size: 18px;
+    width: 100%;
 }
 
 nav ul li a {
@@ -56,6 +63,7 @@ nav ul li a {
     font-size: 20px;
     background: #063247;
     transition: .5s;
+    text-decoration: none; 
 }
 
 nav ul ul {
@@ -75,7 +83,7 @@ nav ul li:hover > ul {
 }
 
 nav ul ul li {
-    width: 100%;
+    width: 200px;
     display: block;
     position: relative;
     border: 1px solid #042331;
@@ -83,6 +91,7 @@ nav ul ul li {
 
 nav ul ul li a {
     line-height: 50px;
+    text-decoration: none; 
 }
 
 nav ul ul ul {
@@ -95,6 +104,7 @@ nav ul ul ul li {
     position: relative;
     top: -70px;
     left: 150px;
+    
 }
 
 nav ul ul li a i {
@@ -106,8 +116,25 @@ section {
     background-position: center;
     background-size: cover;
     height: 100vh;
-    margin-top: 70px; /* Adjust body content to not overlap with the fixed navbar */
+    margin-top: 70px;
 }
+.dec{
+    text-decoration-line: underline;
+}
+.profile-image {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile-image img {
+    width: 40px;
+    height: 40px;
+}
+
 
         </style>
    </head>
@@ -132,6 +159,17 @@ section {
                     <li><a href="#">All Teachers</a></li>
                 </ul>
             </li>
+            <li>
+                <a href="#" class="dec">{{ auth()->user()->name }}<i class="fas fa-caret-down"></i></a>
+                <ul>
+                    <li><a href="">My Account</a></li>
+                    <li><a href="{{ route('logout') }}">Logout</a></li>
+                </ul>
+            </li>
+            <li><a></a><i></i></li>
+                <div class="profile-image">
+                    <img src="{{ asset('storage/'.auth()->user()->image) }}" alt="Profile Image">
+                </div>
         </ul>
     </nav>
     @elseif(auth()->user()->role === 'Student')
@@ -156,6 +194,17 @@ section {
                     <li><a href="#">Year</a></li>
                 </ul>
             </li>
+            <li>
+                <a href="#" class="dec">{{ auth()->user()->name }}<i class="fas fa-caret-down"></i></a>
+                <ul>
+                    <li><a href="">My Account</a></li>
+                    <li><a href="{{ route('logout') }}">Logout</a></li>
+                </ul>
+            </li>
+            <li><a></a><i></i></li>
+                <div class="profile-image">
+                    <img src="{{ asset('storage/'.auth()->user()->image) }}" alt="Profile Image">
+                </div>
         </ul>
     </nav>
     @elseif(auth()->user()->role === 'Teacher')
@@ -178,6 +227,17 @@ section {
                     <li><a href="#">My Assignments</a></li>
                 </ul>
             </li>
+            <li>
+                <a href="#" class="dec">{{ auth()->user()->name }}<i class="fas fa-caret-down"></i></a>
+                <ul>
+                    <li><a href="">My Account</a></li>
+                    <li><a href="{{ route('logout') }}">Logout</a></li>
+                </ul>
+            </li>
+            <li><a></a><i></i></li>
+                <div class="profile-image">
+                    <img src="{{ asset('storage/'.auth()->user()->image) }}" alt="Profile Image">
+                </div>
         </ul>
     </nav>
     @endif
@@ -189,7 +249,7 @@ section {
         <ul>
             
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('showlogin') }}">Login</a>
+                <a href="{{ route('showlogin') }}" class="dec">Login</a>
             </li>
             
         </ul>

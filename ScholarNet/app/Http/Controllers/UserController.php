@@ -41,6 +41,6 @@ class UserController extends Controller
     public function logout(){
         Session::flush();
         Auth::logout();
-        return to_route('login');
+        return to_route('home');
     }
 }

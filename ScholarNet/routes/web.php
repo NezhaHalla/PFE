@@ -30,3 +30,4 @@ Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::get('/adduser', [UserController::class, 'showadduser'])->name('adduser')->middleware('auth');
 Route::post('/adduser', [UserController::class, 'adduser'])->name('adduser')->middleware('auth');
+Route::get('/logout',[UserController::class,'logout'])->name('logout');
