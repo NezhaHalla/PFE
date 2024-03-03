@@ -1,5 +1,5 @@
 <x-master title="Add Publication">
-    <div style="position: absolute;top:75px;left:30%">
+    <div >
       <div class="formbold-main-wrapper">
         <div class="formbold-form-wrapper">
           <form action="{{ route('publication.store') }}" method="POST" enctype="multipart/form-data">
@@ -15,7 +15,7 @@
                 />
                 @error('titre')
                 <div class="text-danger">{{$message}}</div>
-              @enderror
+                @enderror
               </div>
               <div>
                 <label for="file" class="formbold-form-label">Image Upload</label>
@@ -49,7 +49,7 @@
                 </div>
                 @error('role')
                 <div class="text-danger">{{$message}}</div>
-              @enderror
+                @enderror
               </div>
             </div>
 
@@ -75,6 +75,7 @@
       </div>
     </div>
 
+    <!-- Move the style block here -->
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
       body {
@@ -142,7 +143,8 @@
         border-radius: 50%;
       }
       .formbold-radio-label .formbold-input-radio:checked ~ .formbold-radio-checkmark {
-        background-color: #6A64F1;
+        background-color: #063247;
+
       }
       .formbold-radio-checkmark:after {
         content: "";
@@ -209,4 +211,4 @@
       }
 
     </style>
-  </x-master>
+</x-master>

@@ -177,9 +177,6 @@
     </div>
 </div>
 @endforeach
-<section class="detail-page">
-    <div class="container mt-5">
-    </div>
-</section>
+
 </body>
 </html>

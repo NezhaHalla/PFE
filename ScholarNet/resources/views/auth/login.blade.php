@@ -102,7 +102,5 @@ border-bottom-right-radius: .3rem;
 }
 </style>
 
-    @include('/partials/footer')
-
 </body>
 </html>
