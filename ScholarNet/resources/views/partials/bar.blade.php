@@ -112,33 +112,88 @@ section {
         </style>
    </head>
    <body>
-      <nav>
-         <label class="logo">ScolarNet</label>
-         <ul>
+    @auth
+    @if (auth()->user()->role === 'Admin')
+    <nav>
+        <label class="logo">ScolarNet</label>
+        <ul>
             <li><a class="active" href="{{ route('home') }}">Home</a></li>
             <li>
-               <a href="#">Users
-               <i class="fas fa-caret-down"></i>
-               </a>
-               <ul>
-                  <li><a href="{{ route('adduser') }}">Adduser</a></li>
-                  <li><a href="#">JQuery</a></li>
-                  <li><a href="#">Javascript</a></li>
-               </ul>
+                <a href="#">System<i class="fas fa-caret-down"></i></a>
+                <ul>
+                    <li><a href="">Add Publication</a></li>
+                    <li><a href="#">Add User</a></li>
+                </ul>
             </li>
             <li>
-               <a href="#">Publications
-               <i class="fas fa-caret-down"></i>
-               </a>
-               <ul>
-                  <li><a href="{{ route('publication.create') }}">Add Publication</a></li>
-                  <li><a href="#">Back End</a></li>
-                  <li><a href="#">Others</a></li>
-               </ul>
+                <a href="#">Classes<i class="fas fa-caret-down"></i></a>
+                <ul>
+                    <li><a href="">All Classes</a></li>
+                    <li><a href="#">All Teachers</a></li>
+                </ul>
             </li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Feedback</a></li>
-         </ul>
-      </nav>
+        </ul>
+    </nav>
+    @elseif(auth()->user()->role === 'Student')
+    <nav>
+        <label class="logo">ScolarNet</label>
+        <ul>
+            <li><a class="active" href="{{ route('home') }}">Home</a></li>
+            <li>
+                <a href="#">Class<i class="fas fa-caret-down"></i></a>
+                <ul>
+                    <li><a href="">My Class</a></li>
+                    <li><a href="#">Cours</a></li>
+                    <li><a href="#">Assignments</a></li>
+                    <li><a href="#">Submission</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Results<i class="fas fa-caret-down"></i></a>
+                <ul>
+                    <li><a href="">Module</a></li>
+                    <li><a href="#">Soumestre</a></li>
+                    <li><a href="#">Year</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    @elseif(auth()->user()->role === 'Teacher')
+    <nav>
+        <label class="logo">ScolarNet</label>
+        <ul>
+            <li><a class="active" href="{{ route('home') }}">Home</a></li>
+            <li>
+                <a href="#">Classes<i class="fas fa-caret-down"></i></a>
+                <ul>
+                    <li><a href="">My Classes</a></li>
+                    <li><a href="#">Add course</a></li>
+                    <li><a href="#">My courses</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Assinments<i class="fas fa-caret-down"></i></a>
+                <ul>
+                    <li><a href="">Add Assinment</a></li>
+                    <li><a href="#">My Assignments</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    @endif
+        
+    @endauth
+    @guest
+    <nav>
+        <label class="logo">ScolarNet</label>
+        <ul>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('showlogin') }}">Login</a>
+            </li>
+            
+        </ul>
+    </nav>
+    @endguest
    </body>
 </html>
