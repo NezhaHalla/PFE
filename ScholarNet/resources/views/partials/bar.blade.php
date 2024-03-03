@@ -121,7 +121,7 @@ section {
                <i class="fas fa-caret-down"></i>
                </a>
                <ul>
-                  <li><a href="#">Python</a></li>
+                  <li><a href="{{ route('adduser') }}">Adduser</a></li>
                   <li><a href="#">JQuery</a></li>
                   <li><a href="#">Javascript</a></li>
                </ul>
