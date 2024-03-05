@@ -169,6 +169,11 @@
                 </div>
             </article>
         </div>
+        @auth
+        @if (auth()->user()->role==='Admin')
+            
+        @endif
+        @endauth
         <form action="{{ route('publication.destroy',$pub->id) }}" method="post">
             @method('DELETE')
             @csrf

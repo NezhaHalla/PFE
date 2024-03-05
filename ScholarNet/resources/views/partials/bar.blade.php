@@ -50,7 +50,7 @@ nav ul li {
 }
 
 nav ul li li {
-    margin-left: -32px; 
+    margin-left: -32px;
     font-size: 18px;
     width: 100%;
 }
@@ -63,7 +63,7 @@ nav ul li a {
     font-size: 20px;
     background: #063247;
     transition: .5s;
-    text-decoration: none; 
+    text-decoration: none;
 }
 
 nav ul ul {
@@ -91,7 +91,7 @@ nav ul ul li {
 
 nav ul ul li a {
     line-height: 50px;
-    text-decoration: none; 
+    text-decoration: none;
 }
 
 nav ul ul ul {
@@ -104,7 +104,7 @@ nav ul ul ul li {
     position: relative;
     top: -70px;
     left: 150px;
-    
+
 }
 
 nav ul ul li a i {
@@ -148,8 +148,9 @@ section {
             <li>
                 <a href="#">System<i class="fas fa-caret-down"></i></a>
                 <ul>
-                    <li><a href="">Add Publication</a></li>
-                    <li><a href="#">Add User</a></li>
+                    <li><a href="{{ route('publication.create') }}">Add Publication</a></li>
+                    <li><a href="{{ route('adduser') }}">Add User</a></li>
+                    <li><a href="#">Add Class</a></li>
                 </ul>
             </li>
             <li>
@@ -162,14 +163,10 @@ section {
             <li>
                 <a href="#" class="dec">{{ auth()->user()->name }}<i class="fas fa-caret-down"></i></a>
                 <ul>
-                    <li><a href="">My Account</a></li>
+                    <li><a href="{{ route('profile') }}">My Account</a></li>
                     <li><a href="{{ route('logout') }}">Logout</a></li>
                 </ul>
             </li>
-            <li><a></a><i></i></li>
-                <div class="profile-image">
-                    <img src="{{ asset('storage/'.auth()->user()->image) }}" alt="Profile Image">
-                </div>
         </ul>
     </nav>
     @elseif(auth()->user()->role === 'Student')
@@ -197,7 +194,7 @@ section {
             <li>
                 <a href="#" class="dec">{{ auth()->user()->name }}<i class="fas fa-caret-down"></i></a>
                 <ul>
-                    <li><a href="">My Account</a></li>
+                    <li><a href="{{ route('profile') }}">My Account</a></li>
                     <li><a href="{{ route('logout') }}">Logout</a></li>
                 </ul>
             </li>
@@ -230,7 +227,7 @@ section {
             <li>
                 <a href="#" class="dec">{{ auth()->user()->name }}<i class="fas fa-caret-down"></i></a>
                 <ul>
-                    <li><a href="">My Account</a></li>
+                    <li><a href="{{ route('profile') }}">My Account</a></li>
                     <li><a href="{{ route('logout') }}">Logout</a></li>
                 </ul>
             </li>
@@ -241,17 +238,17 @@ section {
         </ul>
     </nav>
     @endif
-        
+
     @endauth
     @guest
     <nav>
         <label class="logo">ScolarNet</label>
         <ul>
-            
+
             <li class="nav-item">
                 <a href="{{ route('showlogin') }}" class="dec">Login</a>
             </li>
-            
+
         </ul>
     </nav>
     @endguest

@@ -27,7 +27,7 @@
             color: white;
             text-align: center;
             padding: 20px 0;
-            margin-top: 100%;
+            margin-top: 3%;
             width: 100%;
         }
 
@@ -85,7 +85,9 @@
 </head>
 <body>
     @include('partials.bar')
-
+    <div style="position: absolute;top:65px;width:90%;margin:30px;" >
+        @include('partials.flashbag')
+    </div>
     {{ $slot }}
 
     <footer class="footer">
