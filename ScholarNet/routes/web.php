@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\homeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ClassController;
 use \App\Http\Controllers\publicationController;
 use App\Models\Publication;
 
@@ -31,6 +32,20 @@ Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::get('/myAccount/modifyPassword', [UserController::class, 'showpass'])->name('password.show');
 Route::post('/myAccount/modifyPassword/{user}', [UserController::class, 'storepass'])->name('password.update');
 
+
+
 Route::get('/adduser', [UserController::class, 'showadduser'])->name('adduser')->middleware('auth');
 Route::post('/adduser', [UserController::class, 'adduser'])->name('adduser')->middleware('auth');
 Route::get('/logout',[UserController::class,'logout'])->name('logout');
+
+Route::get('/all-classes', [ClassController::class, 'showAllClasses'])->name('all_classes');
+Route::get('/all-teachers', [UserController::class, 'showAllTeachers'])->name('all.teachers');
+Route::get('/classes/{class_id}/students', [UserController::class, 'showAllStudents'])->name('showAllStudents');
+
+
+Route::get('/user/{id}/delete', [UserController::class, 'delete'])->name('user.delete');
+Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+
+
+Route::get('/addclass', [ClassController::class, 'create'])->name('class.create');
+Route::post('/addclass', [ClassController::class, 'store'])->name('class.store');
