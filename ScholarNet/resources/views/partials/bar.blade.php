@@ -153,9 +153,10 @@ section {
                 <ul>
                     <li><a href="{{ route('publication.create') }}">Add Publication</a></li>
                     <li><a href="{{ route('adduser') }}">Add User</a></li>
-                    <li><a href="#">Add Class</a></li>
+                    <li><a href="{{ route('class.create') }}">Add Class</a></li>
                 </ul>
             </li>
+            
             <li>
                 <a href="#">Classes<i class="fas fa-caret-down"></i></a>
                 <ul>
