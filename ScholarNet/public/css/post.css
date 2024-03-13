@@ -1,0 +1,75 @@
+body {
+    background: #eee;
+    text-align: center; /* Center the text content */
+}
+
+.head {
+    text-align: center;
+}
+
+.blog-card {
+    padding: 30px;
+    position: relative;
+}
+
+.blog-card__info {
+    background: white;
+    padding: 20px 15px;
+    text-align: left; /* Align the text content to the left */
+}
+
+img {
+    display: block;
+    margin: 0 auto; /* Center the image */
+    max-width: 100%; /* Ensure the image does not exceed its container */
+    height: 450px; /* Maintain aspect ratio */
+    width:900px;
+
+}
+
+.image-container {
+    text-align: center; /* Center the image */
+}
+
+.btn {
+    background: white;
+    color: #363738; /* Text color */
+    font-weight: bold;
+    outline: none;
+    box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    border-radius: 0;
+    height: 50px;
+    line-height: 50px;
+    display: inline-block;
+    padding: 0;
+    border: none;
+}
+
+.btn:focus {
+    box-shadow: none;
+}
+
+.btn:hover {
+    background: #ffb535; /* Primary color */
+    color: white;
+}
+
+.btn--with-icon {
+    padding-right: 20px;
+}
+
+.btn--with-icon i {
+    padding: 0px 30px 0px 15px;
+    margin-right: 10px;
+    height: 50px;
+    line-height: 50px;
+    vertical-align: bottom;
+    color: white;
+    background: #ffb535; /* Primary color */
+    clip-path: polygon(0 0, 70% 0, 100% 100%, 0% 100%);
+}
+
+.btn--only-icon {
+    width: 50px;
+}

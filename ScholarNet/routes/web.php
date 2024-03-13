@@ -25,12 +25,12 @@ Route::get('publications/addPublicaion',[publicationController::class,'create'])
 Route::post('publications/storePublication',[publicationController::class,'store'])->name('publication.store')->middleware('auth');
 Route::delete('publications/delete/{publication}',[publicationController::class,'destroy'])->name('publication.destroy')->middleware('auth');
 
-Route::get('/myAccount',[UserController::class,'showprofile'])->name('profile');
+Route::get('/myAccount',[UserController::class,'showprofile'])->name('profile')->middleware('auth');;
 
 Route::get('/login', [UserController::class, 'showLogin'])->name('showlogin');
 Route::post('/login', [UserController::class, 'login'])->name('login');
-Route::get('/myAccount/modifyPassword', [UserController::class, 'showpass'])->name('password.show');
-Route::post('/myAccount/modifyPassword/{user}', [UserController::class, 'storepass'])->name('password.update');
+Route::get('/myAccount/modifyPassword', [UserController::class, 'showpass'])->name('password.show')->middleware('auth');;
+Route::post('/myAccount/modifyPassword/{user}', [UserController::class, 'storepass'])->name('password.update')->middleware('auth');;
 
 
 

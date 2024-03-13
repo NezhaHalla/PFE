@@ -10,11 +10,13 @@
                             <p class="text-muted mb-1">{{ auth()->user()->role }} in ScholarNet</p>
                 </div>
               </div>
-              <div class="card mb-4 mb-lg-0">
+
+            @if(auth()->user()->role === "Student")
+            <div class="card mb-4 mb-lg-0">
                 <div class="card-body p-0">
                   <ul class="list-group list-group-flush rounded-3">
                     <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                        <button type="button" class="btn btn-primary" style="width: 100%; height:100%;">My Courses</button>
+                        <button type="button" class="btn btn-primary" style="width: 100%; height:100%;">My Saved Courses</button>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                         <button type="button" class="btn btn-primary" style="width: 100%; height:100%;">My Submitted Assignments</button>
@@ -28,6 +30,47 @@
                   </ul>
                 </div>
               </div>
+            @endif
+
+            @if(auth()->user()->role === "Teacher")
+            <div class="card mb-4 mb-lg-0">
+                <div class="card-body p-0">
+                  <ul class="list-group list-group-flush rounded-3">
+                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                        <button type="button" class="btn btn-primary" style="width: 100%; height:100%;">My Courses</button>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                        <button type="button" class="btn btn-primary" style="width: 100%; height:100%;">My Assignments</button>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                        <a href="{{ route('password.show') }}" type="button" class="btn btn-primary" style="width: 100%; height:100%;">Modify Password</a>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                        <a href="{{ route('logout') }}" type="button" class="btn btn-danger" style="width: 100%; height:100%;" >Exit</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            @endif
+
+            @if(auth()->user()->role === "Admin")
+            <div class="card mb-4 mb-lg-0">
+                <div class="card-body p-0">
+                  <ul class="list-group list-group-flush rounded-3">
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                        <a href="{{ route('password.show') }}" type="button" class="btn btn-primary" style="width: 100%; height:100%;">Modify Password</a>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                        <a href="{{ route('logout') }}" type="button" class="btn btn-danger" style="width: 100%; height:100%;" >Exit</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            @endif
+
+
+
             </div>
             <div class="col-lg-8">
               <div class="card mb-4">
