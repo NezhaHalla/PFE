@@ -27,8 +27,10 @@
             color: white;
             text-align: center;
             padding: 20px 0;
-            margin-top: 3%;
             width: 100%;
+            margin-top: auto;
+            /* Change position to fixed */
+            bottom: 0;
         }
 
         .social-icon,

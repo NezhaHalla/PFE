@@ -45,6 +45,7 @@ Route::get('/classes/{class_id}/students', [UserController::class, 'showAllStude
 
 Route::get('/user/{id}/delete', [UserController::class, 'delete'])->name('user.delete');
 Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+Route::post('/user/update', [UserController::class, 'update'])->name('editprofile');
 
 
 Route::get('/addclass', [ClassController::class, 'create'])->name('class.create');

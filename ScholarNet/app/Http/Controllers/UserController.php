@@ -74,9 +74,18 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'User deleted successfully');
     }
     public function edit($id)
-    {
-        // Logic to fetch user data and show modify form
+{
+    $user = User::find($id);
+    //dd($user);
+    if (!$user) {
+        return redirect()->back()->with('error', 'User not found');
     }
+
+    $classes = Classe::all();
+
+    return view('admin.edit_user', compact('user', 'classes'));
+}
+
     public function showprofile(){
         return view('common/profile');
     }
