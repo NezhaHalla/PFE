@@ -82,7 +82,8 @@
         @endif
         <div class="formbold-main-wrapper">
             <div class="form-container">
-                <form action="{{ route('editprofile') }}" method="POST" enctype='multipart/form-data'>
+                <form action="{{ route('editprofile', ['id' => $user->id]) }}" method="POST" enctype="multipart/form-data">
+
                     @csrf
                     <div class="mb-3">
                         <label for="exampleInputname" class="formbold-form-label">Name </label>
@@ -98,13 +99,8 @@
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="formbold-form-label">Password</label>
-                        <input type="password" class="formbold-form-input" id="exampleInputPassword1" name='password' >
-                        @error('password')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
+
+
                     <div class="mb-3">
                         <label for="gender" class="formbold-form-label">Gender</label>
                         <select class="formbold-form-input" name='gender'>
@@ -116,41 +112,24 @@
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
+
+
                     <div class="mb-3">
-                        <label for="role" class="formbold-form-label">Role</label>
-                        <select class="formbold-form-input" name='role'>
-                            <option value="">Select Role</option>
-                            <option value="Student" {{ old('role', $user->role) == 'Student' ? 'selected' : '' }}>Student</option>
-                            <option value="Teacher" {{ old('role', $user->role) == 'Teacher' ? 'selected' : '' }}>Teacher</option>
-                            <option value="Admin" {{ old('role', $user->role) == 'Admin' ? 'selected' : '' }}>Admin</option>
-                        </select>
-                        @error('role')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label class="formbold-form-label">Date de naissance</label>
-                        <input type="date" class="formbold-form-input" name="DateDeNaissance" value="{{ old('DateDeNaissance', $user->DateDeNaissance) }}">
-                        @error('DateDeNaissance')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Class</label>
+                        <label class="formbold-form-label">Class</label>
                         <select class="form-select" name="class_id">
                             <option value="">Select Class</option>
                             @foreach($classes as $class)
-                                <option value="{{ $class->id }}" {{ old('class_id', $user->class_id) }}>{{ $class->nom }}</option>
+                                <option value="{{ $class->id }}" {{ old('class_id', $user->class_id) == $class->id ? 'selected' : '' }}>{{ $class->Name }}</option>
                             @endforeach
                         </select>
                         @error('class_id')
-                            {{ $message }}
+                            <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="mb-3">
                         <label class="formbold-form-label">Current Image</label><br>
                         @if($user->image)
-                            <img src="{{ asset('path_to_your_images_folder/' . $user->image) }}" alt="Current Profile Image" style="max-width: 200px;">
+                            <img src="{{ asset('storage/' . $user->image) }}" alt="Current Profile Image" style="max-width: 200px;">
                         @else
                             <p>No image uploaded.</p>
                         @endif

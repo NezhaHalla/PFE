@@ -48,7 +48,7 @@
         </div>
     </div>
 
-    
+
     <style>
       <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -66,19 +66,19 @@
         margin: 0 auto;
         max-width: 550px;
         width: 100%;
-        background: #f9f9f9; /* Changed background color */
-        border-radius: 10px; /* Added border-radius for better appearance */
-        padding: 30px; /* Increased padding for spacing */
-        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Added box shadow for depth */
+        background: #f9f9f9;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
       }
 
       .formbold-input-flex {
         display: flex;
         gap: 20px;
-        margin-bottom: 20px; /* Increased margin for spacing */
+        margin-bottom: 20px;
       }
       .formbold-input-flex > div {
-        flex: 1; /* Adjusted width for responsiveness */
+        flex: 1;
       }
 
       .formbold-input-radio-wrapper {

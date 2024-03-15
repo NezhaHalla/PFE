@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Classe;
 use App\Models\Publication;
+use App\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\loginRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Requestpassword;
+use App\Http\Requests\UpdateRequest;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
@@ -31,19 +33,17 @@ class UserController extends Controller
         return view('auth/login');
        }
 
-    public function login(loginRequest $req){
+       public function login(loginRequest $req){
         $val=$req->validated();
-
-         if(Auth::attempt($val)){
+        if(Auth::attempt($val, $req->remember)){
             $req->session()->regenerate();
-
-            return to_route('home');
-         }else
-             return redirect()->back()->withErrors([
-                'danger'=>'cheeck ur email or password',
-             ]);
-
-     }
+            return redirect()->route('home');
+        } else {
+            return redirect()->back()->withErrors([
+                'danger'=>'Check your email or password',
+            ]);
+        }
+    }
     public function logout(){
         Session::flush();
         Auth::logout();
@@ -80,11 +80,32 @@ class UserController extends Controller
     if (!$user) {
         return redirect()->back()->with('error', 'User not found');
     }
-
     $classes = Classe::all();
-
     return view('admin.edit_user', compact('user', 'classes'));
 }
+
+
+public function update(UpdateRequest $request, $id) {
+    $val = $request->validated();
+
+    $user = User::find($id);
+    if (!$user) {
+        return redirect()->back()->with('error', 'User not found');
+    }
+    $user->name = $val['name'];
+    $user->email = $val['email'];
+    $user->gender = $val['gender'];
+    $user->class_id = $val['class_id'];
+
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('blog', 'public');
+        $user->image = $imagePath;
+    }
+    $user->save();
+    return redirect()->back()->with('success', 'User updated successfully');
+}
+
+
 
     public function showprofile(){
         return view('common/profile');

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>ScolarNet | {{ $title }}</title>
     <style>
@@ -113,10 +114,10 @@
         </ul>
 
         <ul class="menu">
-            <li class="menu__item"><a class="menu__link" href="#">Home</a></li>
+            <li class="menu__item"><a class="menu__link" href="{{ route('home') }}">Home</a></li>
             <li class="menu__item"><a class="menu__link" href="#">About us</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">Team</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">Contact us</a></li>
+            <li class="menu__item"><a class="menu__link"  href="mailto:este@uca.ac.ma">Email</a></li>
+            <li class="menu__item"><a class="menu__link" href="https://maps.google.com/?q=Essaouira+Aljadida+BP.+383,+Essaouira" target="_blank">Location </a></li>
         </ul>
         <p>&copy; school2023</p>
     </footer>

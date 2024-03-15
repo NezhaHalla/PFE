@@ -38,15 +38,15 @@ Route::get('/adduser', [UserController::class, 'showadduser'])->name('adduser')-
 Route::post('/adduser', [UserController::class, 'adduser'])->name('adduser')->middleware('auth');
 Route::get('/logout',[UserController::class,'logout'])->name('logout');
 
-Route::get('/all-classes', [ClassController::class, 'showAllClasses'])->name('all_classes');
-Route::get('/all-teachers', [UserController::class, 'showAllTeachers'])->name('all.teachers');
-Route::get('/classes/{class_id}/students', [UserController::class, 'showAllStudents'])->name('showAllStudents');
+Route::get('/all-classes', [ClassController::class, 'showAllClasses'])->name('all_classes')->middleware('auth');;
+Route::get('/all-teachers', [UserController::class, 'showAllTeachers'])->name('all.teachers')->middleware('auth');;
+Route::get('/classes/{class_id}/students', [UserController::class, 'showAllStudents'])->name('showAllStudents')->middleware('auth');;
 
 
 Route::get('/user/{id}/delete', [UserController::class, 'delete'])->name('user.delete');
 Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
-Route::post('/user/update', [UserController::class, 'update'])->name('editprofile');
+Route::post('/user/update/{id}', [UserController::class, 'update'])->name('editprofile');
 
 
-Route::get('/addclass', [ClassController::class, 'create'])->name('class.create');
-Route::post('/addclass', [ClassController::class, 'store'])->name('class.store');
+Route::get('/addclass', [ClassController::class, 'create'])->name('class.create')->middleware('auth');;
+Route::post('/addclass', [ClassController::class, 'store'])->name('class.store')->middleware('auth');;
