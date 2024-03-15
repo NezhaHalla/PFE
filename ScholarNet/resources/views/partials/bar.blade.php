@@ -44,7 +44,7 @@
                 <a href="#">Class<i class="fas fa-caret-down"></i></a>
                 <ul>
                     <li><a href="">My Class</a></li>
-                    <li><a href="#">Cours</a></li>
+                    <li><a href="{{ route('myCourses') }}">Cours</a></li>
                     <li><a href="#">Assignments</a></li>
                     <li><a href="#">Submission</a></li>
                 </ul>

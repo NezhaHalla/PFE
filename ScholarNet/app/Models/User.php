@@ -31,6 +31,25 @@ class User extends Authenticatable
         'gender',
     ];
 
+    public function modulesT(){
+        return $this->hasMany(Module::class,'id_teacher');
+    }
+
+    public function resource(){
+        return $this->hasMany(Resource::class,'id_teacher');
+    }
+
+    public function soumestres()
+    {
+        return $this->belongsToMany(Soumestre::class, 'student_soumestres', 'id_student', 'id_soumestre');
+    }
+
+    public function modules()
+    {
+        return $this->belongsToMany(Module::class, 'student__modules', 'id_student', 'id_module');
+    }
+    
+
     /**
      * The attributes that should be hidden for serialization.
      *

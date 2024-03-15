@@ -84,6 +84,17 @@
                     </div>
                   </div>
                   <hr>
+                  @if(auth()->user()->role === "Student")
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Class</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">Study {{$class->Branch}}, In {{$class->Level}}</p>
+                    </div>
+                  </div>
+                  <hr>
+                  @endif
                   <div class="row">
                     <div class="col-sm-3">
                       <p class="mb-0">Email</p>
