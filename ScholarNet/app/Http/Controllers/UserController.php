@@ -108,7 +108,8 @@ public function update(UpdateRequest $request, $id) {
 
 
     public function showprofile(){
-        return view('common/profile');
+        $class=Classe::findOrFail(auth()->user()->class_id);
+        return view('common/profile',compact('class'));
     }
 
     public function showpass(){

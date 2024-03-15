@@ -10,7 +10,7 @@ class Publication extends Model
 {
     use HasFactory;
     use softDeletes;
-    protected $dates=['created_at'];
+    protected $dates=['created_at']; 
     protected $fillable=[
         "imagepub",
         "titre",

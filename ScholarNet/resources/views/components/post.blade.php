@@ -26,7 +26,7 @@
             <form action="{{ route('publication.destroy',$pub->id) }}" method="post">
                 @method('DELETE')
                 @csrf
-                <button onclick="return confirm('Do you want to delete this post ?')">Delete</button>
+                <button style="background-color: #ff4444;color: #fff;border: none;padding: 8px 16px;border-radius: 4px;cursor: pointer;" onclick="return confirm('Do you want to delete this post ?')">Delete</button>
             </form>
             @endif
             @endauth

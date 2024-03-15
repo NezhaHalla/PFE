@@ -25,7 +25,7 @@
                         <form action="{{ route('publication.destroy',$announce->id) }}" method="post">
                             @method('DELETE')
                             @csrf
-                            <button onclick="return confirm('Do you want to delete this announcement ?')" >Delete</button>
+                            <button class="sup" onclick="return confirm('Do you want to delete this announcement ?')" >Delete</button>
                         </form>
                         @endif
                         @endauth

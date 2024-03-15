@@ -1,11 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\homeController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ClassController;
-use \App\Http\Controllers\publicationController;
 use App\Models\Publication;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use \App\Http\Controllers\homeController;
+use App\Http\Controllers\ClassController;
+use App\Http\Controllers\ResourceController;
+use \App\Http\Controllers\publicationController;
 
 
 
@@ -50,3 +51,5 @@ Route::post('/user/update/{id}', [UserController::class, 'update'])->name('editp
 
 Route::get('/addclass', [ClassController::class, 'create'])->name('class.create')->middleware('auth');;
 Route::post('/addclass', [ClassController::class, 'store'])->name('class.store')->middleware('auth');;
+
+Route::get('/MyCourses',[ResourceController::class,'index'])->name('myCourses');
