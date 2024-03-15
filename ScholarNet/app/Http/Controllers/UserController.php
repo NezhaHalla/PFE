@@ -108,8 +108,12 @@ public function update(UpdateRequest $request, $id) {
 
 
     public function showprofile(){
+        if(auth()->user()->role === 'Student'){
         $class=Classe::findOrFail(auth()->user()->class_id);
         return view('common/profile',compact('class'));
+        }else{
+            return view('common/profile');
+        }
     }
 
     public function showpass(){
