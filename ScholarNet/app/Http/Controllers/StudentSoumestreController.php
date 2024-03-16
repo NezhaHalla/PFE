@@ -34,32 +34,32 @@ class StudentSoumestreController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(student_soumestre $student_soumestre)
-    {
-        //
-    }
+    // //public function show(student_soumestre $student_soumestre)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(student_soumestre $student_soumestre)
-    {
-        //
-    }
+    // public function edit(student_soumestre $student_soumestre)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, student_soumestre $student_soumestre)
-    {
-        //
-    }
+    // public function update(Request $request, student_soumestre $student_soumestre)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(student_soumestre $student_soumestre)
-    {
-        //
-    }
+    // public function destroy(student_soumestre $student_soumestre)
+    // {
+    //     //
+    // }
 }

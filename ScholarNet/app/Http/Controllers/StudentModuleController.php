@@ -34,32 +34,32 @@ class StudentModuleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Student_Module $student_Module)
-    {
-        //
-    }
+    // public function show(Student_Module $student_Module)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Student_Module $student_Module)
-    {
-        //
-    }
+    // public function edit(Student_Module $student_Module)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Student_Module $student_Module)
-    {
-        //
-    }
+    // public function update(Request $request, Student_Module $student_Module)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Student_Module $student_Module)
-    {
-        //
-    }
+    // public function destroy(Student_Module $student_Module)
+    // {
+    //     //
+    // }
 }
