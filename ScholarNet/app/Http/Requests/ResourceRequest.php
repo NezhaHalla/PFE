@@ -11,7 +11,7 @@ class ResourceRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,9 +24,8 @@ class ResourceRequest extends FormRequest
         return [
             'titre' => 'required|string|max:255',
             'description' => 'required|string|max:255',
-            'fichier' => 'required|file|mimes:jpeg,png,pdf|max:2048',
-            'module_id' => 'required|exists:modules',
-            'id_teacher' => 'required|exists:users',
+            'fichier' => 'required|file|max:2048',
+            
         ];
     }
 }

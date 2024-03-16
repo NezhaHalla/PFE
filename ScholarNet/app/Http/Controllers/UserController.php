@@ -36,6 +36,19 @@ class UserController extends Controller
             'created_at' => now(),
             'updated_at' => now()
         ]);
+        $semesterModules = Module::where('id_soumestre', $val['soumestre_id'])->pluck('id')->toArray();
+
+        // Prepare student__modules records
+        $studentModules = [];
+        foreach ($semesterModules as $moduleId) {
+            $studentModules[] = [
+                'id_student' => $user->id,
+                'id_module' => $moduleId,
+                'Note' => 0.0, // Set default value for note
+                'created_at' => now(),
+                'updated_at' => now()
+            ];
+        }  DB::table('student__modules')->insert($studentModules);
           session()->flash('success', 'User added successfully.');
           return redirect()->back();
        }
@@ -140,7 +153,6 @@ public function update(UpdateRequest $request, $id) {
             return redirect()->back()->with('danger','Verify your current password');
         }
     }
-
     public function showmyclass($studentId) {
         $student = User::findOrFail($studentId);
 
@@ -151,6 +163,15 @@ public function update(UpdateRequest $request, $id) {
                         ->get();
 
         return view('student.Myclass', compact('student', 'students', 'class'));
+    }
+
+    public function show(User $user){
+        if($user->role === 'Student'){
+            $class=Classe::findOrFail($user->class_id);
+            return view('common/userProfile',compact('class','user'));
+            }else{
+                return view('common/userProfile',compact('user'));
+            }
     }
 
     public function showTeacherClasses($teacherId) {

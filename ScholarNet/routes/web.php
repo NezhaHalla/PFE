@@ -35,7 +35,7 @@ Route::post('/myAccount/modifyPassword/{user}', [UserController::class, 'storepa
 
 
 
-Route::get('/adduser', [UserController::class, 'showadduser'])->name('adduser')->middleware('auth');
+Route::get('/adduser', [UserController::class, 'showadduser'])->name('adduser');
 Route::post('/adduser', [UserController::class, 'adduser'])->name('adduser')->middleware('auth');
 Route::get('/logout',[UserController::class,'logout'])->name('logout');
 
@@ -54,9 +54,14 @@ Route::post('/addclass', [ClassController::class, 'store'])->name('class.store')
 
 Route::get('/MyCourses',[ResourceController::class,'index'])->name('myCourses');
 
-
 Route::get('/Myclass/{studentId}', [UserController::class, 'showmyclass'])->name('Myclasse')->middleware('auth');
 Route::get('/teacher/classes/{teacherId}', [UserController::class, 'showTeacherClasses'])->name('Myclass')->middleware('auth');
 
- Route::get('/add-resource', [ResourceController::class, 'showAddResourceForm'])->name('add_resource_form');
-// Route::post('/add-resource', [ResourceController::class, 'store'])->name('store_resource');
+Route::get('/Student/MyCourses',[ResourceController::class,'index'])->name('myCourses');
+Route::get('/Teacher/MyCourses',[ResourceController::class,'show'])->name('MyCourses');
+Route::get('/Cours/{resource}/details',[ResourceController::class,'showDetails'])->name('showDetails');
+Route::get('/{user}/profile',[UserController::class,'show'])->name('showProfile');
+
+Route::get('/resource/add', [ResourceController::class, 'showAddResourceForm'])->name('add_resource_form');
+Route::post('/resource/add', [ResourceController::class, 'store'])->name('store_resource');
+

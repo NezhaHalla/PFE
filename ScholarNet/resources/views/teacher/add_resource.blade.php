@@ -117,18 +117,7 @@
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputTeacher" class="formbold-form-label">Teacher</label>
-                        <select class="formbold-form-input" name="id_teacher">
-                            <option value="">Select Teacher</option>
-                            @foreach($teachers as $teacher)
-                                <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
-                            @endforeach
-                        </select>
-                        @error('id_teacher')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
+
                     <button type="submit" class="btn-primary">Add Resource</button>
                 </form>
             </div>

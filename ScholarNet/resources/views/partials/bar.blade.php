@@ -44,7 +44,7 @@
                 <a href="#">Class<i class="fas fa-caret-down"></i></a>
                 <ul>
                     <li><a href="{{ route('Myclasse', ['studentId' => auth()->id()]) }}">My Class</a></li>
-                    <li><a href="{{ route('myCourses') }}">Cours</a></li>
+                    <li><a href="{{ route('myCourses') }}">My Cours</a></li>
                     <li><a href="#">Assignments</a></li>
                     <li><a href="#">Submission</a></li>
                 </ul>
@@ -80,7 +80,7 @@
                 <ul>
                     <li><a href="{{ route('Myclass', ['teacherId' => auth()->id()]) }}">My Class</a></li>
                      <li><a href="{{ route('add_resource_form') }}">Add course</a></li>
-                    <li><a href="#">My courses</a></li>
+                    <li><a href="{{ route('MyCourses') }}">My courses</a></li>
                 </ul>
             </li>
             <li>

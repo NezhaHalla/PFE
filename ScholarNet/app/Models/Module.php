@@ -9,7 +9,7 @@ class Module extends Model
 {
     use HasFactory;
     protected $fillable = ['id_teacher','nom','id_soumestre'];
-    
+
     public function teacher(){
         return $this->belongsTo(User::class);
     }
@@ -20,7 +20,8 @@ class Module extends Model
     }
 
     public function soumestres(){
-        return $this->belongsTo(Soumestre::class);
+        
+        return $this->belongsTo(Soumestre::class,'id_soumestre');
     }
 
     public function resource(){
