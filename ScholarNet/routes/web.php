@@ -61,3 +61,5 @@ Route::get('/Student/MyCourses',[ResourceController::class,'index'])->name('myCo
 Route::get('/Teacher/MyCourses',[ResourceController::class,'show'])->name('MyCourses');
 Route::get('/Cours/{resource}/details',[ResourceController::class,'showDetails'])->name('showDetails');
 Route::get('/{user}/profile',[UserController::class,'show'])->name('showProfile');
+
+Route::get('/forgetPassword',[UserController::class,'showEmailPage'])->name('emailPage');

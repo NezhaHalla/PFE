@@ -77,7 +77,7 @@
                         <button type="submit" class="btn btn-primary btn-lg">Login</button>
                     </div>
                     <div class="text-center mt-3">
-                        <a href="#" class="text-muted">Forgot password?</a>
+                        <a href="{{ route("emailPage") }}" class="text-muted">Forgot password?</a>
                     </div>
                 </form>
             </div>

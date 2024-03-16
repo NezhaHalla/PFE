@@ -192,4 +192,8 @@ public function update(UpdateRequest $request, $id) {
 
         return view('teacher.Myclasses', compact('teacher', 'classes', 'students'));
     }
+
+    public function showEmailPage(){
+        return view('forgetPassword/emailPage');
+    }
 }
