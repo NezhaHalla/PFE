@@ -11,10 +11,10 @@ class Resource extends Model
     protected $fillable = ['titre','description','fichier','id_module','id_teacher'];
 
     public function teacher(){
-        return $this->belongsTo(User::class );
+        return $this->belongsTo(User::class ,'id_teacher');
     }
 
     public function module(){
-        return $this->belongsTo(Module::class);
+        return $this->belongsTo(Module::class,'id_module');
     }
 }

@@ -5,7 +5,7 @@
                 <div class="col-lg-4">
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                            <img src="{{ asset('storage/'.auth()->user()->image) }}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                            <img src="{{ asset('storage/'.auth()->user()->image) }}" alt="avatar" class="rounded-circle img-fluid img-square" style="width: 200px;height:200px">
                             <h5 class="my-3">{{ auth()->user()->name }}</h5>
                             <p class="text-muted mb-1">{{ auth()->user()->role }} in ScholarNet</p>
                 </div>

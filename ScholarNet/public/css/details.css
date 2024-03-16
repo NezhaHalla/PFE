@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&display=swap');
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Lexend", sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #393232;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    border-radius: 50%;
+}
+
+.card-list {
+    width: 90%;
+    max-width: 400px;
+    position: absolute;
+    top: 130px;
+    left: 350px;
+}
+
+.card-header:first-of-type {
+    background-color: transparent;
+    display: flex; /* Add flex display */
+    align-items: center; /* Center items vertically */
+}
+
+.card-header:first-of-type img {
+    margin-right: 15px; /* Increase the margin to 15px */
+}
+
+.card-header:first-of-type div:nth-child(2) {
+    font-size: 1.5rem;
+}
+
+
+
+.card {
+    background-color: #FFF;
+    box-shadow: 0 0 0 1px rgba(#000, .05), 0 20px 50px 0 rgba(#000, .1);
+    border-radius: 15px;
+    overflow: hidden;
+    padding: 1.25rem;
+    position: relative;
+    transition: .15s ease-in;
+    height: 600px; /* New height */
+    width: 1000px; /* New width */
+}
+
+.card-image {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-header {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 1.375rem;
+    line-height: 1.25;
+    padding-right: 1rem;
+    text-decoration: none;
+    color: inherit;
+    will-change: transform;
+}
+
+.icons {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    margin: 1rem; /* Adjust margin for spacing */
+}
+
+
+
+.icon-button {
+    border: 0;
+    background-color: #fff;
+    border-radius: 50%; /* Make it circular */
+    width: 5rem;
+    height: 5rem;
+    display: inline-flex; /* Center icon horizontally and vertically */
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    transition: .25s ease;
+    box-shadow: 0 0 0 1px rgba(#000, .05), 0 3px 8px 0 rgba(#000, .15);
+    z-index: 1;
+    cursor: pointer;
+    color: #565656;
+    margin: 0.5rem; /* Add margin between icons */
+    font-size: 2rem; /* Reduce the font size to fit into circular shape */
+}
+
+.card-footer {
+    margin-top: 1.25rem;
+    border-top: 1px solid #ddd;
+    padding-top: 1.25rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card-meta {
+    display: flex;
+    align-items: center;
+    color: #787878;
+}
+
+
+
+svg {
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+    margin-right: .25em;
+}
+
+.card-header:first-of-type {
+    background-color: transparent;
+}
+
+.card-header img {
+    width: 70px; /* Increase image size */
+    height: 70px; /* Increase image size */
+    margin-right: 1rem; /* Add space between image and username */
+}
+
+.card-header div:nth-child(2) {
+    font-size: 1.5rem;
+    position: absolute;
+    left: 130px;
+}
+
+.card-header div:nth-child(3) {
+    font-size: 1rem;
+}
+
+.icon-button:hover {
+    background-color: lightblue; /* Change background color on hover */
+}
+
+.card-header:nth-of-type(2) {
+    font-size: 1.5rem; /* Increase font size */
+}
+
+.card-image div {
+    font-size: 1.25rem; /* Adjust font size */
+    padding: 30px;
+}
+
+.card-image div:first-child {
+    font-size: 1.5rem;
+}
+
+.card-image div:last-child {
+    font-size: 1rem;
+    padding-top: 0;
+}
+
+.card-header:nth-of-type(3) {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-header:nth-of-type(3) a {
+    font-size: 1.5rem; /* Increase font size */
+}

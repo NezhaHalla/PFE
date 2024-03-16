@@ -4,7 +4,7 @@
     </head>
     <body>
         <ul class="cards">
-            @foreach ($courses1 as $index => $course)
+            @foreach ($courses as $index => $course)
             @php
             $colors = ['#F0F8FF', '#FFFAF0', '#F0FFF0', '#FFFFF0', '#F5FFFA'];
             $color = $colors[$index % count($colors)];

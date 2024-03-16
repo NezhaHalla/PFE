@@ -52,4 +52,7 @@ Route::post('/user/update/{id}', [UserController::class, 'update'])->name('editp
 Route::get('/addclass', [ClassController::class, 'create'])->name('class.create')->middleware('auth');;
 Route::post('/addclass', [ClassController::class, 'store'])->name('class.store')->middleware('auth');;
 
-Route::get('/MyCourses',[ResourceController::class,'index'])->name('myCourses');
+Route::get('/Student/MyCourses',[ResourceController::class,'index'])->name('myCourses');
+Route::get('/Teacher/MyCourses',[ResourceController::class,'show'])->name('MyCourses');
+Route::get('/Cours/{resource}/details',[ResourceController::class,'showDetails'])->name('showDetails');
+Route::get('/{user}/profile',[UserController::class,'show'])->name('showProfile');

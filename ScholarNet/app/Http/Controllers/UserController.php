@@ -129,4 +129,13 @@ public function update(UpdateRequest $request, $id) {
             return redirect()->back()->with('danger','Verify your current password');
         }
     }
+
+    public function show(User $user){
+        if($user->role === 'Student'){
+            $class=Classe::findOrFail($user->class_id);
+            return view('common/userProfile',compact('class','user'));
+            }else{
+                return view('common/userProfile',compact('user'));
+            }
+    }
 }
