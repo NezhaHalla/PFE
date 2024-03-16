@@ -27,6 +27,7 @@ class User extends Authenticatable
         'role',
         'DateDeNaissance',
         'class_id',
+        'soumestre_id',
         'image',
         'gender',
     ];
@@ -48,7 +49,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Module::class, 'student__modules', 'id_student', 'id_module');
     }
-    
+    public function class() {
+        return $this->belongsTo(Classe::class, 'class_id');
+    }
+
 
     /**
      * The attributes that should be hidden for serialization.

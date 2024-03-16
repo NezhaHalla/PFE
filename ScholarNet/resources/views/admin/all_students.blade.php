@@ -44,7 +44,6 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Role</th>
                     <th>Gender</th>
                     <th>Date of Birth</th>
                     <th>Email</th>
@@ -55,7 +54,6 @@
                 @foreach($students as $student)
                 <tr>
                     <td>{{ $student->name }}</td>
-                    <td>{{ $student->role }}</td>
                     <td>{{ $student->gender }}</td>
                     <td>{{ date('Y-m-d', strtotime($student->DateDeNaissance)) }}</td>
                     <td>{{ $student->email }}</td>

@@ -148,6 +148,18 @@
                         @enderror
                     </div>
                     <div class="mb-3">
+                        <label class="formbold-form-label">Soumestre</label>
+                        <select class="formbold-form-input" name="soumestre_id">
+                            <option value="">Select Soumestre</option>
+                            @foreach($Soumestres as $Soumestre)
+                                <option value="{{ $Soumestre->id }}">{{ $Soumestre->nom }}</option>
+                            @endforeach
+                        </select>
+                        @error('soumestre_id')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
                         <label class="formbold-form-label">Image</label>
                         <input type="file" class="formbold-form-input" name="image" >
                         @error('image')

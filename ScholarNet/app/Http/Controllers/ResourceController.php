@@ -23,18 +23,36 @@ class ResourceController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+    // public function showAddResourceForm()
+    // {
+    //     $modules = Module::all();
+    //     $teachers = User::where('role', 'Teacher')->get();
+    //     return view('add_resource', compact('modules', 'teachers'));
+    // }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    // public function store(Request $request)
+    // {
+    //     // Validation logic goes here
+
+    //     // Store resource
+    //     $resource = new Resource();
+    //     $resource->titre = $request->titre;
+    //     $resource->description = $request->description;
+    //     $resource->fichier = $request->fichier;
+    //     $resource->id_module = $request->id_module;
+    //     $resource->id_teacher = $request->id_teacher;
+    //     $resource->save();
+
+    //     return redirect()->back()->with('success', 'Resource added successfully.');
+    // }
+
+    // /**
+    //  * Store a newly created resource in storage.
+    //  */
+    // public function store(Request $request)
+    // {
+    //     //
+    // }
 
     /**
      * Display the specified resource.

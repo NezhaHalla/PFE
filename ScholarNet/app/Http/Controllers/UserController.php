@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Classe;
-use App\Models\Publication;
+use App\Models\Soumestre;
+use Illuminate\Support\Facades\DB;
+use App\Models\Module;
 use App\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\loginRequest;
@@ -17,14 +19,23 @@ class UserController extends Controller
 {
     public function showadduser(){
         $classes = Classe::all();
-        return view('admin/adduser',compact('classes'));
+        $Soumestres = Soumestre::all();
+        return view('admin/adduser',compact('classes','Soumestres'));
        }
        public function adduser(UserRequest $req){
           $val=$req->validated();
           $val['image'] = $req->file('image')->store('blog', 'public');
           $val['password']=Hash::make($val['password']);
           $val['class_id'] = $req->input('class_id');
-          User::create($val);
+          $val['soumestre_id'] = $req->input('soumestre_id');
+          $user=User::create($val);
+          DB::table('student_soumestres')->insert([
+            'id_soumestre' => $val['soumestre_id'],
+            'id_student' => $user->id,
+            'note' => 0.0, // Set default value for note
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
           session()->flash('success', 'User added successfully.');
           return redirect()->back();
        }
@@ -128,5 +139,49 @@ public function update(UpdateRequest $request, $id) {
         }else{
             return redirect()->back()->with('danger','Verify your current password');
         }
+    }
+
+    public function showmyclass($studentId) {
+        $student = User::findOrFail($studentId);
+
+        $class = Classe::findOrFail($student->class_id);
+
+        $students = User::where('class_id', $student->class_id)
+                        ->where('id', '!=', $student->id)
+                        ->get();
+
+        return view('student.Myclass', compact('student', 'students', 'class'));
+    }
+
+    public function showTeacherClasses($teacherId) {
+        $teacher = User::findOrFail($teacherId);
+
+        $modules = Module::where('id_teacher', $teacherId)->get();
+
+        $classes = [];
+        $students = [];
+
+        foreach ($modules as $module) {
+            $moduleStudents = $module->students()->get();
+
+            foreach ($moduleStudents as $student) {
+                $classId = $student->class_id;
+
+                $class = Classe::find($classId);
+
+                if ($class) {
+                    if (!isset($students[$classId])) {
+                        $students[$classId] = [];
+                    }
+                    $students[$classId][] = $student;
+
+                    if (!in_array($class, $classes)) {
+                        $classes[] = $class;
+                    }
+                }
+            }
+        }
+
+        return view('teacher.Myclasses', compact('teacher', 'classes', 'students'));
     }
 }
