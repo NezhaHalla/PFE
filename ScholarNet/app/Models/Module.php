@@ -20,12 +20,16 @@ class Module extends Model
     }
 
     public function soumestres(){
-        
+
         return $this->belongsTo(Soumestre::class,'id_soumestre');
     }
 
     public function resource(){
         return $this->hasMany(Resource::class,'id_module');
+    }
+    public function assignments()
+    {
+        return $this->hasMany(Assignment::class);
     }
 
 }

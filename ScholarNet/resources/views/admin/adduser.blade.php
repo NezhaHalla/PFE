@@ -109,8 +109,8 @@
                         <label for="gender" class="formbold-form-label">Gender</label>
                         <select class="formbold-form-input" name='gender'>
                             <option value="">Select Gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
+                            <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Male</option>
+                            <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>Female</option>
                         </select>
                         @error('gender')
                             <div class="text-danger">{{ $message }}</div>
@@ -120,9 +120,9 @@
                         <label for="role" class="formbold-form-label">Role</label>
                         <select class="formbold-form-input" name='role'>
                             <option value="">Select Role</option>
-                            <option value="Student">Student</option>
-                            <option value="Teacher">Teacher</option>
-                            <option value="Admin">Admin</option>
+                            <option value="Student" {{ old('role') == 'Student' ? 'selected' : '' }}>Student</option>
+                            <option value="Teacher" {{ old('role') == 'Teacher' ? 'selected' : '' }}>Teacher</option>
+                            <option value="Admin" {{ old('role') == 'Admin' ? 'selected' : '' }}>Admin</option>
                         </select>
                         @error('role')
                             <div class="text-danger">{{ $message }}</div>
@@ -130,7 +130,8 @@
                     </div>
                     <div class="mb-3">
                         <label class="formbold-form-label">Date de naissance</label>
-                        <input type="date" class="formbold-form-input" name="DateDeNaissance">
+                        <input type="date" class="formbold-form-input" name="DateDeNaissance" value="{{ old('DateDeNaissance') }}">
+
                         @error('DateDeNaissance')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -140,7 +141,7 @@
                         <select class="formbold-form-input" name="class_id">
                             <option value="">Select Class</option>
                             @foreach($classes as $class)
-                                <option value="{{ $class->id }}">{{ $class->Name }}</option>
+                                <option value="{{ $class->id }}" {{ old('class_id') == $class->id ? 'selected' : '' }}>{{ $class->Name }}</option>
                             @endforeach
                         </select>
                         @error('class_id')
@@ -149,10 +150,10 @@
                     </div>
                     <div class="mb-3">
                         <label class="formbold-form-label">Soumestre</label>
-                        <select class="formbold-form-input" name="soumestre_id">
+                        <select class="formbold-form-input" name="semester_id">
                             <option value="">Select Soumestre</option>
                             @foreach($Soumestres as $Soumestre)
-                                <option value="{{ $Soumestre->id }}">{{ $Soumestre->nom }}</option>
+                                <option value="{{ $Soumestre->id }}" {{ old('semester_id') == $Soumestre->id ? 'selected' : '' }}>{{ $Soumestre->nom }}</option>
                             @endforeach
                         </select>
                         @error('soumestre_id')

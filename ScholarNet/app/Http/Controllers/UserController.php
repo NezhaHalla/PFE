@@ -27,28 +27,32 @@ class UserController extends Controller
           $val['image'] = $req->file('image')->store('blog', 'public');
           $val['password']=Hash::make($val['password']);
           $val['class_id'] = $req->input('class_id');
-          $val['soumestre_id'] = $req->input('soumestre_id');
-          $user=User::create($val);
-          DB::table('student_soumestres')->insert([
-            'id_soumestre' => $val['soumestre_id'],
-            'id_student' => $user->id,
-            'note' => 0.0, // Set default value for note
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-        $semesterModules = Module::where('id_soumestre', $val['soumestre_id'])->pluck('id')->toArray();
 
-        // Prepare student__modules records
-        $studentModules = [];
-        foreach ($semesterModules as $moduleId) {
-            $studentModules[] = [
-                'id_student' => $user->id,
-                'id_module' => $moduleId,
-                'Note' => 0.0, // Set default value for note
-                'created_at' => now(),
-                'updated_at' => now()
-            ];
-        }  DB::table('student__modules')->insert($studentModules);
+          $semesterId = $req->input('semester_id');
+          $user = User::create($val);
+
+          DB::table('student_soumestres')->insert([
+              'id_soumestre' => $semesterId,
+              'id_student' => $user->id,
+              'note' => 0.0,
+              'created_at' => now(),
+              'updated_at' => now()
+          ]);
+
+          $semesterModules = Module::where('id_soumestre',$semesterId)->pluck('id')->toArray();
+
+          // Prepare student__modules records
+          $studentModules = [];
+          foreach ($semesterModules as $moduleId) {
+              $studentModules[] = [
+                  'id_student' => $user->id,
+                  'id_module' => $moduleId,
+                  'Note' => 0.0, // Set default value for note
+                  'created_at' => now(),
+                  'updated_at' => now()
+              ];
+          }
+        DB::table('student__modules')->insert($studentModules);
           session()->flash('success', 'User added successfully.');
           return redirect()->back();
        }
