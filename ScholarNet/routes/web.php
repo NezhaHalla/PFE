@@ -55,8 +55,8 @@ Route::post('/addclass', [ClassController::class, 'store'])->name('class.store')
 Route::get('/MyCourses',[ResourceController::class,'index'])->name('myCourses');
 
 
-Route::get('/Myclass/{studentId}', [UserController::class, 'showmyclass'])->name('Myclass')->middleware('auth');
+Route::get('/Myclass/{studentId}', [UserController::class, 'showmyclass'])->name('Myclasse')->middleware('auth');
 Route::get('/teacher/classes/{teacherId}', [UserController::class, 'showTeacherClasses'])->name('Myclass')->middleware('auth');
 
-// Route::get('/add-resource', [ResourceController::class, 'showAddResourceForm'])->name('add_resource_form');
+ Route::get('/add-resource', [ResourceController::class, 'showAddResourceForm'])->name('add_resource_form');
 // Route::post('/add-resource', [ResourceController::class, 'store'])->name('store_resource');

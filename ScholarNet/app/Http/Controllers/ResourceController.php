@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Module;
 use App\Models\Resource;
+use App\Models\User;
 use App\Models\Soumestre;
 use Illuminate\Http\Request;
 
@@ -16,63 +17,54 @@ class ResourceController extends Controller
     {
 
         $student=auth()->user();
-        dd( $student->modules->flatMap->resource);
+
         return view('student/allCourses',compact('courses'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    // public function showAddResourceForm()
-    // {
-    //     $modules = Module::all();
-    //     $teachers = User::where('role', 'Teacher')->get();
-    //     return view('add_resource', compact('modules', 'teachers'));
-    // }
+     public function showAddResourceForm()
+    {
+      $modules = Module::all();
+         $teachers = User::where('role', 'Teacher')->get();
+       return view('add_resource', compact('modules', 'teachers'));
+    }
 
-    // public function store(Request $request)
-    // {
-    //     // Validation logic goes here
+   public function store(ResourceRequest $request)
+   {
+       
 
-    //     // Store resource
-    //     $resource = new Resource();
-    //     $resource->titre = $request->titre;
-    //     $resource->description = $request->description;
-    //     $resource->fichier = $request->fichier;
-    //     $resource->id_module = $request->id_module;
-    //     $resource->id_teacher = $request->id_teacher;
-    //     $resource->save();
+   return redirect()->back()->with('success', 'Resource added successfully.');
+  }
 
-    //     return redirect()->back()->with('success', 'Resource added successfully.');
-    // }
+    // // /**
+    // //  * Store a newly created resource in storage.
+    // //  */
+    // // public function store(Request $request)
+    // // {
+    // //     //
+    // // }
 
     // /**
-    //  * Store a newly created resource in storage.
+    //  * Display the specified resource.
     //  */
-    // public function store(Request $request)
+    // public function show(Resource $resource)
     // {
     //     //
     // }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Resource $resource)
-    {
-        //
-    }
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  */
+    // public function edit(Resource $resource)
+    // {
+    //     //
+    // }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Resource $resource)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
+    // /**
+    //  * Update the specified resource in storage.
+    //  */
     public function update(Request $request, Resource $resource)
     {
         //
