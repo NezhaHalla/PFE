@@ -28,4 +28,8 @@ class publicationController extends Controller
         $publication->delete();
         return to_route('home');
 }
+
+    public function show(Publication $publication){
+        return view('homepage/post',compact('publication'));
+    }
 }

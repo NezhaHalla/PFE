@@ -1,4 +1,4 @@
-<x-master title="My Courses">
+<x-master :title="$course->titre">
     <head>
         <link href="{{ asset('css/details.css') }}" rel="stylesheet">
         <style>

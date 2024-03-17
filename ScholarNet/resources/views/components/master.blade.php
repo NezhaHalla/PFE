@@ -115,12 +115,12 @@
         </ul>
 
         <ul class="menu">
-            <li class="menu__item"><a style="font-size:2.5rem" class="menu__link" href="{{ route('home') }}">Home</a></li>
-            <li class="menu__item"><a  style="font-size:2.5rem" class="menu__link" href="#">About us</a></li>
-            <li class="menu__item"><a style="font-size:2.5rem" class="menu__link"  href="#">Contact</a></li>
-            <li class="menu__item"><a style="font-size:2.5rem" class="menu__link" href="https://maps.google.com/?q=Essaouira+Aljadida+BP.+383,+Essaouira" target="_blank">Location </a></li>
+            <li class="menu__item"><a  class="menu__link" href="{{ route('home') }}">Home</a></li>
+            <li class="menu__item"><a   class="menu__link" href="{{ route('about') }}">About us</a></li>
+            <li class="menu__item"><a  class="menu__link"  href="{{ route('contact') }}">Contact</a></li>
+            <li class="menu__item"><a  class="menu__link" href="https://maps.google.com/?q=Essaouira+Aljadida+BP.+383,+Essaouira" target="_blank">Location </a></li>
         </ul>
-        <p style="font-size:2rem">&copy; school2023</p>
+        <p >&copy; school2023</p>
     </footer>
 </body>
 </html>
