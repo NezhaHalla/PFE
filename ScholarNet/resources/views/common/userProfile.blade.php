@@ -1,4 +1,4 @@
-<x-master title="My Account">
+<x-master :title="$user->name">
     <section style="background-color: #ffffff;">
         <div class="container py-5">
             <div class="row">

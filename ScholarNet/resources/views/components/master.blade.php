@@ -81,6 +81,7 @@
             font-size: 1rem;
             font-weight: 300;
         }
+        
 
 
 
@@ -114,12 +115,12 @@
         </ul>
 
         <ul class="menu">
-            <li class="menu__item"><a class="menu__link" href="{{ route('home') }}">Home</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">About us</a></li>
-            <li class="menu__item"><a class="menu__link"  href="mailto:este@uca.ac.ma">Email</a></li>
-            <li class="menu__item"><a class="menu__link" href="https://maps.google.com/?q=Essaouira+Aljadida+BP.+383,+Essaouira" target="_blank">Location </a></li>
+            <li class="menu__item"><a  class="menu__link" href="{{ route('home') }}">Home</a></li>
+            <li class="menu__item"><a   class="menu__link" href="{{ route('about') }}">About us</a></li>
+            <li class="menu__item"><a  class="menu__link"  href="{{ route('contact') }}">Contact</a></li>
+            <li class="menu__item"><a  class="menu__link" href="https://maps.google.com/?q=Essaouira+Aljadida+BP.+383,+Essaouira" target="_blank">Location </a></li>
         </ul>
-        <p>&copy; school2023</p>
+        <p >&copy; school2023</p>
     </footer>
 </body>
 </html>

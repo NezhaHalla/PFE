@@ -86,5 +86,7 @@ Route::delete('/delete/{resource}',[ResourceController::class,'destroy'])->name(
 
 Route::get('/courses/search', [ResourceController::class, 'searchCourses'])->name('searchCourses');
 Route::get('/courses/Teacher/search', [ResourceController::class, 'searchCoursesT'])->name('searchCoursesT');
-
+Route::get('/about',function(){return view('homepage/about');})->name('about');
+Route::get('/contact',function(){return view('homepage/contact');})->name('contact');
+Route::get('/details/{publication}',[publicationController::class,'show'])->name("pub.details");
 Route::get('/assignments', [AssignmentController::class, 'index'])->name('assignments.index');
