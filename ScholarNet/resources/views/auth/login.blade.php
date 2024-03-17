@@ -39,16 +39,23 @@
         .btn-primary {
             border-radius: 10px;
         }
+
+            .titre {
+        color: #0d0d0d;
+        font-size: 40px;
+        font-family: Georgia;
+        
+    }
     </style>
 </head>
 <body>
-
+@include('partials.flashbag')
 <div class="container py-5">
     <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-xl-6">
             <div class="card rounded-3 shadow-lg p-5">
                 <div class="text-center mb-4">
-                    <h4 class="card-title mb-4">We are ScholarNet</h4>
+                    <h4 class="card-title mb-4 titre">ScholarNet</h4>
                 </div>
                 @if($errors->any())
                     <div class="alert alert-danger">

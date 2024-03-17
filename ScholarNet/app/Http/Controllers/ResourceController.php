@@ -5,8 +5,13 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Module;
 use App\Models\Resource;
+use App\Models\User;
+use App\Http\Requests\ResourceRequest;
 use App\Models\Soumestre;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\File;
+
 
 class ResourceController extends Controller
 {
@@ -15,7 +20,6 @@ class ResourceController extends Controller
      */
     public function index()
 {
-    $student = auth()->user();
     // $coursesWithModules = $student->modules->flatMap(function ($module) {
     //     return $module->resource->map(function ($course) use ($module) {
     //         $course->module_name = $module->nom; // Assuming 'nom' is the attribute representing the module name
@@ -23,7 +27,9 @@ class ResourceController extends Controller
     //         return $course;
     //     });
     // });
-    $courses = $student->modules->flatMap->resource;
+    
+    $student = auth()->user();
+    $courses = $student->modules->flatMap->resource->sortByDesc('created_at');
     $courses1=$courses->map(function($course){
         $createdAt1=Carbon::parse($course->created_at);
         $course->createdAt=$createdAt1->diffForHumans();
@@ -32,39 +38,53 @@ class ResourceController extends Controller
     return view('student/allCourses', compact('courses1'));
 }
 
-    
+
 
 
     /**
      * Show the form for creating a new resource.
      */
-    // public function showAddResourceForm()
+     public function showAddResourceForm()
+    {
+      $modules = Module::all();
+      $teacherId = Auth::id();
+       return view('teacher.add_resource', compact('modules', 'teacherId'));
+    }
+
+   public function store(ResourceRequest $req)
+   {   
+        $val=$req->validated();
+        $val['id_module'] = $req->input('id_module');
+        $val['id_teacher'] = auth()->id();
+        $val['fichier'] = $req->file('fichier')->store('course','public');
+       Resource::create($val);
+        return redirect()->back()->with('success', 'Resource added successfully.');
+  }
+
+  public function downloads(Resource $resource){
+    return response()->download('storage/'.$resource->fichier);
+  }
+
+    // // /**
+    // //  * Store a newly created resource in storage.
+    // //  */
+    // // public function store(Request $request)
+    // // {
+    // //     //
+    // // }
+
+    // /**
+    //  * Display the specified resource.
+    //  */
+    // public function show(Resource $resource)
     // {
-    //     $modules = Module::all();
-    //     $teachers = User::where('role', 'Teacher')->get();
-    //     return view('add_resource', compact('modules', 'teachers'));
-    // }
-
-    // public function store(Request $request)
-    // {
-    //     // Validation logic goes here
-
-    //     // Store resource
-    //     $resource = new Resource();
-    //     $resource->titre = $request->titre;
-    //     $resource->description = $request->description;
-    //     $resource->fichier = $request->fichier;
-    //     $resource->id_module = $request->id_module;
-    //     $resource->id_teacher = $request->id_teacher;
-    //     $resource->save();
-
-    //     return redirect()->back()->with('success', 'Resource added successfully.');
+    //     //
     // }
 
     // /**
-    //  * Store a newly created resource in storage.
+    //  * Show the form for editing the specified resource.
     //  */
-    // public function store(Request $request)
+    // public function edit(Resource $resource)
     // {
     //     //
     // }
@@ -74,7 +94,7 @@ class ResourceController extends Controller
      */
     public function show()
     {
-        $courses1=auth()->user()->resource;
+        $courses1=auth()->user()->resource->sortByDesc('created_at');
         $courses=$courses1->map(function($course){
             $createdAt1=Carbon::parse($course->created_at);
             $course->createdAt=$createdAt1->diffForHumans();
@@ -88,9 +108,18 @@ class ResourceController extends Controller
      */
     public function showDetails(Resource $resource)
     {
+
+        $file = new File('storage/'.$resource->fichier);
+        $fileSizeInBytes = $file->getSize();
+        $fileSizeInKB = round($fileSizeInBytes / 1024, 2);
         $course=Resource::findOrFail($resource->id);
         $course->createdAt=(Carbon::parse($course->created_at))->diffForHumans();
-        return view('common/afficherDetailsCoure',compact('course'));
+        return view('common/afficherDetailsCoure',compact('course','fileSizeInKB'));
+    }
+
+    public function showdoc(Resource $resource){
+        $path = 'storage/'.$resource->fichier;
+        return response()->download($path);
     }
 
 
@@ -99,6 +128,58 @@ class ResourceController extends Controller
      */
     public function destroy(Resource $resource)
     {
-        //
+        $resource->delete();
+        return redirect()->back()->with('success', 'Course deleted successfully');
     }
+
+public function searchCourses(Request $request)
+{
+    $search = $request->input('search');
+
+    // $courses1 = Resource::where('titre', 'like', "%$search%")
+    //                  ->orWhereHas('module', function ($query) use ($search) {
+    //                      $query->where('nom', 'like', "%$search%");
+    //                  })
+    //                  ->orWhereHas('teacher', function ($query) use ($search) {
+    //                      $query->where('name', 'like', "%$search%");
+    //                  })
+    //                  ->get();
+    $student = auth()->user();
+
+    $courses = $student->modules->flatMap->resource->sortByDesc('created_at')->filter(function ($course) use ($search) {
+        return stripos($course->titre, $search) !== false ||
+               stripos($course->module->nom, $search) !== false ||
+               stripos($course->teacher->name, $search) !== false;
+    });
+
+    $courses1 = $courses->map(function ($course) {
+        $createdAt1 = Carbon::parse($course->created_at);
+        $course->createdAt = $createdAt1->diffForHumans();
+        return $course;
+    });
+
+    return view('student/allCourses', compact('courses1'));
+}
+
+public function searchCoursesT(Request $request)
+{
+    $search = $request->input('search');
+    $user = auth()->user();
+
+    $courses = $user->resource->filter(function ($course) use ($search) {
+        return stripos($course->titre, $search) !== false ||
+               stripos($course->module->nom, $search) !== false ||
+               stripos($course->teacher->name, $search) !== false;
+    })->sortByDesc('created_at');
+
+    $courses1 = $courses->map(function ($course) {
+        $createdAt1 = Carbon::parse($course->created_at);
+        $course->createdAt = $createdAt1->diffForHumans();
+        return $course;
+    });
+    $courses=$courses1;
+    
+    return view('teacher/myCourses',compact('courses'));
+}
+
 }

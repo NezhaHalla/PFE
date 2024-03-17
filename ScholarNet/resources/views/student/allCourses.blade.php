@@ -3,6 +3,16 @@
         <link href="{{ asset('css/course.css') }}" rel="stylesheet">
     </head>
     <body>
+        <form action="{{ route('searchCourses') }}" method="GET">
+            <div class="input-group rounded" style="padding-top:60px;text-align:center; width:500px;left:35%">
+                <input type="search" class="form-control rounded" name="search" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                <span class="input-group-text border-0" id="search-addon">
+                <button type="submit" style="border: none;background-color:transparent;">
+                    <i class="fas fa-search" style="font-size: 30px"></i>
+                </button>
+                </span>
+            </div>
+        </form>        
         <ul class="cards">
             @foreach ($courses1 as $index => $course)
             @php

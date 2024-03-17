@@ -26,7 +26,7 @@ img {
     width: 90%;
     max-width: 400px;
     position: absolute;
-    top: 130px;
+    top: 110px;
     left: 350px;
 }
 
@@ -60,7 +60,6 @@ img {
 
 .card-image {
     border-radius: 10px;
-    overflow: hidden;
 }
 
 .card-header {
@@ -79,9 +78,9 @@ img {
 
 .icons {
     position: absolute;
-    bottom: 1rem;
+    bottom: 0rem;
     right: 1rem;
-    margin: 1rem; /* Adjust margin for spacing */
+    margin: 0; /* Adjust margin for spacing */
 }
 
 
@@ -101,7 +100,7 @@ img {
     z-index: 1;
     cursor: pointer;
     color: #565656;
-    margin: 0.5rem; /* Add margin between icons */
+    margin: 0rem; /* Add margin between icons */
     font-size: 2rem; /* Reduce the font size to fit into circular shape */
 }
 
@@ -150,7 +149,7 @@ svg {
 }
 
 .icon-button:hover {
-    background-color: lightblue; /* Change background color on hover */
+    background-color: rgb(210, 179, 240); /* Change background color on hover */
 }
 
 .card-header:nth-of-type(2) {
@@ -159,7 +158,24 @@ svg {
 
 .card-image div {
     font-size: 1.25rem; /* Adjust font size */
-    padding: 30px;
+    padding: 20px;
+}
+
+.sup {
+    position: absolute; /* Position the delete button absolutely */
+    bottom: 50px; /* Adjust this value as needed to control the distance from the bottom */
+    right: 120px; /* Adjust this value as needed to control the distance from the right */
+    width:170px;
+    background-color: #ff4444; /* Red background color */
+    color: #fff; /* White text color */
+    border: none; /* No border */
+    padding: 8px 16px; /* Padding */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Cursor on hover */
+}
+
+.sup:hover {
+    background-color: #cc0000; /* Darker red background color on hover */
 }
 
 .card-image div:first-child {
@@ -176,6 +192,8 @@ svg {
     justify-content: space-between;
 }
 
-.card-header:nth-of-type(3) a {
+ a {
     font-size: 1.5rem; /* Increase font size */
+    text-decoration:none;
+    color:#000;
 }

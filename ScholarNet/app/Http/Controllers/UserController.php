@@ -3,20 +3,24 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Classe;
-use App\Models\Soumestre;
-use Illuminate\Support\Facades\DB;
 use App\Models\Module;
-use App\Http\Request;
+use App\Mail\ProfileMail;
+use App\Models\Soumestre;
+use Illuminate\Http\Request;
+use App\Mail\CodeConfirmation;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\loginRequest;
+use App\Http\Requests\UpdateRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\Requestpassword;
-use App\Http\Requests\UpdateRequest;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
+
     public function showadduser(){
         $classes = Classe::all();
         $Soumestres = Soumestre::all();
@@ -27,15 +31,32 @@ class UserController extends Controller
           $val['image'] = $req->file('image')->store('blog', 'public');
           $val['password']=Hash::make($val['password']);
           $val['class_id'] = $req->input('class_id');
-          $val['soumestre_id'] = $req->input('soumestre_id');
-          $user=User::create($val);
+
+          $semesterId = $req->input('semester_id');
+          $user = User::create($val);
+
           DB::table('student_soumestres')->insert([
-            'id_soumestre' => $val['soumestre_id'],
-            'id_student' => $user->id,
-            'note' => 0.0, // Set default value for note
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
+              'id_soumestre' => $semesterId,
+              'id_student' => $user->id,
+              'note' => 0.0,
+              'created_at' => now(),
+              'updated_at' => now()
+          ]);
+
+          $semesterModules = Module::where('id_soumestre',$semesterId)->pluck('id')->toArray();
+
+          // Prepare student__modules records
+          $studentModules = [];
+          foreach ($semesterModules as $moduleId) {
+              $studentModules[] = [
+                  'id_student' => $user->id,
+                  'id_module' => $moduleId,
+                  'Note' => 0.0, // Set default value for note
+                  'created_at' => now(),
+                  'updated_at' => now()
+              ];
+          }
+        DB::table('student__modules')->insert($studentModules);
           session()->flash('success', 'User added successfully.');
           return redirect()->back();
        }
@@ -195,5 +216,60 @@ public function update(UpdateRequest $request, $id) {
 
     public function showEmailPage(){
         return view('forgetPassword/emailPage');
+    }
+    public function showEmailPageVerify(Request $request){
+        $req=$request->validate([
+            'email'=>'required|email',
+        ]);
+        $email=$req['email'];
+        $exist=User::where('email',$email)->exists();
+        if($exist){
+            $user = User::where('email', $email)->first();
+            $code =random_int(1000, 9999);
+            $request->session()->put('id_user', $user->id);
+            $request->session()->put('verification_code', $code);
+            $name=$user->name;
+            Mail::to($email)->send(new CodeConfirmation($code,$name));
+            return to_route('verifyEmail');
+        }else{
+            return back()->with('danger','This E-mail address does not exist !');
+        }
+    }
+
+    public function showVerifyEmail(){
+        return view('forgetPassword/verifyCodePage');
+    }
+    public function verifyEmail(Request $request){
+        $req=$request->validate([
+            'code' => 'required|numeric',
+        ]);
+        $code=$req['code'];
+        $generatedCode = $request->session()->get('verification_code');
+        $id=$request->session()->get('id_user');
+        $request->session()->put('id', $id);
+        if($code == $generatedCode){
+            return to_route('newPassword');
+        }else{
+            return back()->with('danger','The code Confirmation is not Correct !');
+        }
+    }
+    public function showNewPassword(){
+        return view('forgetPassword/newPasswordPage');
+    }
+
+    public function newPassword(Request $request){
+        $req=$request->validate([
+            'password'=>'required|min:4|max:20|confirmed'
+        ]);
+        $password=$req["password"];
+        $userid = $request->session()->get('id');
+        $user=User::findOrFail($userid);
+        $user->password=Hash::make($password);
+        $user->save();
+        /*
+        $request->session()->forget('verification_code');
+        $request->session()->forget('id_user');
+        $request->session()->forget('verification_code'); */
+        return to_route('login')->with("success","Password changed succefully !");
     }
 }

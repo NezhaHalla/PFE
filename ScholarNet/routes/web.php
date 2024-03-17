@@ -2,6 +2,7 @@
 
 use App\Models\Publication;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\UserController;
 use \App\Http\Controllers\homeController;
 use App\Http\Controllers\ClassController;
@@ -62,4 +63,27 @@ Route::get('/Teacher/MyCourses',[ResourceController::class,'show'])->name('MyCou
 Route::get('/Cours/{resource}/details',[ResourceController::class,'showDetails'])->name('showDetails');
 Route::get('/{user}/profile',[UserController::class,'show'])->name('showProfile');
 
+Route::get('/resource/add', [ResourceController::class, 'showAddResourceForm'])->name('add_resource_form');
+Route::post('/resource/add', [ResourceController::class, 'store'])->name('store_resource');
+
+
+
+
+Route::get('/{resource}/downloads',[ResourceController::class,'downloads'])->name('downloads');
+Route::get('/ShowDocuments/{resource}',[ResourceController::class,'showdoc'])->name('showdoc');
+
 Route::get('/forgetPassword',[UserController::class,'showEmailPage'])->name('emailPage');
+Route::post('/forgetPassword',[UserController::class,'showEmailPageVerify'])->name('emailPageVerify');
+
+
+Route::get('/verifyEmail',[UserController::class,'showVerifyEmail'])->name('verifyEmail');
+Route::post('/verifyEmail',[UserController::class,'verifyEmail'])->name('verify');
+
+
+Route::get('/newPassword',[UserController::class,'showNewPassword'])->name('newPassword');
+Route::post('/newPassword',[UserController::class,'newPassword'])->name('newPasswordConf');
+
+Route::delete('/delete/{resource}',[ResourceController::class,'destroy'])->name('course.destroy')->middleware('auth');
+
+Route::get('/courses/search', [ResourceController::class, 'searchCourses'])->name('searchCourses');
+Route::get('/courses/Teacher/search', [ResourceController::class, 'searchCoursesT'])->name('searchCoursesT');
