@@ -50,7 +50,7 @@
                     <div>{{ $course->titre }}</div>
                     <div>{{ $course->description }}</div>
                     <div class="doc">
-                        <div class="div2"><a class="aadd" href="{{ route('showdoc',$course) }}">{{ $course->titre.'.docx' }}</a></div>
+                        <div class="div2"><a title="Download"  class="aadd" href="{{ route('showdoc',$course) }}">{{ $course->titre.'.docx' }}</a></div>
                         <div class="div3">size : {{ $fileSizeInKB }} KB</div>
                     </div>
                 {{-- </figure>

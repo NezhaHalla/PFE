@@ -69,7 +69,7 @@
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton{{ $class->id }}">
                                 @if (isset($students[$class->id]))
                                     @foreach ($students[$class->id] as $student)
-                                        <li>{{ $student->name }} - {{ $student->email }}</li>
+                                        <li> <a href="{{ route("showProfile",$student->id) }}">{{ $student->name }}</a></li>
                                     @endforeach
                                 @else
                                     <li>No students found for this class</li>
