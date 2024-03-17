@@ -52,8 +52,8 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                @foreach ($classes as $class)
+            @foreach ($classes as $class)
+                <div class="col-md-4"> <!-- Decreased width by changing col-md-6 to col-md-4 -->
                     <div class="card">
                         <div class="card-header">
                             <h1>Class Information</h1>
@@ -69,7 +69,7 @@
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton{{ $class->id }}">
                                 @if (isset($students[$class->id]))
                                     @foreach ($students[$class->id] as $student)
-                                        <li>{{ $student->name }} - {{ $student->email }}</li>
+                                        <li>{{ $student->name }} </li>
                                     @endforeach
                                 @else
                                     <li>No students found for this class</li>
@@ -77,11 +77,13 @@
                             </ul>
                         </div>
                     </div>
-                @endforeach
-                @empty($classes)
+                </div>
+            @endforeach
+            @empty($classes)
+                <div class="col-md-12">
                     <p>No classes found for this teacher</p>
-                @endempty
-            </div>
+                </div>
+            @endempty
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>

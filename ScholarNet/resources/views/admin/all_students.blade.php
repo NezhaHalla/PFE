@@ -60,6 +60,7 @@
                     <td>
                         <a class="delete" href="{{ route('user.delete', ['id' => $student->id]) }}">Delete</a>
                         <a class="modify" href="{{ route('user.edit', ['id' => $student->id]) }}">Modify</a>
+                        
                     </td>
                 </tr>
                 @endforeach

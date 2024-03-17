@@ -27,7 +27,7 @@ class ResourceController extends Controller
     //         return $course;
     //     });
     // });
-    
+
     $student = auth()->user();
     $courses = $student->modules->flatMap->resource->sortByDesc('created_at');
     $courses1=$courses->map(function($course){
@@ -44,15 +44,15 @@ class ResourceController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-     public function showAddResourceForm()
+    public function showAddResourceForm()
     {
-      $modules = Module::all();
-      $teacherId = Auth::id();
-       return view('teacher.add_resource', compact('modules', 'teacherId'));
+        $teacherId = Auth::id();
+        $modules = Module::where('id_teacher', $teacherId)->get();
+        return view('teacher.add_resource', compact('modules', 'teacherId'));
     }
 
    public function store(ResourceRequest $req)
-   {   
+   {
         $val=$req->validated();
         $val['id_module'] = $req->input('id_module');
         $val['id_teacher'] = auth()->id();
@@ -178,7 +178,7 @@ public function searchCoursesT(Request $request)
         return $course;
     });
     $courses=$courses1;
-    
+
     return view('teacher/myCourses',compact('courses'));
 }
 

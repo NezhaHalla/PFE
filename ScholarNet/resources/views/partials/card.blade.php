@@ -14,7 +14,7 @@ body {
             align-items: center;
             justify-content: center;
             background-color: #EFEFEF;
-            
+
         }
         * {
             margin: 0;

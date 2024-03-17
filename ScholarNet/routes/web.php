@@ -8,8 +8,7 @@ use \App\Http\Controllers\homeController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ResourceController;
 use \App\Http\Controllers\publicationController;
-
-
+use \App\Http\Controllers\AssignmentController;
 
 
 /*
@@ -87,3 +86,5 @@ Route::delete('/delete/{resource}',[ResourceController::class,'destroy'])->name(
 
 Route::get('/courses/search', [ResourceController::class, 'searchCourses'])->name('searchCourses');
 Route::get('/courses/Teacher/search', [ResourceController::class, 'searchCoursesT'])->name('searchCoursesT');
+
+Route::get('/assignments', [AssignmentController::class, 'index'])->name('assignments.index');
