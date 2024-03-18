@@ -34,7 +34,7 @@ class UserController extends Controller
 
           $semesterId = $req->input('semester_id');
           $user = User::create($val);
-
+            if($req->input('role') == 'Student'){
           DB::table('student_soumestres')->insert([
               'id_soumestre' => $semesterId,
               'id_student' => $user->id,
@@ -57,6 +57,7 @@ class UserController extends Controller
               ];
           }
         DB::table('student__modules')->insert($studentModules);
+            }
           session()->flash('success', 'User added successfully.');
           return redirect()->back();
        }

@@ -37,7 +37,7 @@ Route::post('/myAccount/modifyPassword/{user}', [UserController::class, 'storepa
 
 
 Route::get('/adduser', [UserController::class, 'showadduser'])->name('adduser');
-Route::post('/adduser', [UserController::class, 'adduser'])->name('adduser')->middleware('auth');
+Route::post('/adduser', [UserController::class, 'adduser'])->name('adduser');
 Route::get('/logout',[UserController::class,'logout'])->name('logout');
 
 Route::get('/all-classes', [ClassController::class, 'showAllClasses'])->name('all_classes')->middleware('auth');
