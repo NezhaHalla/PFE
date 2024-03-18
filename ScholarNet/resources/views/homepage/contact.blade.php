@@ -58,7 +58,7 @@
                             @csrf
                             <div class="row form-group">
                                 <div class="col-md-6">
-                                    <!-- <label for="fname">First Name</label> -->
+
                                     <input type="text" id="fname" class="form-control" name="fname" placeholder="Your firstname">
                                 </div>
                                 <div class="col-md-6">
@@ -76,7 +76,7 @@
 
                             <div class="row form-group">
                                 <div class="col-md-12">
-                                 
+
                                     <input type="text" id="subject" class="form-control" name="subject" placeholder="Your subject of this message">
                                 </div>
                             </div>

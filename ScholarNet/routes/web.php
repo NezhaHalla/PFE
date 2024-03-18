@@ -9,7 +9,7 @@ use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ResourceController;
 use \App\Http\Controllers\publicationController;
 use \App\Http\Controllers\AssignmentController;
-
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,9 +90,19 @@ Route::get('/courses/Teacher/search', [ResourceController::class, 'searchCourses
 Route::get('/about',function(){return view('homepage/about');})->name('about');
 
 Route::get('/contact',function(){return view('homepage/contact');})->name('contact');
-Route::post('/contact', function(){return view('homepage/contact');})->name('contact.store');
+
 Route::get('/details/{publication}',[publicationController::class,'show'])->name("pub.details");
 
 
 Route::get('/teacher/assignments', [AssignmentController::class, 'Assignmentteacher'])->name('Assignmentt');
 Route::get('/assignments', [AssignmentController::class, 'Assignmentstudent'])->name('Assignments');
+
+Route::get('/assignments/create', [AssignmentController::class, 'createt'])->name('assignmentscreate');
+Route::post('/assignments', [AssignmentController::class, 'storet'])->name('assignmentsstore');
+Route::get('/assignments/{assignment}', [AssignmentController::class, 'show'])->name('assignments.show');
+Route::delete('/assignments/{assignment}', [AssignmentController::class, 'destroy'])->name('assignments.destroy');
+
+
+
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
