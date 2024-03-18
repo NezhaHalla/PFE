@@ -13,10 +13,10 @@ class AssignmentController extends Controller
         $user = Auth::user();
 
         if ($user->role === 'Student') {
-            $studentAssignments = $user->studentAssignments()->get();
+            $studentAssignments = $user->studentAssignments->get();
             return view('student.myAssignement', ['assignments' => $studentAssignments, 'role' => 'Student']);
         } elseif ($user->role === 'Teacher') {
-            $teacherAssignments = $user->teacherAssignments()->get();
+            $teacherAssignments = $user->teacherAssignments->get();
             return view('teacher.myAssignement', ['assignments' => $teacherAssignments, 'role' => 'Teacher']);
         } else {
             // Handle other roles or unauthorized access
