@@ -31,6 +31,8 @@
                 <ul>
                     <li><a href="{{ route('all_classes') }}">All Classes</a></li>
                     <li><a href="{{ route('all.teachers') }}">All Teachers</a></li>
+                    <li><a href="{{ route('contacts.index') }}">All Contacts</a></li>
+
                 </ul>
             </li>
             <li>
@@ -102,8 +104,8 @@
             <li>
                 <a href="#">Assinments<i class="fas fa-caret-down"></i></a>
                 <ul>
-                    <li><a href="">Add Assinment</a></li>
-                    <li><a href="#">My Assignments</a></li>
+                    <li><a href="{{ route('assignmentscreate') }}">Add Assinment</a></li>
+                    <li><a href="{{ route('Assignmentt') }}">My Assignments</a></li>
                 </ul>
             </li>
             <li>
