@@ -5,7 +5,7 @@
         <meta name="description" content="Free HTML5 Website Template by freehtml5.co" />
         <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
         <meta name="author" content="freehtml5.co" />
-    
+
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400" rel="stylesheet">
         <!-- Animate.css -->
@@ -33,10 +33,10 @@
 
         <!-- Modernizr JS -->
         <script src="{{ asset('js/modernizr-2.6.2.min.js') }}"></script>
-    
+
         </head>
         <body>
-    
+
         <div id="fh5co-contact">
             <div class="container">
                 <div class="row">
@@ -54,53 +54,54 @@
 
                     <div class="col-md-6 animate-box">
                         <h3>Get In Touch</h3>
-                        <form action="#">
+                        <form method="POST" action="{{ route('contact.store') }}">
+                            @csrf
                             <div class="row form-group">
                                 <div class="col-md-6">
                                     <!-- <label for="fname">First Name</label> -->
-                                    <input type="text" id="fname" class="form-control" placeholder="Your firstname">
+                                    <input type="text" id="fname" class="form-control" name="fname" placeholder="Your firstname">
                                 </div>
                                 <div class="col-md-6">
                                     <!-- <label for="lname">Last Name</label> -->
-                                    <input type="text" id="lname" class="form-control" placeholder="Your lastname">
+                                    <input type="text" id="lname" class="form-control" name="lname"  placeholder="Your lastname">
                                 </div>
                             </div>
-    
+
                             <div class="row form-group">
                                 <div class="col-md-12">
                                     <!-- <label for="email">Email</label> -->
-                                    <input type="text" id="email" class="form-control" placeholder="Your email address">
+                                    <input type="text" id="email" class="form-control" name="email" placeholder="Your email address">
                                 </div>
                             </div>
-    
+
                             <div class="row form-group">
                                 <div class="col-md-12">
-                                    <!-- <label for="subject">Subject</label> -->
-                                    <input type="text" id="subject" class="form-control" placeholder="Your subject of this message">
+                                 
+                                    <input type="text" id="subject" class="form-control" name="subject" placeholder="Your subject of this message">
                                 </div>
                             </div>
-    
+
                             <div class="row form-group">
                                 <div class="col-md-12">
-                                    <!-- <label for="message">Message</label> -->
+
                                     <textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Say something about us"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Send Message" class="btn btn-primary">
                             </div>
-    
+
                         </form>
                 </div>
-                
+
             </div>
         </div>
         </div>
-    
+
         <div class="gototop js-top">
             <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
         </div>
-            
+
         <!-- jQuery -->
         <script src="{{ asset('js/jquery.min.js') }}"></script>
         <!-- jQuery Easing -->
@@ -126,6 +127,6 @@
         <script src="{{ asset('js/main.js') }}"></script>
         </body>
     </html>
-    
-    
+
+
 </x-master>

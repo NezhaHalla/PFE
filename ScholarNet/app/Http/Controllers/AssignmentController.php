@@ -8,19 +8,27 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Assignment;
 class AssignmentController extends Controller
 {
-    public function index()
+    public function Assignmentstudent()
     {
         $user = Auth::user();
-
         if ($user->role === 'Student') {
-            $studentAssignments = $user->studentAssignments->get();
+            $studentAssignments = $user->studentAssignments;
             return view('student.myAssignement', ['assignments' => $studentAssignments, 'role' => 'Student']);
-        } elseif ($user->role === 'Teacher') {
-            $teacherAssignments = $user->teacherAssignments->get();
-            return view('teacher.myAssignement', ['assignments' => $teacherAssignments, 'role' => 'Teacher']);
         } else {
-            // Handle other roles or unauthorized access
             return redirect()->back()->with('error', 'Unauthorized access.');
         }
     }
+
+    public function Assignmentteacher()
+    {
+        $user = Auth::user();
+
+        if ($user->role === 'Teacher') {
+            $teacherAssignments = $user->teacherAssignments;
+            return view('teacher.myAssignement', ['assignments' => $teacherAssignments, 'role' => 'Teacher']);
+        } else {
+            return redirect()->back()->with('error', 'Unauthorized access.');
+        }
+    }
+
 }
