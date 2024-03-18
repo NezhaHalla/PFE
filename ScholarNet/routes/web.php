@@ -8,8 +8,7 @@ use \App\Http\Controllers\homeController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ResourceController;
 use \App\Http\Controllers\publicationController;
-
-
+use \App\Http\Controllers\AssignmentController;
 
 
 /*
@@ -90,3 +89,5 @@ Route::get('/courses/Teacher/search', [ResourceController::class, 'searchCourses
 Route::get('/about',function(){return view('homepage/about');})->name('about');
 Route::get('/contact',function(){return view('homepage/contact');})->name('contact');
 Route::get('/details/{publication}',[publicationController::class,'show'])->name("pub.details");
+
+Route::get('/assignments', [AssignmentController::class, 'index'])->name('assignments.index');

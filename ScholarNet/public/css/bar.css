@@ -35,7 +35,7 @@ nav .logo {
 
 nav ul {
     float: right;
-    margin-right: 0px;
+    margin-right: 10px;
 }
 
 nav ul li {
@@ -122,10 +122,12 @@ section {
 .profile-image {
     position: absolute;
     top: 50%;
-    right: 20px;
+    right: 10px;
     transform: translateY(-50%);
     border-radius: 50%;
     overflow: hidden;
+    
+    margin-left: 10px;
 }
 
 .profile-image img {

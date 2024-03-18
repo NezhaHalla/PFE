@@ -23,6 +23,6 @@ class Assignment extends Model
 
     public function students()
     {
-        return $this->belongsToMany(User::class, 'student_assignments')->withPivot('note');
+        return $this->belongsToMany(User::class, 'assignment_student')->withPivot('note');
     }
 }
