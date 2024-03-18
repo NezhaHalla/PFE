@@ -106,3 +106,10 @@ Route::delete('/assignments/{assignment}', [AssignmentController::class, 'destro
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
+
+Route::get('/assignment/search', [AssignmentController::class, 'searchAssignment'])->name('searchAssignment');
+
+Route::get('/Assignment/{assignment}/details',[AssignmentController::class,'showDetails'])->name('assignment.showDetails');
+
+
+Route::get('/ShowDocuments/{assignment}',[AssignmentController::class,'showdoc'])->name('showdocA');
