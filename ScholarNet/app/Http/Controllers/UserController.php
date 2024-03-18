@@ -54,7 +54,7 @@ class UserController extends Controller
                     'updated_at' => now()
                 ];
             }
-            DB::table('student_modules')->insert($studentModules);
+            DB::table('student__modules')->insert($studentModules);
         }
         session()->flash('success', 'User added successfully.');
         return redirect()->back();

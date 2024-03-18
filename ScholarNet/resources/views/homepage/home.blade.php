@@ -233,7 +233,7 @@
 						<div class="blog-text">
 							<h3><a href="#">{{ $pub->titre}}</a></h3>
 							<span class="posted_on">{{ $pub->created_at->format('d/m/Y') }}</span>
-							<p>{{ $pub->description }}</p>
+							<p>{{ Str::limit($pub->description ,200) }}</p>
                             <p><a href="{{route('pub.details',$pub->id)}}">Read More</a></p>
 						</div> 
 					</div>
