@@ -93,4 +93,6 @@ Route::get('/contact',function(){return view('homepage/contact');})->name('conta
 Route::post('/contact', function(){return view('homepage/contact');})->name('contact.store');
 Route::get('/details/{publication}',[publicationController::class,'show'])->name("pub.details");
 
-Route::get('/assignments', [AssignmentController::class, 'index'])->name('assignments.index');
+
+Route::get('/teacher/assignments', [AssignmentController::class, 'Assignmentteacher'])->name('Assignmentt');
+Route::get('/assignments', [AssignmentController::class, 'Assignmentstudent'])->name('Assignments');
