@@ -15,6 +15,14 @@ body {
     justify-content: center;
     color: #393232;
 }
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust this value based on your layout needs */
+    margin-top:0;
+    margin-right: 500px;
+}
 
 img {
     max-width: 100%;
@@ -25,9 +33,6 @@ img {
 .card-list {
     width: 90%;
     max-width: 400px;
-    position: absolute;
-    top: 110px;
-    left: 350px;
 }
 
 .card-header:first-of-type {

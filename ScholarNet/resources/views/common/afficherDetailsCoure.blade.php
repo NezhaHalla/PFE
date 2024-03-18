@@ -36,6 +36,7 @@
         </style>
     </head>
     <body>
+        <div class="center-container">
         <div class="card-list">
             <article class="card">
                 <div class="card-header">
@@ -74,6 +75,7 @@
                     </button>
                 </div> --}}
             </article>
+        </div>
         </div>
     </body>
 </x-master>

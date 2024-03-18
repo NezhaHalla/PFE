@@ -96,3 +96,10 @@ Route::get('/details/{publication}',[publicationController::class,'show'])->name
 
 Route::get('/teacher/assignments', [AssignmentController::class, 'Assignmentteacher'])->name('Assignmentt');
 Route::get('/assignments', [AssignmentController::class, 'Assignmentstudent'])->name('Assignments');
+
+Route::get('/assignment/search', [AssignmentController::class, 'searchAssignment'])->name('searchAssignment');
+
+Route::get('/Assignment/{assignment}/details',[AssignmentController::class,'showDetails'])->name('assignment.showDetails');
+
+
+Route::get('/ShowDocuments/{assignment}',[AssignmentController::class,'showdoc'])->name('showdocA');
