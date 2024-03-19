@@ -6,10 +6,11 @@ use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\UserController;
 use \App\Http\Controllers\homeController;
 use App\Http\Controllers\ClassController;
-use App\Http\Controllers\ResourceController;
-use \App\Http\Controllers\publicationController;
-use \App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ResourceController;
+use \App\Http\Controllers\AssignmentController;
+use \App\Http\Controllers\publicationController;
+use App\Http\Controllers\StudentSubmitedAssignmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -113,3 +114,4 @@ Route::get('/Assignment/{assignment}/details',[AssignmentController::class,'show
 
 
 Route::get('/ShowDocuments/{assignment}',[AssignmentController::class,'showdoc'])->name('showdocA');
+Route::get('/assignment/submit',[StudentSubmitedAssignmentController::class,'create'])->name('studentsubass');

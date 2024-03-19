@@ -37,7 +37,7 @@
         </head>
         <body>
 
-        <div id="fh5co-contact">
+        <div id="fh5co-contact" style="margin-top: 50px;">
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 col-md-push-1 animate-box">

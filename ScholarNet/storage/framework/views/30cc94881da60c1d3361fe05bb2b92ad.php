@@ -33,7 +33,7 @@
                     <img class="card__thumb" src="<?php echo e(asset('storage/'.$assignment->teacher->image)); ?>" alt="" />
                     <div class="card__header-text">
                       <h3 class="card__title"><?php echo e($assignment->teacher->name); ?></h3>
-                      <span class="card__status"><?php echo e($assignment->createdAt); ?></span>
+                      <span class="card__status"><?php echo e($assignment->role); ?> | <?php echo e($assignment->createdAt); ?></span>
                     </div>          
                   </div>
                   <div class="card__description "><a class="button" href="<?php echo e(route('assignment.showDetails',$assignment->id)); ?>">Details</a></div>

@@ -57,19 +57,16 @@
                     </div>
                     @endif
                     @if (auth()->user()->id === $Assignment->teacher->id)
-                    <form action="{{ route('course.destroy',$Assignment->id) }}" method="post">
+                    <form action="{{ route('assignments.destroy',$Assignment->id) }}" method="post">
                         @method('DELETE')
                         @csrf
-                        <button class="sup" onclick="return confirm('Do you want to delete this course ?')"  >Delete</button>
+                        <button class="sup" onclick="return confirm('Do you want to delete this Assignment ?')"  >Delete</button>
                     </form>
                     @endif
                     @if (auth()->user()->role === "Student")
-                    <form action="" method="post">
-                        @csrf
-                        <div class="d-grid gap-2 col-6 mx-auto" style="position:absolute; bottom: 20px;left:23%">
-                            <button class="btn btn-success" type="button">Submit My Assignment</button>
-                          </div>
-                    </form>
+                        <div class="d-grid gap-2 col-6 mx-auto" >
+                            <a href="{{ route('studentsubass') }}" class="btn btn-success" type="button" style="position:absolute; bottom: 20px;left:23%;width:500px;height:40px;">Submit My Assignment</a>
+                        </div>
                     @endif
             </article>
         </div>

@@ -17,6 +17,7 @@
         <label class="logo" >ScolarNet</label>
         <ul>
             <li><a class="active" href="<?php echo e(route('home')); ?>">Home</a></li>
+            <li><a href="<?php echo e(route('contacts.index')); ?>">Message</a></li>
             <li>
                 <a href="#">System<i class="fas fa-caret-down"></i></a>
                 <ul>
@@ -31,7 +32,6 @@
                 <ul>
                     <li><a href="<?php echo e(route('all_classes')); ?>">All Classes</a></li>
                     <li><a href="<?php echo e(route('all.teachers')); ?>">All Teachers</a></li>
-                    <li><a href="<?php echo e(route('contacts.index')); ?>">All Contacts</a></li>
 
                 </ul>
             </li>

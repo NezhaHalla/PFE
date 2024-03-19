@@ -24,7 +24,7 @@
                     <img class="card__thumb" src="{{ asset('storage/'.$assignment->teacher->image)}}" alt="" />
                     <div class="card__header-text">
                       <h3 class="card__title">{{ $assignment->teacher->name }}</h3>
-                      <span class="card__status">{{ $assignment->createdAt }}</span>
+                      <span class="card__status">{{ $assignment->role }} | {{ $assignment->createdAt }}</span>
                     </div>          
                   </div>
                   <div class="card__description "><a class="button" href="{{ route('assignment.showDetails',$assignment->id) }}">Details</a></div>

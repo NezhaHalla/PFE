@@ -66,19 +66,16 @@
                     </div>
                     <?php endif; ?>
                     <?php if(auth()->user()->id === $Assignment->teacher->id): ?>
-                    <form action="<?php echo e(route('course.destroy',$Assignment->id)); ?>" method="post">
+                    <form action="<?php echo e(route('assignments.destroy',$Assignment->id)); ?>" method="post">
                         <?php echo method_field('DELETE'); ?>
                         <?php echo csrf_field(); ?>
-                        <button class="sup" onclick="return confirm('Do you want to delete this course ?')"  >Delete</button>
+                        <button class="sup" onclick="return confirm('Do you want to delete this Assignment ?')"  >Delete</button>
                     </form>
                     <?php endif; ?>
                     <?php if(auth()->user()->role === "Student"): ?>
-                    <form action="" method="post">
-                        <?php echo csrf_field(); ?>
-                        <div class="d-grid gap-2 col-6 mx-auto" style="position:absolute; bottom: 20px;left:23%">
-                            <button class="btn btn-success" type="button">Submit My Assignment</button>
-                          </div>
-                    </form>
+                        <div class="d-grid gap-2 col-6 mx-auto" >
+                            <a href="<?php echo e(route('studentsubass')); ?>" class="btn btn-success" type="button" style="position:absolute; bottom: 20px;left:23%;width:500px;height:40px;">Submit My Assignment</a>
+                        </div>
                     <?php endif; ?>
             </article>
         </div>
