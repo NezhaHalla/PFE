@@ -1,0 +1,807 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1
+-- Généré le : mar. 19 mars 2024 à 10:46
+-- Version du serveur : 10.4.32-MariaDB
+-- Version de PHP : 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données : `scholarnet`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `assignments`
+--
+
+CREATE TABLE `assignments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `titre` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `fichier` varchar(255) NOT NULL,
+  `deadline` datetime NOT NULL,
+  `teacher_id` bigint(20) UNSIGNED NOT NULL,
+  `module_id` bigint(20) UNSIGNED NOT NULL,
+  `role` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `assignments`
+--
+
+INSERT INTO `assignments` (`id`, `titre`, `description`, `fichier`, `deadline`, `teacher_id`, `module_id`, `role`, `created_at`, `updated_at`) VALUES
+(1, 'exercice about javascript', 'javascript javascript v javascript ', '', '2024-03-17 18:31:27', 80, 4, 'TP', NULL, NULL),
+(2, 'learn javascript', 'assignmentsstore assignmentsstore v', 'assignment/TkU4nIKqv5WwSb0vXFi73OraWnxaqqHnmJf1Ffov.pdf', '2024-02-29 02:47:00', 80, 4, 'TP', '2024-03-18 02:55:11', '2024-03-18 02:55:11'),
+(4, 'learn java', '\'module_id\' => \'required|exists:modules,id\',\r\n            \'teacher_id\' => \'required|exists:use', 'assignment/EyB1tro7j8whFJyhiJzZSl1gy7Wo4RO07qVDbHqJ.pdf', '2024-03-01 02:59:00', 80, 4, 'EXAM', '2024-03-18 03:01:26', '2024-03-18 03:01:26'),
+(5, 'ticket2', 'tttttttttttttttttttttttttttttttttttttttttttttttttttt', 'assignment/wkyNLkOZ7SaSsph7KRAOu6arVi6WvPbjrVbAn2PY.pdf', '2024-03-07 00:41:00', 80, 4, 'TP', '2024-03-19 00:52:12', '2024-03-19 00:52:12');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `assignment_student`
+--
+
+CREATE TABLE `assignment_student` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `assignment_id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `Note` double(8,2) DEFAULT NULL,
+  `submission_status` varchar(255) DEFAULT NULL,
+  `submission_date` datetime DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `assignment_student`
+--
+
+INSERT INTO `assignment_student` (`id`, `assignment_id`, `student_id`, `Note`, `submission_status`, `submission_date`, `created_at`, `updated_at`) VALUES
+(1, 1, 105, 0.00, 'hhh', '2024-03-27 17:33:03', '2023-12-27 23:39:14', '2024-03-28 17:33:03'),
+(2, 5, 82, NULL, NULL, NULL, '2024-03-19 00:52:12', '2024-03-19 00:52:12'),
+(3, 5, 104, NULL, NULL, NULL, '2024-03-19 00:52:12', '2024-03-19 00:52:12');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `assignment_submissions`
+--
+
+CREATE TABLE `assignment_submissions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `assignment_id` bigint(20) UNSIGNED NOT NULL,
+  `id_student` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `fichier` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `classes`
+--
+
+CREATE TABLE `classes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `Branch` varchar(255) NOT NULL,
+  `Level` varchar(255) NOT NULL,
+  `Year` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `classes`
+--
+
+INSERT INTO `classes` (`id`, `Name`, `Branch`, `Level`, `Year`, `created_at`, `updated_at`) VALUES
+(1, 'GI1_2024', 'Genie Informaique', 'First Year', 2024, '2024-03-14 03:39:01', '2024-03-14 03:39:01'),
+(2, 'SD1_2024', 'Science Donnes', 'First Year', 2024, '2024-03-14 03:41:16', '2024-03-14 03:41:16'),
+(3, 'GI2_2024', 'Genie Informaique', 'Second Year', 2024, '2024-03-14 03:41:47', '2024-03-14 03:41:47'),
+(4, 'SD2_2024', 'Science Donnes', 'Second Year', 2024, '2024-03-14 03:42:11', '2024-03-14 03:42:11');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `fname` varchar(255) NOT NULL,
+  `lname` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `user_id`, `fname`, `lname`, `email`, `subject`, `message`, `created_at`, `updated_at`) VALUES
+(1, 80, 'LAMSIAH', 'SOUKAINA', 'lamsiahsoukaina7@gmail.com', 'hhhhhhhhhhhhhhhhhhhhh', 'hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh', '2024-03-18 04:06:39', '2024-03-18 04:06:39'),
+(2, 80, 'LAMSIAH', 'SOUKAINA', 'lamsiahsoa7@gmail.com', 'hhhhhhhhhhhhhhhhhhhhh', 'hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh', '2024-03-18 04:09:58', '2024-03-18 04:09:58'),
+(3, 1, 'LAMSIAH', 'SOUKAINA', 'lamsiahsoa7@gmail.com', 'hhhhhhhhhhhhhhhhhhhhh', 'hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh', '2024-03-18 04:41:27', '2024-03-18 04:41:27');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_reset_tokens_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(5, '2024_02_26_213334_create_users_table', 2),
+(6, '2024_02_26_214139_create_publications_table', 3),
+(7, '2024_03_01_121437_publications', 4),
+(8, '2024_03_02_153818_create_users_table', 5),
+(11, '2024_03_02_153837_create_publications_table', 6),
+(12, '2024_03_03_143549_users_table', 7),
+(13, '2024_03_04_223635_classes_table', 8),
+(14, '2024_03_04_230249_add_class_id_to_users_table', 8),
+(15, '2024_03_14_045045_create_soumestres_table', 9),
+(16, '2024_03_14_045106_create_modules_table', 9),
+(17, '2024_03_14_045125_create_resources_table', 9),
+(18, '2024_03_14_045206_create_student__modules_table', 9),
+(19, '2024_03_14_161948_create_years_table', 9),
+(20, '2024_03_14_162051_create_student_soumestres_table', 9),
+(21, '2024_03_14_164748_add_id_soumestre_to_modules', 10),
+(22, '2024_03_14_235814_add_level_to_years', 11),
+(23, '2024_03_16_012124_add_soumestre_id_to_users_table', 12),
+(24, '2024_03_16_153951_assignments', 13),
+(25, '2024_03_17_172354_assignments', 14),
+(26, '2024_03_17_172415_student_assignments', 14),
+(27, '2024_03_18_011700_assignment_submissions', 15),
+(28, '2024_03_18_035051_create_contacts_table', 16);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `modules`
+--
+
+CREATE TABLE `modules` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `id_teacher` bigint(20) UNSIGNED NOT NULL,
+  `nom` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `id_soumestre` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `modules`
+--
+
+INSERT INTO `modules` (`id`, `id_teacher`, `nom`, `created_at`, `updated_at`, `id_soumestre`) VALUES
+(1, 72, 'Programmation Mobile', '2024-03-15 04:16:28', '2024-03-15 04:16:28', 2),
+(2, 74, 'Modulisation UML', '2024-03-15 04:17:36', '2024-03-15 04:17:36', 2),
+(3, 75, 'Mathematique Appliqué', '2024-03-15 04:18:26', '2024-03-15 04:18:26', 3),
+(4, 80, 'Intelligence Artificielle', '2024-03-15 04:19:22', '2024-03-15 04:19:22', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `publications`
+--
+
+CREATE TABLE `publications` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `imagepub` varchar(255) NOT NULL,
+  `titre` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `publications`
+--
+
+INSERT INTO `publications` (`id`, `imagepub`, `titre`, `description`, `role`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'publicaion/AkrFUDGXZaO3W8DuBTDJb3XLOxKa6NHhLg2JIFMQ.jpg', 'Virtual Classroom Integration', 'Experience seamless integration of virtual classrooms into our school management system, providing students and teachers with a dynamic online learning environment.', 'announcement', '2024-03-03 16:49:50', '2024-03-03 16:49:50', NULL),
+(2, 'publicaion/lsMW5WTvVddYjrgHRWRkfcWJkPJRLC1xpILCH0pf.jpg', 'Automated Attendance Tracking', 'Our advanced attendance tracking feature automates the tedious task of taking attendance, saving time for teachers and ensuring accurate records for administrative purposes.', 'announcement', '2024-03-03 16:50:43', '2024-03-03 16:50:43', NULL),
+(3, 'publicaion/ejbtm54QyE7WcMRnl33SdSQq0XGhkgisugApSysy.jpg', 'Automated Attendance Tracking', 'Our advanced attendance tracking feature automates the tedious task of taking attendance, saving time for teachers and ensuring accurate records for administrative purposes.', 'announcement', '2024-03-03 16:51:18', '2024-03-03 16:51:18', NULL),
+(4, 'publicaion/72qdE8LUoQMbleCMyOxr9Xa9dDZHoi2ch5gzgh90.jpg', 'Automated Attendance Tracking', 'Our advanced attendance tracking feature automates the tedious task of taking attendance, saving time for teachers and ensuring accurate records for administrative purposes.', 'announcement', '2024-03-03 16:51:46', '2024-03-03 16:51:46', NULL),
+(5, 'publicaion/4TsLGw3z3cIH3MLOuEDAsQzJLg25Zhrc8xRfQDgq.jpg', 'Parent-Teacher Communication Portal', 'Stay connected with your child\'s education through our intuitive parent-teacher communication portal, facilitating easy communication and collaboration between parents and educators.', 'publication', '2024-03-03 16:52:45', '2024-03-03 16:52:45', NULL),
+(6, 'publicaion/YfQxXgFyBnAmNk0AjkPXr2GNv0Eyb36QkoLRqk3H.jpg', 'Parent-Teacher Communication Portal', 'Stay connected with your child\'s education through our intuitive parent-teacher communication portal, facilitating easy communication and collaboration between parents and educators.', 'publication', '2024-03-03 16:54:08', '2024-03-03 16:54:08', NULL),
+(7, 'publicaion/bROYRh4YzAzq1Lmld8555sSDIU7Lulri1aLIgcSC.jpg', 'Parent-Teacher Communication Portal', 'Stay connected with your child\'s education through our intuitive parent-teacher communication portal, facilitating easy communication and collaboration between parents and educators.', 'publication', '2024-03-03 16:54:36', '2024-03-03 16:54:36', NULL),
+(8, 'publicaion/hPmo2g5JZRnga3Pf6kgoRi3ktbGTDUQOTDwTWSyZ.jpg', 'Parent-Teacher Communication Portal', 'Stay connected with your child\'s education through our intuitive parent-teacher communication portal, facilitating easy communication and collaboration between parents and educators.', 'publication', '2024-03-03 16:55:13', '2024-03-03 16:55:13', NULL),
+(9, 'publicaion/RB8bWSLMcraFzSZrleth9rMuoib5ycTV1OFcSKhr.jpg', 'Parent-Teacher Communication Portal', 'Stay connected with your child\'s education through our intuitive parent-teacher communication portal, facilitating easy communication and collaboration between parents and educators.', 'publication', '2024-03-03 16:58:48', '2024-03-03 16:58:48', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `resources`
+--
+
+CREATE TABLE `resources` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `titre` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `fichier` varchar(255) NOT NULL,
+  `id_module` bigint(20) UNSIGNED NOT NULL,
+  `id_teacher` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `resources`
+--
+
+INSERT INTO `resources` (`id`, `titre`, `description`, `fichier`, `id_module`, `id_teacher`, `created_at`, `updated_at`) VALUES
+(1, 'Programming Basics', 'Cette cours pour objectif de cpmris les base de programmation pour bien start un module de programmation des apllication mobile .', '', 1, 72, '2024-03-15 04:27:42', '2024-03-15 04:27:42'),
+(3, 'Math Basics', 'Cette cours pour objectif de cpmris les base de programmation pour bien start un module de programmation des application mobile .', '', 3, 75, '2024-03-15 04:30:19', '2024-03-15 04:30:19'),
+(5, 'learn javascript', 'learn javascript learn javascript learn javascript', 'C:\\xampp\\tmp\\php554E.tmp', 2, 80, '2024-03-16 14:45:03', '2024-03-16 14:45:03'),
+(6, 'learn javascript', 'learn javascript learn javascript learn javascript', 'course/EVYHaAzAJ4rH6RZiHkmpxwuHz4aUcKgocznrk6bb.pdf', 4, 80, '2024-03-17 16:58:05', '2024-03-17 16:58:05'),
+(7, 'learn javascript2', 'javascript2javascript2', 'course/010mOcfvgj8goC4WObGdYkftmrzeRLCxighJAqk2.pdf', 4, 80, '2024-03-18 03:22:39', '2024-03-18 03:22:39');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `soumestres`
+--
+
+CREATE TABLE `soumestres` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nom` varchar(255) NOT NULL,
+  `filiere` varchar(255) NOT NULL,
+  `year` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `soumestres`
+--
+
+INSERT INTO `soumestres` (`id`, `nom`, `filiere`, `year`, `created_at`, `updated_at`) VALUES
+(1, 'GIS1_2024', 'Genie Informatique', 2024, '2024-03-15 04:08:42', '2024-03-15 04:08:42'),
+(2, 'GIS3_2024', 'Genie Informatique', 2024, '2024-03-15 04:09:07', '2024-03-15 04:09:07'),
+(3, 'SDS1_2024', 'Science Donnes', 2024, '2024-03-15 04:09:55', '2024-03-15 04:09:55'),
+(4, 'SDS3_2024', 'Science Donnes', 2024, '2024-03-15 04:10:09', '2024-03-15 04:10:09');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `student_soumestres`
+--
+
+CREATE TABLE `student_soumestres` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `id_soumestre` bigint(20) UNSIGNED NOT NULL,
+  `id_student` bigint(20) UNSIGNED NOT NULL,
+  `note` double(8,2) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `student_soumestres`
+--
+
+INSERT INTO `student_soumestres` (`id`, `id_soumestre`, `id_student`, `note`, `created_at`, `updated_at`) VALUES
+(1, 2, 81, 0.00, '2024-03-15 05:39:22', '2024-03-15 05:39:22'),
+(2, 3, 82, 0.00, '2024-03-15 05:39:49', '2024-03-15 05:39:49'),
+(3, 2, 86, 0.00, '2024-03-16 02:03:58', '2024-03-16 02:03:58'),
+(4, 1, 87, 0.00, '2024-03-16 14:52:31', '2024-03-16 14:52:31'),
+(5, 2, 88, 0.00, '2024-03-16 15:00:39', '2024-03-16 15:00:39'),
+(6, 1, 95, 0.00, '2024-03-16 16:12:37', '2024-03-16 16:12:37'),
+(7, 1, 96, 0.00, '2024-03-16 16:14:25', '2024-03-16 16:14:25'),
+(8, 1, 97, 0.00, '2024-03-16 16:20:31', '2024-03-16 16:20:31'),
+(9, 1, 98, 0.00, '2024-03-16 16:22:29', '2024-03-16 16:22:29'),
+(10, 1, 99, 0.00, '2024-03-16 16:27:20', '2024-03-16 16:27:20'),
+(11, 3, 100, 0.00, '2024-03-16 16:31:20', '2024-03-16 16:31:20'),
+(12, 3, 101, 0.00, '2024-03-16 16:38:18', '2024-03-16 16:38:18'),
+(13, 3, 102, 0.00, '2024-03-16 16:38:34', '2024-03-16 16:38:34'),
+(14, 4, 103, 0.00, '2024-03-16 16:40:32', '2024-03-16 16:40:32'),
+(15, 3, 104, 0.00, '2024-03-16 16:45:10', '2024-03-16 16:45:10'),
+(16, 1, 105, 0.00, '2024-03-16 16:47:02', '2024-03-16 16:47:02');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `student__modules`
+--
+
+CREATE TABLE `student__modules` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `id_student` bigint(20) UNSIGNED NOT NULL,
+  `id_module` bigint(20) UNSIGNED NOT NULL,
+  `Note` double(8,2) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `student__modules`
+--
+
+INSERT INTO `student__modules` (`id`, `id_student`, `id_module`, `Note`, `created_at`, `updated_at`) VALUES
+(1, 81, 1, 0.00, '2024-03-15 05:50:47', '2024-03-15 05:50:47'),
+(2, 81, 2, 0.00, '2024-03-15 05:51:14', '2024-03-15 05:51:14'),
+(3, 82, 3, 0.00, '2024-03-15 05:51:45', '2024-03-15 05:51:45'),
+(4, 82, 4, 0.00, '2024-03-15 05:51:58', '2024-03-15 05:51:58'),
+(5, 88, 1, 0.00, '2024-03-16 15:00:39', '2024-03-16 15:00:39'),
+(6, 88, 2, 0.00, '2024-03-16 15:00:39', '2024-03-16 15:00:39'),
+(7, 104, 3, 0.00, '2024-03-16 16:45:10', '2024-03-16 16:45:10'),
+(8, 104, 4, 0.00, '2024-03-16 16:45:10', '2024-03-16 16:45:10');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL,
+  `gender` varchar(255) NOT NULL,
+  `DateDeNaissance` datetime NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `image` varchar(150) NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `class_id` bigint(20) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `role`, `gender`, `DateDeNaissance`, `email`, `email_verified_at`, `password`, `image`, `deleted_at`, `remember_token`, `created_at`, `updated_at`, `class_id`) VALUES
+(1, 'Admin Admin', 'Admin', 'Male', '2024-03-02 00:00:00', 'admin@admin', NULL, '$2y$12$yoeXXSw04FeqwfwJcjwcnOcVQexWMglpbdHYYLv1QWxAD6vLldB1C', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 03:58:05', '2024-03-14 03:58:05', NULL),
+(2, 'John Doe', 'student', 'Male', '1990-01-01 00:00:00', 'john.doe@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:18:48', '2024-03-14 04:18:48', 1),
+(3, 'Jane Smith', 'student', 'Female', '1990-02-02 00:00:00', 'jane.smith@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:18:49', '2024-03-14 04:18:49', 1),
+(4, 'Michael Johnson', 'student', 'Male', '1990-03-03 00:00:00', 'michael.johnson@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:18:49', '2024-03-14 04:18:49', 1),
+(5, 'Emily Wilson', 'student', 'Female', '1990-04-04 00:00:00', 'emily.wilson@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:18:49', '2024-03-14 04:18:49', 1),
+(6, 'David Brown', 'student', 'Male', '1990-05-05 00:00:00', 'david.brown@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:18:49', '2024-03-14 04:18:49', 1),
+(7, 'Olivia Davis', 'student', 'Female', '1990-06-06 00:00:00', 'olivia.davis@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:18:49', '2024-03-14 04:18:49', 1),
+(8, 'James Taylor', 'student', 'Male', '1990-07-07 00:00:00', 'james.taylor@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:18:49', '2024-03-14 04:18:49', 1),
+(9, 'Emma Clark', 'student', 'Female', '1990-08-08 00:00:00', 'emma.clark@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:18:49', '2024-03-14 04:18:49', 1),
+(10, 'Alexander Garcia', 'student', 'Male', '1990-09-09 00:00:00', 'alexander.garcia@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:18:49', '2024-03-14 04:18:49', 1),
+(11, 'Isabella Martinez', 'student', 'Female', '1990-10-10 00:00:00', 'isabella.martinez@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:18:49', '2024-03-14 04:18:49', 1),
+(12, 'William Rodriguez', 'student', 'Male', '1990-11-11 00:00:00', 'william.rodriguez@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:18:49', '2024-03-14 04:18:49', 1),
+(13, 'Sophia Hernandez', 'student', 'Female', '1990-12-12 00:00:00', 'sophia.hernandez@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:18:49', '2024-03-14 04:18:49', 1),
+(14, 'Joseph Smith', 'student', 'Male', '1991-01-01 00:00:00', 'joseph.smith@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:18:50', '2024-03-14 04:18:50', 1),
+(15, 'Ava Johnson', 'student', 'Female', '1991-02-02 00:00:00', 'ava.johnson@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:18:50', '2024-03-14 04:18:50', 1),
+(16, 'Michael Williams', 'student', 'Male', '1991-03-03 00:00:00', 'michael.williams@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:18:50', '2024-03-14 04:18:50', 1),
+(17, 'Amelia Jones', 'student', 'Female', '1991-04-04 00:00:00', 'amelia.jones@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:18:50', '2024-03-14 04:18:50', 1),
+(18, 'Ethan Williams', 'student', 'Male', '1991-03-03 00:00:00', 'ethan.williams@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:22:54', '2024-03-14 04:22:54', 2),
+(19, 'Olivia Jones', 'student', 'Female', '1991-04-04 00:00:00', 'olivia.jones@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:22:55', '2024-03-14 04:22:55', 2),
+(20, 'Liam Garcia', 'student', 'Male', '1991-05-05 00:00:00', 'liam.garcia@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:22:55', '2024-03-14 04:22:55', 2),
+(21, 'Emma Martinez', 'student', 'Female', '1991-06-06 00:00:00', 'emma.martinez@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:22:55', '2024-03-14 04:22:55', 2),
+(22, 'Noah Brown', 'student', 'Male', '1991-07-07 00:00:00', 'noah.brown@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:22:55', '2024-03-14 04:22:55', 2),
+(23, 'Sophia Lee', 'student', 'Female', '1991-08-08 00:00:00', 'sophia.lee@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:22:55', '2024-03-14 04:22:55', 2),
+(24, 'Mason Clark', 'student', 'Male', '1991-09-09 00:00:00', 'mason.clark@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:22:55', '2024-03-14 04:22:55', 2),
+(25, 'Ava Hernandez', 'student', 'Female', '1991-10-10 00:00:00', 'ava.hernandez@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:22:56', '2024-03-14 04:22:56', 2),
+(26, 'Lucas Young', 'student', 'Male', '1991-11-11 00:00:00', 'lucas.young@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:22:56', '2024-03-14 04:22:56', 2),
+(27, 'Amelia Lewis', 'student', 'Female', '1991-12-12 00:00:00', 'amelia.lewis@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:22:56', '2024-03-14 04:22:56', 2),
+(28, 'Logan Walker', 'student', 'Male', '1992-01-01 00:00:00', 'logan.walker@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:22:56', '2024-03-14 04:22:56', 2),
+(29, 'Harper Perez', 'student', 'Female', '1992-02-02 00:00:00', 'harper.perez@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:22:56', '2024-03-14 04:22:56', 2),
+(30, 'Benjamin Hall', 'student', 'Male', '1992-03-03 00:00:00', 'benjamin.hall@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:22:56', '2024-03-14 04:22:56', 2),
+(31, 'Evelyn Flores', 'student', 'Female', '1992-04-04 00:00:00', 'evelyn.flores@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:22:56', '2024-03-14 04:22:56', 2),
+(32, 'Jacob Scott', 'student', 'Male', '1992-05-05 00:00:00', 'jacob.scott@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:22:57', '2024-03-14 04:22:57', 2),
+(33, 'Mia Green', 'student', 'Female', '1992-06-06 00:00:00', 'mia.green@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:22:57', '2024-03-14 04:22:57', 2),
+(34, 'Liam Wilson', 'student', 'Male', '1992-07-07 00:00:00', 'liam.wilson@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:25:16', '2024-03-14 04:25:16', 3),
+(35, 'Emily Anderson', 'student', 'Female', '1992-08-08 00:00:00', 'emily.anderson@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:25:16', '2024-03-14 04:25:16', 3),
+(36, 'Mason White', 'student', 'Male', '1992-09-09 00:00:00', 'mason.white@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:25:16', '2024-03-14 04:25:16', 3),
+(37, 'Amelia Thompson', 'student', 'Female', '1992-10-10 00:00:00', 'amelia.thompson@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:25:17', '2024-03-14 04:25:17', 3),
+(38, 'Benjamin Lewis', 'student', 'Male', '1992-11-11 00:00:00', 'benjamin.lewis@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:25:17', '2024-03-14 04:25:17', 3),
+(39, 'Harper Garcia', 'student', 'Female', '1992-12-12 00:00:00', 'harper.garcia@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:25:17', '2024-03-14 04:25:17', 3),
+(40, 'Lucas Smith', 'student', 'Male', '1993-01-01 00:00:00', 'lucas.smith@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:25:17', '2024-03-14 04:25:17', 3),
+(43, 'Liam Wilson', 'student', 'Male', '1992-07-07 00:00:00', 'liaam.wilson@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:26:09', '2024-03-14 04:26:09', 3),
+(46, 'Liam Wilson', 'student', 'Male', '1992-07-07 00:00:00', 'lieam.wilson@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:28:19', '2024-03-14 04:28:19', 3),
+(47, 'Emily Anderson', 'student', 'Female', '1992-08-08 00:00:00', 'emiely.anderson@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:28:19', '2024-03-14 04:28:19', 3),
+(48, 'Mason White', 'student', 'Male', '1992-09-09 00:00:00', 'maeson.white@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:28:19', '2024-03-14 04:28:19', 3),
+(49, 'Amelia Thompson', 'student', 'Female', '1992-10-10 00:00:00', 'ameleia.thompson@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:28:19', '2024-03-14 04:28:19', 3),
+(50, 'Benjamin Lewis', 'student', 'Male', '1992-11-11 00:00:00', 'benejamin.lewis@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:28:19', '2024-03-14 04:28:19', 3),
+(51, 'Harper Garcia', 'student', 'Female', '1992-12-12 00:00:00', 'hareper.garcia@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:28:19', '2024-03-14 04:28:19', 3),
+(52, 'Lucas Smith', 'student', 'Male', '1993-01-01 00:00:00', 'luceas.smith@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:28:20', '2024-03-14 04:28:20', 3),
+(53, 'Ava Johnson', 'student', 'Female', '1993-02-02 00:00:00', 'avea.johnson@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:28:20', '2024-03-14 04:28:20', 3),
+(54, 'Logan Miller', 'student', 'Male', '1993-03-03 00:00:00', 'logaen.miller@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:28:20', '2024-03-14 04:28:20', 3),
+(55, 'Evelyn Brown', 'student', 'Female', '1993-04-04 00:00:00', 'evelyne.brown@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:28:20', '2024-03-14 04:28:20', 3),
+(56, 'Jacob Lee', 'student', 'Male', '1993-05-05 00:00:00', 'jaecob.lee@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:28:20', '2024-03-14 04:28:20', 3),
+(57, 'Mia Perez', 'student', 'Female', '1993-06-06 00:00:00', 'miea.perez@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:28:20', '2024-03-14 04:28:20', 3),
+(58, 'Ethan Moore', 'student', 'Male', '1993-09-09 00:00:00', 'ethan.moore@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:29:47', '2024-03-14 04:29:47', 4),
+(59, 'Olivia Walker', 'student', 'Female', '1993-10-10 00:00:00', 'olivia.walker@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:29:47', '2024-03-14 04:29:47', 4),
+(60, 'Liam Hall', 'student', 'Male', '1993-11-11 00:00:00', 'liwam.hall@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:29:48', '2024-03-14 04:29:48', 4),
+(61, 'Ava Young', 'student', 'Female', '1993-12-12 00:00:00', 'avwa.young@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:29:48', '2024-03-14 04:29:48', 4),
+(62, 'Lucas Martin', 'student', 'Male', '1994-01-01 00:00:00', 'luwcas.martin@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:29:48', '2024-03-14 04:29:48', 4),
+(63, 'Amelia Hill', 'student', 'Female', '1994-02-02 00:00:00', 'amewlia.hill@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:29:48', '2024-03-14 04:29:48', 4),
+(64, 'Logan Allen', 'student', 'Male', '1994-03-03 00:00:00', 'logwan.allen@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:29:48', '2024-03-14 04:29:48', 4),
+(65, 'Evelyn King', 'student', 'Female', '1994-04-04 00:00:00', 'evelywn.king@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:29:48', '2024-03-14 04:29:48', 4),
+(66, 'William Garcia', 'student', 'Male', '1994-05-05 00:00:00', 'willwiam.garcia@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:29:48', '2024-03-14 04:29:48', 4),
+(67, 'Emma Mitchell', 'student', 'Female', '1994-06-06 00:00:00', 'emwma.mitchell@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:29:48', '2024-03-14 04:29:48', 4),
+(68, 'Jacob Perez', 'student', 'Male', '1994-07-07 00:00:00', 'jacowb.perez@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:29:48', '2024-03-14 04:29:48', 4),
+(69, 'Mia Hernandez', 'student', 'Female', '1994-08-08 00:00:00', 'miwa.hernandez@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:29:49', '2024-03-14 04:29:49', 4),
+(70, 'Benjamin Hill', 'student', 'Male', '1994-09-09 00:00:00', 'benjwamin.hill@example.com', NULL, '0000', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, NULL, '2024-03-14 04:29:49', '2024-03-14 04:29:49', 4),
+(71, 'Teacher 1', 'Teacher', 'Male', '1990-01-01 00:00:00', 'teacher1@example.com', '2024-03-14 04:43:47', '$2y$12$ruh89xKOwdEAv86CpXOl/uNFHqoC0hLbTrOhn2hRBww1geXn.bEvW', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, 'QD7bJX8eSa', '2024-03-14 04:43:48', '2024-03-14 04:43:48', NULL),
+(72, 'Teacher 2', 'Teacher', 'Male', '1990-01-01 00:00:00', 'teacher2@example.com', '2024-03-14 04:43:48', '$2y$12$mhkhlRkjpDlhqh/B7sl3QeOGJbUTsWHK68gDyXcQvncjMKUM7dAGe', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, '05CLG20902', '2024-03-14 04:43:49', '2024-03-14 04:43:49', NULL),
+(73, 'Teacher 3', 'Teacher', 'Male', '1990-01-01 00:00:00', 'teacher3@example.com', '2024-03-14 04:43:49', '$2y$12$JIA9b8IaxuHYCMgPLmw47upZp8Vs0vnVSMSRp0yq/UhUhz1UmS1ie', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, 'c4q4VX04ms', '2024-03-14 04:43:50', '2024-03-14 04:43:50', NULL),
+(74, 'Teacher 4', 'Teacher', 'Male', '1990-01-01 00:00:00', 'teacher4@example.com', '2024-03-14 04:43:50', '$2y$12$gPqtd5yixbTuKoe/Nq5ZlecB3W5m6gElV4vBheZdJxzz65WayWY22', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, 'wm0KZvF1FW', '2024-03-14 04:43:52', '2024-03-14 04:43:52', NULL),
+(75, 'Teacher 5', 'Teacher', 'Male', '1990-01-01 00:00:00', 'teacher5@example.com', '2024-03-14 04:43:52', '$2y$12$oa7hiYO.Ux6fU67Of./uFeOAvJgbfskykMnKl/3lS.rVXakoNqWYS', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, 'ghErSEfDo3', '2024-03-14 04:43:53', '2024-03-14 04:43:53', NULL),
+(76, 'Teacher 6', 'Teacher', 'Male', '1990-01-01 00:00:00', 'teacher6@example.com', '2024-03-14 04:43:53', '$2y$12$QLEkLpYSr5pll5UiiIr/Te8M7Dv1XrzYUx8lrmmLKhpcAhGasqiAe', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, '7dFVeBCpMn', '2024-03-14 04:43:54', '2024-03-14 04:43:54', NULL),
+(77, 'Teacher 7', 'Teacher', 'Male', '1990-01-01 00:00:00', 'teacher7@example.com', '2024-03-14 04:43:54', '$2y$12$mZOmNRoioGwjYanFTwkfBuHQt7qrzPgiXjrmHWHgx.QDsTiRQKmJy', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, 'vadSnMAH1t', '2024-03-14 04:43:55', '2024-03-14 04:43:55', NULL),
+(78, 'Teacher 8', 'Teacher', 'Male', '1990-01-01 00:00:00', 'teacher8@example.com', '2024-03-14 04:43:55', '$2y$12$G5sAlx6w/lLitfBW4ZC83eYzpbtXOXoeAq9YRdcrXHKvqrU6E9y.G', 'blog/5iDdZ6OcTViTaStEBHW2D2mOCL2S6fg0YfVJrJ93.jpg', NULL, '1b2hfUOBUd', '2024-03-14 04:43:56', '2024-03-14 04:43:56', NULL),
+(79, 'Student Student', 'Student', 'Female', '2024-03-01 00:00:00', 'student@student', NULL, '$2y$12$0/twr9Kgi7QMsz5OrK5HQetMj3EyE9W5m63RxJhBhg3g/ih9cThaq', 'blog/BohKOMdl5D0u1aNtcm6TWWsJFQ7dEwBmfxOIjl6D.jpg', NULL, NULL, '2024-03-14 16:11:03', '2024-03-14 16:11:03', 3),
+(80, 'Teacher Teacher', 'Teacher', 'Male', '2024-03-09 00:00:00', 'teacher@teacher', NULL, '$2y$12$wgRQH4UZ8QqV/HOFFToT.uUuMqX6HxkZc.NnkGomtKmRC8kYr4XAW', 'blog/hZU6EcikSjk66a5EsewyuiGghu0lYRx5woqH5Gxs.jpg', NULL, NULL, '2024-03-14 16:12:11', '2024-03-14 16:12:11', NULL),
+(81, 'Nezha Halla', 'Student', 'Female', '2024-03-01 00:00:00', 'nezhahella@gmail.com', NULL, '$2y$12$kPoAsQoYGs7qQ8JNqdLViO/BAjyYyAEoGvwKozHujXZkApQ0vOPZW', 'blog/rFJDQTraaaFRraAO00AgASpG7lHaprsdXg5PqNql.jpg', NULL, NULL, '2024-03-15 04:38:35', '2024-03-15 04:38:35', 3),
+(82, 'Kenza Mahamou', 'Student', 'Female', '2006-02-08 00:00:00', 'kenza@gmail.com', NULL, '$2y$12$A6CUK3pdh3zgKjFH.N7FT.DwBO2475RHU7Nn1bficJ3tUX4B9nb/S', 'blog/xxTriGz3fzBrocnflEi9cbEdYgeDG2jtBgoJNvrU.jpg', NULL, NULL, '2024-03-15 04:42:57', '2024-03-15 04:42:57', 2),
+(86, 'hajar lamsiah', 'Student', 'Female', '2005-12-01 00:00:00', 'hajar1@gmail.com', NULL, '$2y$12$7Gg4T553/lGXUHcwSa2xj.doE2p6Dv8LChZRTlp6frEeqbgJ0nHPu', 'blog/yjoM2yDpLPxnanDBX6x5qBiA0cdzXSfFvTsfR4EB.jpg', NULL, NULL, '2024-03-16 02:03:58', '2024-03-16 02:03:58', 3),
+(87, 'hafssa hafssa', 'Student', 'Female', '2006-01-16 00:00:00', 'hafssa1@gmail.com', NULL, '$2y$12$SD03ZNuMpY.aI6yk7sMvyeaVufJW6wjqjBbjGqnVAxney4/yxrBna', 'blog/N3Mp6sS8EeeJEfRZhEzJ6rE8nNBDTgbimV55w4ze.jpg', NULL, NULL, '2024-03-16 14:52:31', '2024-03-16 14:52:31', 1),
+(88, 'sara lamsiah', 'Student', 'Female', '2005-12-03 00:00:00', 'sara1@gmail.com', NULL, '$2y$12$pUdQXXcv5AIkbj9.JZUqW.SFjw1XM5jyOLohmNZgexYC8MyAvTa7e', 'blog/vCBTmZhrT73rMUyp6e7GwG1yDKh1BE4WeRxPErOE.jpg', NULL, NULL, '2024-03-16 15:00:38', '2024-03-16 15:00:38', 3),
+(89, 'LAM HAJAR', 'Student', 'Female', '2005-12-05 00:00:00', 'LAM@gmail.com', NULL, '$2y$12$DNC1uHcWntSsCoEYyuXYxOCGym.gZ/sKMtE3KUnI6daQR25aF8YtO', 'blog/JNGNOkJgUVRzFXyxbRUQH62Wvz3TpjZF9uLSXFRx.jpg', NULL, NULL, '2024-03-16 15:50:22', '2024-03-16 15:50:22', 1),
+(90, 'LAM HAJAR', 'Student', 'Female', '2007-12-31 00:00:00', 'LAMM@gmail.com', NULL, '$2y$12$VpXOlsAiWsKdD233ZqpIKeucM48C5gBEKKx4P3PJOIu04j4Vg3e.C', 'blog/a8SAXOWnkVObetvyYkYkNeIVCjXqDW0IrlwfQSq5.jpg', NULL, NULL, '2024-03-16 15:54:13', '2024-03-16 15:54:13', 1),
+(91, 'LAM HAJAR', 'Student', 'Female', '2005-12-31 00:00:00', 'LAMMM@gmail.com', NULL, '$2y$12$KEvG0xwOCia0CCk4C5XybOILOUm0QZcTd7sfNGj7huDo5Bn4sq7vu', 'blog/WE2PhKSXSiSMoQrnznPVkx4p1sXzFxsXGcsjezDz.jpg', NULL, NULL, '2024-03-16 15:58:55', '2024-03-16 15:58:55', 1),
+(92, 'LAM HAJAR', 'Student', 'Male', '2004-12-08 00:00:00', 'LAMM1@gmail.com', NULL, '$2y$12$DmYo0vPRYtGqF9evczY8z.lkQwiBAGSDhbKH7ZEJ7pdVjSrvZzgM6', 'blog/vHE3myd7LuD83JylIVpRYwGEpV24KTRU1Y7JGxkh.jpg', NULL, NULL, '2024-03-16 16:00:07', '2024-03-16 16:00:07', 2),
+(93, 'LAM HAJAR', 'Student', 'Male', '2024-03-15 00:00:00', 'gggg@gmail.com', NULL, '$2y$12$UwcnYph9Mj5u/vJovwkvq.6zrDZpnFU0J9MQXCMTZLU3.i6AUQhmS', 'blog/gkRWN9HAeC9sriaObOv2UbUMKZIbG2Twi1Jy3Pct.jpg', NULL, NULL, '2024-03-16 16:03:58', '2024-03-16 16:03:58', 2),
+(95, 'soukaina lamsiah', 'Student', 'Female', '2006-12-31 00:00:00', 'lamsiah@gmail.com', NULL, '$2y$12$x4OPjbXBk3W7yey.zDR5oOPn1/p95ya5Y/7G8lQZxOE06XjjTUbuW', 'blog/17Vyxr68a0Fyz5V02HwnLVwZYxU8Jl1z4BN07SVn.jpg', NULL, NULL, '2024-03-16 16:12:37', '2024-03-16 16:12:37', 1),
+(96, 'soukaina lamsiah', 'Student', 'Female', '2006-12-31 00:00:00', 'lamsiah1@gmail.com', NULL, '$2y$12$KomVhfmrvMt7t6zWk4BpDuwHG8oNrSfJceFvjD1ol5ASXUn8DxKKy', 'blog/l2y5PBZbSxMuNVh8rfqElGF4ZTl5F4rzfPkXiMXf.jpg', NULL, NULL, '2024-03-16 16:14:24', '2024-03-16 16:14:24', 1),
+(97, 'soukaina lamsiah', 'Student', 'Male', '2006-12-31 00:00:00', 'lamsiah1HH@gmail.com', NULL, '$2y$12$r8uin/GBgpquCa3rQL5ineKvVo4H9XdviftwCe5rjVFVqWfHPogsG', 'blog/pGAJLivweUCwTzHn6YAlfqqBMknmBHHf6A9juDXO.jpg', NULL, NULL, '2024-03-16 16:20:31', '2024-03-16 16:20:31', 1),
+(98, 'soukaina lamsiah', 'Student', 'Male', '2006-12-31 00:00:00', 'lamseeiah1HH@gmail.com', NULL, '$2y$12$tLMHQXtGrHUzuDQx4Kf8Ke2QnVHF99IkCL7Wgby3E73.FBkmjechy', 'blog/d17iZpWytdLDkDPYm2oIJbCiIhK7zL1q7n7RUx2S.jpg', NULL, NULL, '2024-03-16 16:22:29', '2024-03-16 16:22:29', 1),
+(99, 'khadija zam', 'Student', 'Male', '2008-12-31 00:00:00', 'khadija@gmail.com', NULL, '$2y$12$YtzZJSZKNFMn1tTYA5I1uuCivAOQynBE2AbBfusUFmKKSPen8i/h6', 'blog/a9zHbE0vsxHW5zHe8f1ShCTj2vPVVKoLSHBsT6Hw.jpg', NULL, NULL, '2024-03-16 16:27:20', '2024-03-16 16:27:20', 1),
+(100, 'hajHHHr lamsiah', 'Student', 'Male', '2007-12-29 00:00:00', 'hajaHr123@gmail.comH', NULL, '$2y$12$RZQkjbdmXmVhl3ipSD63LucDNJwD0SW4Q3hc/XQcPH0dZxEPe9LYu', 'blog/SH46GFOfn82JiLopXRRTHmqFmkj8HKktAlaOiKZj.jpg', NULL, NULL, '2024-03-16 16:31:20', '2024-03-16 16:31:20', 2),
+(101, 'hajHHHr lamsiah', 'Student', 'Male', '2007-12-29 00:00:00', 'hajaHr1hh23@gmail.comH', NULL, '$2y$12$HwLE3LXOX2aGO2peqmxhZeJN7SgJpgKSf9pyuOuWxcgnstkz/cRUu', 'blog/yAhLEUvKTjipj5aeUQT0SQjHGF1FL8CahfTL8IH4.jpg', NULL, NULL, '2024-03-16 16:38:18', '2024-03-16 16:38:18', 2),
+(102, 'hajHHHr lamsiah', 'Student', 'Male', '2007-12-29 00:00:00', 'hajaHr1hhh23@gmail.comH', NULL, '$2y$12$IRPVXOWurZUqvUSn9SgYQeiZ/roMsnBhgrkMY5VFaGd8Al0H3iag2', 'blog/oO8ZCuTE6a7D6Bjb0qzs7NdxvEyNZoON7kpzXCgX.jpg', NULL, NULL, '2024-03-16 16:38:34', '2024-03-16 16:38:34', 2),
+(103, 'safa', 'Student', 'Female', '2024-03-05 00:00:00', 'safa@gmail.com', NULL, '$2y$12$HEEsZzJUWwkTprD0nuTXo.2o6X2JqAmRu8ttDMJGh9BbVIbFLQ8my', 'blog/d4ei8iaPOEGx3u8H4Rhm6GN4aqGQgDRXv1QWUjSs.jpg', NULL, NULL, '2024-03-16 16:40:32', '2024-03-16 16:40:32', 4),
+(104, 'hamza', 'Student', 'Male', '2024-03-07 00:00:00', 'h@gmail.com', NULL, '$2y$12$trcL5kYz/EN5eiLEq1qYmeQFW246YxP6/itjFq1zFtl66qkttNp9W', 'blog/jOStXsWZ9xb5J6qJCRny4jK6tvttoSWcEJjP6Sq0.jpg', NULL, NULL, '2024-03-16 16:45:10', '2024-03-16 16:45:10', 2),
+(105, 'ali', 'Student', 'Male', '2024-02-28 00:00:00', 'ali@gmail.com', NULL, '$2y$12$DNgr8NFDsFaKGCLKrEenGuF2/sUAaLGmqaWrpZ1VxNtqWHT0RWycO', 'blog/aO3TvaHS4JEOALL6iujKYXluOvwWa6p6iY3z4dhy.jpg', NULL, NULL, '2024-03-16 16:47:02', '2024-03-16 16:47:02', 1),
+(106, 'hamza', 'Teacher', 'Male', '2024-02-26 00:00:00', 'hamza@gmail.com', NULL, '$2y$12$yTnkqMyW2AGyKn8ee/G0W.hGG4x4On8Cu9djCTqIA/9T5LpVXOtz.', 'blog/qCs5uMR8kWg8Ti6M7mUHtnMsQD04Er0oBIDmQkHB.jpg', NULL, NULL, '2024-03-17 16:21:38', '2024-03-17 16:21:38', NULL),
+(107, 'L Ikram2005', 'Teacher', 'Female', '2024-03-15 00:00:00', 'ikkram@gmail.com', NULL, '$2y$12$cFKVN00lvqckjDtXGgLMQuULtn8qxWYoLpSeFqrM97Gt613jCCqqW', 'blog/UzPavAnX7lu2NKa58YsrpS6uoQurDy80nDMXNF48.jpg', NULL, NULL, '2024-03-17 16:28:45', '2024-03-17 16:28:45', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `years`
+--
+
+CREATE TABLE `years` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `id_student` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `level` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `assignments`
+--
+ALTER TABLE `assignments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `assignments_teacher_id_foreign` (`teacher_id`),
+  ADD KEY `assignments_module_id_foreign` (`module_id`);
+
+--
+-- Index pour la table `assignment_student`
+--
+ALTER TABLE `assignment_student`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `assignment_student_assignment_id_foreign` (`assignment_id`),
+  ADD KEY `assignment_student_student_id_foreign` (`student_id`);
+
+--
+-- Index pour la table `assignment_submissions`
+--
+ALTER TABLE `assignment_submissions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `assignment_submissions_assignment_id_foreign` (`assignment_id`),
+  ADD KEY `assignment_submissions_id_student_foreign` (`id_student`);
+
+--
+-- Index pour la table `classes`
+--
+ALTER TABLE `classes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `contacts_user_id_foreign` (`user_id`);
+
+--
+-- Index pour la table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Index pour la table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `modules`
+--
+ALTER TABLE `modules`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `modules_id_teacher_foreign` (`id_teacher`),
+  ADD KEY `modules_id_soumestre_foreign` (`id_soumestre`);
+
+--
+-- Index pour la table `publications`
+--
+ALTER TABLE `publications`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `resources`
+--
+ALTER TABLE `resources`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `resources_id_module_foreign` (`id_module`),
+  ADD KEY `resources_id_teacher_foreign` (`id_teacher`);
+
+--
+-- Index pour la table `soumestres`
+--
+ALTER TABLE `soumestres`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `student_soumestres`
+--
+ALTER TABLE `student_soumestres`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `student_soumestres_id_soumestre_foreign` (`id_soumestre`),
+  ADD KEY `student_soumestres_id_student_foreign` (`id_student`);
+
+--
+-- Index pour la table `student__modules`
+--
+ALTER TABLE `student__modules`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `student__modules_id_student_foreign` (`id_student`),
+  ADD KEY `student__modules_id_module_foreign` (`id_module`);
+
+--
+-- Index pour la table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD KEY `users_class_id_foreign` (`class_id`);
+
+--
+-- Index pour la table `years`
+--
+ALTER TABLE `years`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `years_id_student_foreign` (`id_student`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `assignments`
+--
+ALTER TABLE `assignments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT pour la table `assignment_student`
+--
+ALTER TABLE `assignment_student`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `assignment_submissions`
+--
+ALTER TABLE `assignment_submissions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `classes`
+--
+ALTER TABLE `classes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT pour la table `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT pour la table `modules`
+--
+ALTER TABLE `modules`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT pour la table `publications`
+--
+ALTER TABLE `publications`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT pour la table `resources`
+--
+ALTER TABLE `resources`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT pour la table `soumestres`
+--
+ALTER TABLE `soumestres`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT pour la table `student_soumestres`
+--
+ALTER TABLE `student_soumestres`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT pour la table `student__modules`
+--
+ALTER TABLE `student__modules`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT pour la table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+
+--
+-- AUTO_INCREMENT pour la table `years`
+--
+ALTER TABLE `years`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `assignments`
+--
+ALTER TABLE `assignments`
+  ADD CONSTRAINT `assignments_module_id_foreign` FOREIGN KEY (`module_id`) REFERENCES `modules` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `assignments_teacher_id_foreign` FOREIGN KEY (`teacher_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `assignment_student`
+--
+ALTER TABLE `assignment_student`
+  ADD CONSTRAINT `assignment_student_assignment_id_foreign` FOREIGN KEY (`assignment_id`) REFERENCES `assignments` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `assignment_student_student_id_foreign` FOREIGN KEY (`student_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `assignment_submissions`
+--
+ALTER TABLE `assignment_submissions`
+  ADD CONSTRAINT `assignment_submissions_assignment_id_foreign` FOREIGN KEY (`assignment_id`) REFERENCES `assignments` (`id`),
+  ADD CONSTRAINT `assignment_submissions_id_student_foreign` FOREIGN KEY (`id_student`) REFERENCES `users` (`id`);
+
+--
+-- Contraintes pour la table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD CONSTRAINT `contacts_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `modules`
+--
+ALTER TABLE `modules`
+  ADD CONSTRAINT `modules_id_soumestre_foreign` FOREIGN KEY (`id_soumestre`) REFERENCES `soumestres` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `modules_id_teacher_foreign` FOREIGN KEY (`id_teacher`) REFERENCES `users` (`id`);
+
+--
+-- Contraintes pour la table `resources`
+--
+ALTER TABLE `resources`
+  ADD CONSTRAINT `resources_id_module_foreign` FOREIGN KEY (`id_module`) REFERENCES `modules` (`id`),
+  ADD CONSTRAINT `resources_id_teacher_foreign` FOREIGN KEY (`id_teacher`) REFERENCES `users` (`id`);
+
+--
+-- Contraintes pour la table `student_soumestres`
+--
+ALTER TABLE `student_soumestres`
+  ADD CONSTRAINT `student_soumestres_id_soumestre_foreign` FOREIGN KEY (`id_soumestre`) REFERENCES `soumestres` (`id`),
+  ADD CONSTRAINT `student_soumestres_id_student_foreign` FOREIGN KEY (`id_student`) REFERENCES `users` (`id`);
+
+--
+-- Contraintes pour la table `student__modules`
+--
+ALTER TABLE `student__modules`
+  ADD CONSTRAINT `student__modules_id_module_foreign` FOREIGN KEY (`id_module`) REFERENCES `modules` (`id`),
+  ADD CONSTRAINT `student__modules_id_student_foreign` FOREIGN KEY (`id_student`) REFERENCES `users` (`id`);
+
+--
+-- Contraintes pour la table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_class_id_foreign` FOREIGN KEY (`class_id`) REFERENCES `classes` (`id`);
+
+--
+-- Contraintes pour la table `years`
+--
+ALTER TABLE `years`
+  ADD CONSTRAINT `years_id_student_foreign` FOREIGN KEY (`id_student`) REFERENCES `users` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
