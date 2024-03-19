@@ -12,6 +12,7 @@ use App\Models\Assignment;
 use Carbon\Carbon;
 use App\Http\Requests\AssignementRequest;
 use App\Models\Module;
+use Illuminate\Support\Facades\DB;
 class AssignmentController extends Controller
 {
     public function Assignmentstudent()
@@ -56,7 +57,7 @@ class AssignmentController extends Controller
             $fileSizeInKB = round($fileSizeInBytes / 1024, 2);
             return view('student/detailA',compact('Assignment','fileSizeInKB'));
         }
-        
+
         return view('student/detailA',compact('Assignment'));
     }
 
@@ -87,24 +88,52 @@ class AssignmentController extends Controller
         $modules = Module::where('id_teacher', $teacherId)->get();
         return view('teacher.createassignment', compact('modules', 'teacherId'));
     }
-
     public function storet(AssignementRequest $req)
     {
-        $val=$req->validated();
-
+        $val = $req->validated();
         $val['module_id'] = $req->input('module_id');
         $val['teacher_id'] = auth()->id();
-        $val['fichier'] = $req->file('fichier')->store('assignment','public');
+        $val['fichier'] = $req->file('fichier') ? $req->file('fichier')->store('assignment', 'public') : null;
+        $assignment= Assignment::create($val);
 
-        Assignment::create($val);
+
+        $module = Module::find( $val['module_id']);
+        $students = $module->students;
+
+        foreach ($students as $student) {
+            DB::table('assignment_student')->insert([
+                'assignment_id' => $assignment->id,
+                'student_id' => $student->id,
+                'Note' => null,
+                'submission_status' => null,
+                'submission_date' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
 
         return redirect()->back()->with('success', 'Assignment added successfully.');
     }
 
-    public function show($id)
+
+public function show($id)
 {
-    $assignment = Assignment::findOrFail($id); // Assuming your model is named Assignment
+    $assignment = Assignment::findOrFail($id);
+    $assignment->createdAt = $assignment->created_at->diffForHumans();
+    if (trim($assignment->fichier) !== '' || $assignment->fichier !== null) {
+        $file = new File('storage/' . $assignment->fichier);
+        $fileSizeInBytes = $file->getSize();
+        $fileSizeInKB = round($fileSizeInBytes / 1024, 2);
+        return view('teacher.assignment_details', compact('assignment', 'fileSizeInKB'));
+    }
+
     return view('teacher.assignment_details', compact('assignment'));
 }
+public function destroy(Assignment $assignment)
+    {
+        // Votre logique de suppression de l'assignation ici
+        $assignment->delete();
 
+        return redirect()->back()->with('success', 'Assignation supprimée avec succès.');
+    }
 }
