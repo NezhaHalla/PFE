@@ -1,27 +1,46 @@
-<x-master title="My Assignments">
+<?php if (isset($component)) { $__componentOriginal9881aee3032510140a884de503784c66 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal9881aee3032510140a884de503784c66 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.master','data' => ['title' => 'My Assignments']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('master'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['title' => 'My Assignments']); ?>
     <div class="ag-format-container">
         <div class="ag-courses_box card-container"> <!-- Added class "card-container" -->
-            @foreach($assignments as $assignment)
+            <?php $__currentLoopData = $assignments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $assignment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="ag-courses_item card"> <!-- Added class "card" -->
                     <a href="#" class="ag-courses-item_link"> <!-- Changed div to anchor -->
                         <div class="ag-courses-item_bg"></div>
 
                         <div class="ag-courses-item_title">
-                            {{ $assignment->role }}
+                            <?php echo e($assignment->role); ?>
+
                         </div>
 
                         <div class="ag-courses-item_date-box">
-                            <h5 class="card-title">{{ $assignment->titre }}</h5>
-                            <p class="card-text"><strong>Deadline:</strong> {{ $assignment->deadline }}</p>
+                            <h5 class="card-title"><?php echo e($assignment->titre); ?></h5>
+                            <p class="card-text"><strong>Deadline:</strong> <?php echo e($assignment->deadline); ?></p>
 
-                            <a href="{{ route('assignments.show', ['assignment' => $assignment->id]) }}" class="btn btn-primary">Details</a>
+                            <a href="<?php echo e(route('assignments.show', ['assignment' => $assignment->id])); ?>" class="btn btn-primary">Details</a>
                         </div>
                     </a>
                 </div>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
     </div>
-</x-master>
+ <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal9881aee3032510140a884de503784c66)): ?>
+<?php $attributes = $__attributesOriginal9881aee3032510140a884de503784c66; ?>
+<?php unset($__attributesOriginal9881aee3032510140a884de503784c66); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal9881aee3032510140a884de503784c66)): ?>
+<?php $component = $__componentOriginal9881aee3032510140a884de503784c66; ?>
+<?php unset($__componentOriginal9881aee3032510140a884de503784c66); ?>
+<?php endif; ?>
 
 <style>
     /* General styles */
@@ -123,3 +142,4 @@
         }
     }
 </style>
+<?php /**PATH C:\Users\user\Documents\PFE\ScholarNet\resources\views/teacher/myAssignement.blade.php ENDPATH**/ ?>

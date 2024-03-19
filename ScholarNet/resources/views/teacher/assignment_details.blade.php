@@ -56,7 +56,7 @@
                         </div>
                         @endif
                         @if (auth()->user()->id === $assignment->teacher->id)
-                        <form action="{{ route('assignment.destroy',$assignment->id) }}" method="post">
+                        <form action="{{ route('assignments.destroy',$assignment->id) }}" method="post">
                             @method('DELETE')
                             @csrf
                             <button class="sup" onclick="return confirm('Do you want to delete this course ?')"  >Delete</button>
