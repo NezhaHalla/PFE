@@ -165,12 +165,13 @@
 		<div class="container">
 			<div class="row animate-box">
 				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading">
-					<h2>Our Announcements</h2>
+					<h2>Stay Updated with Our Announcements</h2>
 					<p>Stay informed about our upcoming events and news by checking our announcements regularly.</p>
 				</div>
 			</div>
 			<div class="row">
-                @foreach ($announcement as $announce)
+                <x-announcement :announcement="$announcement"></x-announcement>
+                {{-- @foreach ($announcement as $announce)
                     <div class="col-md-6 animate-box">
                         <div class="course">
                             <a href="#" class="course-img" style="background-image:url('{{ asset('storage/'.$announce->imagepub) }}');">
@@ -186,7 +187,7 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @endforeach --}}
 			</div>
 		</div>
 	</div>

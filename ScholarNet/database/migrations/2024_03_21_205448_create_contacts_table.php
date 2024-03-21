@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id'); // Add user_id column
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('fname');
             $table->string('lname');
             $table->string('email');

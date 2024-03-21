@@ -7,7 +7,7 @@
                         <div class="ag-courses-item_bg"></div>
 
                         <div class="ag-courses-item_title">
-                            {{ $assignment->titre }}
+                            {{ $assignment->role }}
                         </div>
 
                         <div class="ag-courses-item_date-box">
@@ -33,24 +33,23 @@
         width: 100%;
         max-width: 1142px;
         margin: 0 auto;
+        padding: 0 15px; /* Add padding to prevent horizontal overflow */
     }
 
     /* Course box styles */
     .ag-courses_box {
         display: flex;
         flex-wrap: wrap;
-        align-items: flex-start;
         justify-content: space-between;
         padding: 50px 0;
     }
 
     /* Course item styles */
     .ag-courses_item {
-        flex: 1 1 calc(33.33333% - 30px);
-        margin: 0 15px 30px;
-        overflow: hidden;
-        border-radius: 28px;
-        position: relative;
+        width: calc(33.333% - 30px); /* Adjust the width as needed */
+        margin-bottom: 20px;
+        flex-shrink: 0; /* Ensure cards don't shrink */
+        font-size: 40px;
     }
 
     /* Course item link styles */
@@ -61,11 +60,12 @@
         align-items: center;
         position: relative;
         overflow: hidden;
-        padding: 30px 20px;
+        padding: 30px;
         background-color: #fcfbfb;
         border-radius: 28px;
         text-decoration: none;
         color: #111010;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
     }
 
     .ag-courses-item_link:hover .ag-courses-item_bg {
@@ -87,10 +87,11 @@
     /* Course item title styles */
     .ag-courses-item_title {
         min-height: 87px;
-        margin: 0 0 25px;
+        margin-bottom: 25px;
         font-weight: bold;
         font-size: 30px;
         line-height: 1.2;
+        text-align: center;
     }
 
     /* Course item date box styles */
@@ -109,40 +110,16 @@
         transition: color 0.5s ease;
     }
 
-    /* Media queries */
+    /* Media query for smaller screens */
     @media only screen and (max-width: 979px) {
         .ag-courses_item {
-            flex: 1 1 calc(50% - 30px);
-        }
-
-        .ag-courses-item_title {
-            font-size: 24px;
-        }
-    }
-
-    @media only screen and (max-width: 767px) {
-        .ag-format-container {
-            width: 96%;
+            width: calc(50% - 30px); /* Adjust the width for smaller screens */
         }
     }
 
     @media only screen and (max-width: 639px) {
         .ag-courses_item {
-            flex: 1 1 100%;
-        }
-
-        .ag-courses-item_title {
-            min-height: 72px;
-            font-size: 24px;
-            line-height: 1.2;
-        }
-
-        .ag-courses-item_link {
-            padding: 22px 40px;
-        }
-
-        .ag-courses-item_date-box {
-            font-size: 16px;
+            width: calc(100% - 30px); /* Full width for smaller screens */
         }
     }
 </style>

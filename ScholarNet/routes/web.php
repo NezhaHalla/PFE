@@ -6,10 +6,11 @@ use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\UserController;
 use \App\Http\Controllers\homeController;
 use App\Http\Controllers\ClassController;
-use App\Http\Controllers\ResourceController;
-use \App\Http\Controllers\publicationController;
-use \App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ResourceController;
+use \App\Http\Controllers\AssignmentController;
+use \App\Http\Controllers\publicationController;
+use App\Http\Controllers\StudentSubmitedAssignmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,3 +107,11 @@ Route::delete('/assignments/{assignment}', [AssignmentController::class, 'destro
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
+
+Route::get('/assignment/search', [AssignmentController::class, 'searchAssignment'])->name('searchAssignment');
+
+Route::get('/Assignment/{assignment}/details',[AssignmentController::class,'showDetails'])->name('assignment.showDetails');
+
+
+Route::get('/ShowDocuments/{assignment}',[AssignmentController::class,'showdoc'])->name('showdocA');
+Route::get('/assignment/submit',[StudentSubmitedAssignmentController::class,'create'])->name('studentsubass');

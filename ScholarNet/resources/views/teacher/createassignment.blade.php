@@ -17,9 +17,8 @@
             }
 
             .form-container {
-
                 margin: 80px auto;
-                max-width: 550px;
+                max-width: 600px; /* Increase the max-width */
                 width: 100%;
                 background: #f9f9f9;
                 border-radius: 10px;
@@ -28,30 +27,32 @@
             }
 
             .formbold-form-input {
-                width: 100%;
-                padding: 13px 22px;
-                border-radius: 5px;
-                border: 1px solid #DDE3EC;
-                background: #FFFFFF;
-                font-weight: 500;
-                font-size: 16px;
-                color: #07074D;
-                outline: none;
-                resize: none;
-            }
-            .formbold-form-input::placeholder {
-                color: #536387;
-            }
-            .formbold-form-input:focus {
-                border-color: #6a64f1;
-                box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
-            }
+        width: calc(100% - 15px); /* Adjust the width to show two inputs in a line */
+        padding: 13px 22px;
+        border-radius: 5px;
+        border: 1px solid #DDE3EC;
+        background: #FFFFFF;
+        font-weight: 500;
+        font-size: 16px;
+        color: #07074D;
+        outline: none;
+        resize: none;
+        margin-right: 30px; /* Add margin between inputs */
+    }
+
             .formbold-form-label {
                 color: #07074D;
                 font-size: 14px;
                 line-height: 24px;
-                display: block;
                 margin-bottom: 10px;
+                width:100px;
+                padding-top:10px;
+            }
+
+            .formbold-form-group {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 20px;
             }
 
             .btn-primary {
@@ -67,10 +68,17 @@
                 cursor: pointer;
                 margin-top: 25px;
             }
+
             .btn-primary:hover {
                 box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
             }
 
+            @media screen and (max-width: 768px) {
+                .formbold-form-input {
+                    width: 100%;
+                    margin-right: 0;
+                }
+            }
         </style>
     </head>
     <body>
@@ -104,6 +112,8 @@
                             <option value="">Select Role</option>
                             <option value="TP" {{ old('role') == 'TP' ? 'selected' : '' }}>TP</option>
                             <option value="EXAM" {{ old('role') == 'EXAM' ? 'selected' : '' }}>EXAM</option>
+                            <option value="Announce" {{ old('role') == 'Announce' ? 'selected' : '' }}>Announce</option>
+
                         </select>
                         @error('role')
                             <div class="text-danger">{{ $message }}</div>
