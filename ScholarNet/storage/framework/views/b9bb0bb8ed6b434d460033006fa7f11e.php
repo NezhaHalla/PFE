@@ -9,11 +9,11 @@
     <?php if(auth()->guard()->check()): ?>
     <?php if(auth()->user()->role === 'Admin'): ?>
     <nav>
-        
+
         <a href="javascript:void(0);" onclick="history.back();" style="color: aliceblue;font-size:25px">
             <label for="exampleInputname" class="formbold-form-label"><i class="fas fa-arrow-left"></i></label>
         </a>
-             
+
         <label class="logo" >ScolarNet</label>
         <ul>
             <li><a class="active" href="<?php echo e(route('home')); ?>">Home</a></li>
@@ -49,7 +49,7 @@
         <a href="javascript:void(0);" onclick="history.back();" style="color: aliceblue;font-size:25px">
             <label for="exampleInputname" class="formbold-form-label"><i class="fas fa-arrow-left"></i></label>
         </a>
-             
+
         <label class="logo">ScolarNet</label>
         <ul>
             <li><a class="active" href="<?php echo e(route('home')); ?>">Home</a></li>
@@ -58,8 +58,8 @@
                 <ul>
                     <li><a href="<?php echo e(route('Myclasse', ['studentId' => auth()->id()])); ?>">My Class</a></li>
                     <li><a href="<?php echo e(route('myCourses')); ?>">Courses</a></li>
-                    <li><a href="<?php echo e(route('Assignments')); ?>#">Assignments</a></li> 
-                    <li><a href="#">Submission</a></li>
+                    <li><a href="<?php echo e(route('Assignments')); ?>">Assignments</a></li>
+                    <li><a href="<?php echo e(route('studentsubass')); ?>">Submission</a></li>
                 </ul>
             </li>
             <li>
@@ -85,11 +85,11 @@
     </nav>
     <?php elseif(auth()->user()->role === 'Teacher'): ?>
     <nav>
-        
+
         <a href="javascript:void(0);" onclick="history.back();" style="color: aliceblue;font-size:25px">
             <label for="exampleInputname" class="formbold-form-label"><i class="fas fa-arrow-left"></i></label>
         </a>
-             
+
         <label class="logo">ScolarNet</label>
         <ul>
             <li><a class="active" href="<?php echo e(route('home')); ?>">Home</a></li>

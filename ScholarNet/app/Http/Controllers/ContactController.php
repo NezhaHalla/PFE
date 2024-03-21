@@ -23,9 +23,7 @@ class ContactController extends Controller
             'message' => 'required',
 
         ]);
-        if(auth()->user() !== null){
-        $validatedData['user_id'] = auth()->user()->id;
-        }
+       
 
         Contact::create($validatedData);
 
