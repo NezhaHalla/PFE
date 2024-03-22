@@ -23,6 +23,7 @@ use App\Http\Controllers\StudentSubmitedAssignmentController;
 |
 */
 Route::get('/',[homeController::class,'index'])->name('home');
+Route::get('/bar',[homeController::class,'showbar'])->name('showbar');
 Route::get('publications/addPublicaion',[publicationController::class,'create'])->name('publication.create')->middleware('auth');
 Route::post('publications/storePublication',[publicationController::class,'store'])->name('publication.store')->middleware('auth');
 Route::delete('publications/delete/{publication}',[publicationController::class,'destroy'])->name('publication.destroy')->middleware('auth');
@@ -107,8 +108,11 @@ Route::delete('/assignments/{assignment}', [AssignmentController::class, 'destro
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
+Route::get('/contacts/{id}', [ContactController::class, 'show'])->name('contacts.show');
 
-Route::get('/assignment/search', [AssignmentController::class, 'searchAssignment'])->name('searchAssignment');
+Route::get('/assignmentS/search', [AssignmentController::class, 'searchAssignment'])->name('searchAssignment');
+Route::get('/assignmentT/search', [AssignmentController::class, 'searchAssignmentT'])->name('searchAssignmentT');
+
 
 Route::get('/Assignment/{assignment}/details',[AssignmentController::class,'showDetails'])->name('assignment.showDetails');
 

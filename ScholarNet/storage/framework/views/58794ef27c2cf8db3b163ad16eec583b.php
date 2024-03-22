@@ -92,12 +92,7 @@
     </head>
     <body>
 
-        <?php if(session('success')): ?>
-            <div class="alert alert-success">
-                <?php echo e(session('success')); ?>
-
-            </div>
-        <?php endif; ?>
+       
         <div class="formbold-main-wrapper">
             <div class="form-container">
                 <form action="<?php echo e(route('store_resource')); ?>" method="POST" enctype='multipart/form-data'>

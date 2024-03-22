@@ -8,6 +8,17 @@
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['title' => 'My Assignments']); ?>
+
+    <form action="<?php echo e(route('searchAssignmentT')); ?>" method="GET">
+        <div class="input-group rounded" style="padding-top:60px;text-align:center; width:500px;left:35%">
+            <input type="search" class="form-control rounded" name="search" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+            <span class="input-group-text border-0" id="search-addon">
+            <button type="submit" style="border: none;background-color:transparent;">
+                <i class="fas fa-search" style="font-size: 30px"></i>
+            </button>
+            </span>
+        </div>
+    </form>
     <div class="ag-format-container">
         <div class="ag-courses_box card-container"> <!-- Added class "card-container" -->
             <?php $__currentLoopData = $assignments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $assignment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
