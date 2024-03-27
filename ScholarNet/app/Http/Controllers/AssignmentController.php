@@ -19,7 +19,7 @@ class AssignmentController extends Controller
     {
         $user = Auth::user();
         if ($user->role === 'Student') {
-            $studentAssignments1 = $user->studentAssignments;
+            $studentAssignments1 = $user->studentAssignments->sortByDesc('created_at');
             $studentAssignments = $studentAssignments1->map(function($ass){
                 $created=Carbon::parse($ass->created_at);
                 $ass->createdAt=$created->diffForHumans();

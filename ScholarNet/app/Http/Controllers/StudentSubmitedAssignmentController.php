@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class StudentSubmitedAssignmentController extends Controller
 {
     public function create(){
+        
         return view('student/submitmyassignment');
     }
 }
