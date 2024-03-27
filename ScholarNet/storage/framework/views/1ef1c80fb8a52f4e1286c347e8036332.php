@@ -16,6 +16,7 @@
                     <p class="card-text"><strong>Branch:</strong> <?php echo e($class->Branch); ?></p>
                     <p class="card-text"><strong>Level:</strong> <?php echo e($class->Level); ?></p>
                     <p class="card-text"><strong>Year:</strong> <?php echo e($class->Year); ?></p>
+                    <p class="card-text"><strong>Number of Students:</strong> <?php echo e($class->num_students); ?></p>
                     <a href="<?php echo e(route('showAllStudents', ['class_id' => $class->id])); ?>" class="btn btn-primary">Show Students</a>
                 </div>
             </div>
@@ -34,17 +35,22 @@
 
         .card-container {
             display: flex;
-            flex-wrap: wrap;
+             gap: 20px;
             justify-content: center;
-            gap: 20px;
+            flex-wrap: wrap;
             margin-top: 20px;
         }
         .card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            margin-bottom: 20px;
+            background: #fff;
+            border-radius: 4px;
+            box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
+            width: 400px; /* Adjust the width as needed */
+            height: 250px;
+            display: flex;
+            flex-direction: row;
+            border-radius: 25px;
+            position: relative;
+            overflow: hidden;
         }
         .card-body {
             padding: 20px;
@@ -53,19 +59,19 @@
             font-size: 1.25rem;
             margin-bottom: 10px;
             color: #333;
+            text-align: center;
+
         }
         .card-text {
             margin-bottom: 10px;
             color: #666;
         }
         .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
+
+            background-color: #4682B4;
+            padding: 6px 12px;
+            border-radius: 6px;
+
         }
         .btn-primary:hover {
             background-color: #0056b3;

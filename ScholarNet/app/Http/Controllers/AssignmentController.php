@@ -47,6 +47,33 @@ class AssignmentController extends Controller
         });
         return view('student.myAssignement', ['assignments' => $assignments, 'role' => 'Student']);
     }
+    public function searchAssignmentT(Request $request)
+    {
+        $user = Auth::user();
+        if ($user->role !== 'Teacher') {
+            return redirect()->back()->with('error', 'Unauthorized access.');
+        }
+
+        $search = $request->input('search');
+        $teacherId = $user->id;
+
+
+        $assignments = Assignment::where('teacher_id', $teacherId)
+            ->where(function ($query) use ($search) {
+                $query->where('titre', 'like', '%' . $search . '%')
+                    ->orWhereHas('module', function ($query) use ($search) {
+                        $query->where('nom', 'like', '%' . $search . '%');
+                    })
+                    ->orWhereHas('teacher', function ($query) use ($search) {
+                        $query->where('name', 'like', '%' . $search . '%');
+                    });
+            })
+            ->orderByDesc('created_at')
+            ->get();
+
+
+        return view('teacher.myAssignement', ['assignments' => $assignments, 'role' => 'Teacher']);
+    }
 
     public function showDetails(Assignment $assignment){
         $Assignment=Assignment::findOrFail($assignment->id);

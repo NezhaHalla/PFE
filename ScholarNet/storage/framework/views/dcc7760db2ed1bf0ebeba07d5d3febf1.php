@@ -36,7 +36,7 @@ body {
     border-radius: 4px;
     box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
     max-width: 400px;
-    max-height: 400px;
+    max-height: 300px;
     display: flex;
     flex-direction: row;
     border-radius: 25px;
@@ -83,12 +83,15 @@ body {
 
 .card-text {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+}
+.title-total {
+    padding: 1em;
+   
+
 }
 
-.title-total {
-  padding: 2.5em 1.5em 1.5em 1.5em;
-}
 
 path {
   fill: white;
@@ -113,8 +116,10 @@ path {
 
 .actions {
   display: flex;
-  justify-content: flex-end;
-  margin-top: 10px;
+  margin-top: auto; /* Align items to the bottom */
+  bottom: 0;
+
+
 }
 
 .actions a {
@@ -137,6 +142,7 @@ path {
 /* Hover effect */
 .actions a:hover {
   opacity: 0.8;
+
 }
 
 
@@ -146,20 +152,18 @@ path {
     <div class="card-container">
 
             <div class="card">
-                <!-- Card content -->
-                <div class="img-avatar">
 
-                </div>
                 <div class="card-text">
                     <div class="portada" style="background-image: url('<?php echo e(asset('storage/' . $user->image)); ?>');"></div>
 
                     <div class="title-total">
-                        <div class="title">Card</div>
-                        <h2><?php echo e($user->name); ?></h2>
+
+                        <div><h3><?php echo e($user->name); ?></h3></div>
                         <div class="desc"><?php echo e($user->role); ?></div>
                         <div class="desc"><?php echo e($user->gender); ?></div>
                         <div class="desc"><?php echo e(date('Y-m-d', strtotime($user->DateDeNaissance))); ?></div>
                         <div class="desc"><?php echo e($user->email); ?></div>
+
                         <div class="actions">
                             <a class="delete" href="<?php echo e(route('user.delete', ['id' => $user->id])); ?>">Delete</a>
                             <a class="modify" href="<?php echo e(route('user.edit', ['id' => $user->id])); ?>">Modify</a>
@@ -167,7 +171,7 @@ path {
                     </div>
                 </div>
             </div>
-
+<br>
     </div>
 
 </body>

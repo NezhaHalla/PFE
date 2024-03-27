@@ -17,7 +17,15 @@
         <label class="logo" >ScolarNet</label>
         <ul>
             <li><a class="active" href="{{ route('home') }}">Home</a></li>
-            <li><a href="{{ route('contacts.index') }}">Message</a></li>
+            <li>
+                <a href="{{ route('contacts.index') }}" class="notification-icon">
+                    <i class="fas fa-bell"></i>
+
+                    @if ($unreadMessageCount > 0)
+                        <span class="badge">{{ $unreadMessageCount }}</span>
+                    @endif
+                    Message </a>
+            </li>
             <li>
                 <a href="#">System<i class="fas fa-caret-down"></i></a>
                 <ul>

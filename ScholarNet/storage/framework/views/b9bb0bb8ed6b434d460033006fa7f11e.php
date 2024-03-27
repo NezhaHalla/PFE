@@ -17,7 +17,15 @@
         <label class="logo" >ScolarNet</label>
         <ul>
             <li><a class="active" href="<?php echo e(route('home')); ?>">Home</a></li>
-            <li><a href="<?php echo e(route('contacts.index')); ?>">Message</a></li>
+            <li>
+                <a href="<?php echo e(route('contacts.index')); ?>" class="notification-icon">
+                    <i class="fas fa-bell"></i>
+
+                    <?php if($unreadMessageCount > 0): ?>
+                        <span class="badge"><?php echo e($unreadMessageCount); ?></span>
+                    <?php endif; ?>
+                    Message </a>
+            </li>
             <li>
                 <a href="#">System<i class="fas fa-caret-down"></i></a>
                 <ul>

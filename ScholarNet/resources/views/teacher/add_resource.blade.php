@@ -83,11 +83,7 @@
     </head>
     <body>
 
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+       
         <div class="formbold-main-wrapper">
             <div class="form-container">
                 <form action="{{ route('store_resource') }}" method="POST" enctype='multipart/form-data'>
