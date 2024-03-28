@@ -34,8 +34,10 @@ nav .logo {
 }
 
 nav ul {
-    float: right;
+    position: fixed;
+    right: 0;
     margin-right: 10px;
+    top: 0;
 }
 
 nav ul li {
@@ -126,7 +128,7 @@ section {
     transform: translateY(-50%);
     border-radius: 50%;
     overflow: hidden;
-    
+
     margin-left: 10px;
 }
 

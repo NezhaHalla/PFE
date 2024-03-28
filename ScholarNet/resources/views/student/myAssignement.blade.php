@@ -12,27 +12,27 @@
                 </button>
                 </span>
             </div>
-        </form>        
+        </form>
         <ul class="cards">
             @foreach ($assignments as $assignment)
             <li>
               <div href="" class="card" style="background-color:azure">
                 <div class="head">{{ $assignment->titre }}</div>
-                <div class="description">{{ $assignment->module->nom }}</div>
+                <div class="description">{{ $assignment->role }} | {{ $assignment->module->nom }}</div>
                 <div class="card__overlay">
-                  <div class="card__header">            
+                  <div class="card__header">
                     <img class="card__thumb" src="{{ asset('storage/'.$assignment->teacher->image)}}" alt="" />
                     <div class="card__header-text">
                       <h3 class="card__title">{{ $assignment->teacher->name }}</h3>
-                      <span class="card__status">{{ $assignment->role }} | {{ $assignment->createdAt }}</span>
-                    </div>          
+                      <span class="card__status">{{ $assignment->createdAt }}</span>
+                    </div>
                   </div>
                   <div class="card__description "><a class="button" href="{{ route('assignment.showDetails',$assignment->id) }}">Details</a></div>
                 </div>
             </div>
             </li>
             @endforeach
-          </ul>          
+          </ul>
     </body>
     </html>
 </x-master>

@@ -17,14 +17,19 @@
         <title>Add User</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <style>
-            
+   @media screen and (max-width: 768px) {
+                .formbold-form-input {
+                    width: 100%;
+                    margin-right: 0;
+                }
+            }
             .formbold-main-wrapper {
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 padding: 48px;
             }
-        
+
             .form-container {
                 margin: 80px auto;
                 max-width: 900px; /* Increase the max-width */
@@ -34,7 +39,7 @@
                 padding: 30px;
                 box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
             }
-        
+
             .formbold-form-input {
                 width: calc(50% - 15px); /* Adjust the width to show two inputs in a line */
                 padding: 13px 22px;
@@ -48,7 +53,7 @@
                 resize: none;
                 margin-right: 30px; /* Add margin between inputs */
             }
-        
+
             .formbold-form-label {
                 color: #07074D;
                 font-size: 14px;
@@ -57,13 +62,13 @@
                 width:100px;
                 padding-top:10px;
             }
-        
+
             .formbold-form-group {
                 display: flex;
                 justify-content: space-between;
                 margin-bottom: 20px;
             }
-        
+
             .btn-primary {
                 text-align: center;
                 width: 100%;
@@ -77,28 +82,18 @@
                 cursor: pointer;
                 margin-top: 25px;
             }
-        
+
             .btn-primary:hover {
                 box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
             }
-        
-            @media screen and (max-width: 768px) {
-                .formbold-form-input {
-                    width: 100%;
-                    margin-right: 0;
-                }
-            }
+
+
         </style>
-        
+
     </head>
     <body>
 
-        <?php if(session('success')): ?>
-            <div class="alert alert-success">
-                <?php echo e(session('success')); ?>
 
-            </div>
-        <?php endif; ?>
         <div class="formbold-main-wrapper">
             <div class="form-container">
                 <form action="<?php echo e(route('adduser')); ?>" method="POST" enctype='multipart/form-data'>

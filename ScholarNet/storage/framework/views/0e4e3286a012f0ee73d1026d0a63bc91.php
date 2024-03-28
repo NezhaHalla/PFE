@@ -12,36 +12,36 @@
         <link href="<?php echo e(asset('css/details.css')); ?>" rel="stylesheet">
         <style>
             .doc {
-        display: flex;
-        border: 1px solid #ccc;
-        position: relative;
-        padding: 0px;
-        margin:0px;
-        height:80px;
-        border-radius: 20%;
-        bottom: -35px;
-        z-index: 1000;
-    }
+                display: flex;
+                border: 1px solid #ccc;
+                position: relative;
+                padding: 0px;
+                margin:0px;
+                height:80px;
+                border-radius: 20%;
+                bottom: -35px;
+                z-index: 1000;
+                }
 
-    .div2 {
-        
-        font-size: 18px;
-        position: absolute;
-        top:-5px;
-    }
+                .div2 {
 
-    .aadd{
-        color: blueviolet;
-        text-decoration: underline;
-        font-family: Georgia, 'Times New Roman', Times, serif;
-    }
+                    font-size: 18px;
+                    position: absolute;
+                    top:-5px;
+                }
 
-    .div3 {
-        color: grey;
-        position: absolute;
-        right:10px;
-        top: 40%;
-    }
+                .aadd{
+                    color: blueviolet;
+                    text-decoration: underline;
+                    font-family: Georgia, 'Times New Roman', Times, serif;
+                }
+
+                .div3 {
+                    color: grey;
+                    position: absolute;
+                    right:10px;
+                    top: 40%;
+                }
         </style>
     </head>
     <body>
@@ -73,9 +73,11 @@
                     </form>
                     <?php endif; ?>
                     <?php if(auth()->user()->role === "Student"): ?>
-                        <div class="d-grid gap-2 col-6 mx-auto" >
-                            <a href="<?php echo e(route('studentsubass')); ?>" class="btn btn-success" type="button" style="position:absolute; bottom: 20px;left:23%;width:500px;height:40px;">Submit My Assignment</a>
-                        </div>
+                        <?php if(strtotime($Assignment->deadline) > strtotime(now())): ?>
+                            <div class="d-grid gap-2 col-6 mx-auto" >
+                                <a href="<?php echo e(route('studentsubass')); ?>" class="btn btn-success" type="button" style="position:absolute; bottom: 20px;left:23%;width:500px;height:40px;">Submit My Assignment</a>
+                            </div>
+                        <?php endif; ?>
                     <?php endif; ?>
             </article>
         </div>
@@ -91,4 +93,5 @@
 <?php $component = $__componentOriginal9881aee3032510140a884de503784c66; ?>
 <?php unset($__componentOriginal9881aee3032510140a884de503784c66); ?>
 <?php endif; ?>
+
 <?php /**PATH C:\Users\user\Documents\PFE\ScholarNet\resources\views/student/detailA.blade.php ENDPATH**/ ?>

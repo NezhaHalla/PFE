@@ -119,3 +119,4 @@ Route::get('/Assignment/{assignment}/details',[AssignmentController::class,'show
 
 Route::get('/ShowDocuments/{assignment}',[AssignmentController::class,'showdoc'])->name('showdocA');
 Route::get('/assignment/submit',[StudentSubmitedAssignmentController::class,'create'])->name('studentsubass');
+
