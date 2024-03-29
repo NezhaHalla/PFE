@@ -23,7 +23,7 @@ use App\Http\Controllers\StudentSubmitedAssignmentController;
 |
 */
 Route::get('/',[homeController::class,'index'])->name('home');
-Route::get('/bar',[homeController::class,'showbar'])->name('showbar');
+Route::get('/bar',[homeController::class,'showbar'])->name('showbar')->middleware('auth');
 Route::get('publications/addPublicaion',[publicationController::class,'create'])->name('publication.create')->middleware('auth');
 Route::post('publications/storePublication',[publicationController::class,'store'])->name('publication.store')->middleware('auth');
 Route::delete('publications/delete/{publication}',[publicationController::class,'destroy'])->name('publication.destroy')->middleware('auth');

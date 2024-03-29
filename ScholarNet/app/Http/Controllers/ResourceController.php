@@ -20,14 +20,6 @@ class ResourceController extends Controller
      */
     public function index()
 {
-    // $coursesWithModules = $student->modules->flatMap(function ($module) {
-    //     return $module->resource->map(function ($course) use ($module) {
-    //         $course->module_name = $module->nom; // Assuming 'nom' is the attribute representing the module name
-    //         $course->teacher_name = $course->teacher->name; // Assuming 'name' is the attribute representing the teacher's name
-    //         return $course;
-    //     });
-    // });
-
     $student = auth()->user();
     $courses = $student->modules->flatMap->resource->sortByDesc('created_at');
     $courses1=$courses->map(function($course){
@@ -109,11 +101,16 @@ class ResourceController extends Controller
     public function showDetails(Resource $resource)
     {
 
+
         $file = new File('storage/'.$resource->fichier);
         $fileSizeInBytes = $file->getSize();
         $fileSizeInKB = round($fileSizeInBytes / 1024, 2);
         $course=Resource::findOrFail($resource->id);
+        $course->is_readr = true;
+        $course->save();
         $course->createdAt=(Carbon::parse($course->created_at))->diffForHumans();
+
+       
         return view('common/afficherDetailsCoure',compact('course','fileSizeInKB'));
     }
 
@@ -136,14 +133,6 @@ public function searchCourses(Request $request)
 {
     $search = $request->input('search');
 
-    // $courses1 = Resource::where('titre', 'like', "%$search%")
-    //                  ->orWhereHas('module', function ($query) use ($search) {
-    //                      $query->where('nom', 'like', "%$search%");
-    //                  })
-    //                  ->orWhereHas('teacher', function ($query) use ($search) {
-    //                      $query->where('name', 'like', "%$search%");
-    //                  })
-    //                  ->get();
     $student = auth()->user();
 
     $courses = $student->modules->flatMap->resource->sortByDesc('created_at')->filter(function ($course) use ($search) {

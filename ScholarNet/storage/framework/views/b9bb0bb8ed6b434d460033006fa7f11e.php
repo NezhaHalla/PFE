@@ -3,7 +3,12 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
         <link href="<?php echo e(asset('css/bar.css')); ?>" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-PABJxUqZ0uLFr7V9yZAB+gpdUCGr3nu8n1DPTzkFX8fQynWpYRJ6CBrD/0jHwCzD/z7DY3BA5U/GvCKMy+WXfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+        <?php if(auth()->check()): ?>
+        <?php
+            $student = auth()->user();
+            $unreadressoureCount = $student->modules->flatMap->resource->where('is_readr', false)->count();
+        ?>
+    <?php endif; ?>
    </head>
    <body>
     <?php if(auth()->guard()->check()): ?>
@@ -62,10 +67,19 @@
         <ul>
             <li><a class="active" href="<?php echo e(route('home')); ?>">Home</a></li>
             <li>
-                <a href="#">Class<i class="fas fa-caret-down"></i></a>
+                <a href="#"> <i class="fas fa-bell"></i>
+                    <?php if($unreadressoureCount > 0): ?>
+                    <span class="badge"><?php echo e($unreadressoureCount); ?></span> </i>
+                     <?php endif; ?> Class
+                    <i class="fas fa-caret-down"></i>
+                    </a>
                 <ul>
                     <li><a href="<?php echo e(route('Myclasse', ['studentId' => auth()->id()])); ?>">My Class</a></li>
-                    <li><a href="<?php echo e(route('myCourses')); ?>">Courses</a></li>
+                    <li><a href="<?php echo e(route('myCourses')); ?>">
+                        <?php if($unreadressoureCount > 0): ?>
+                        <span class="badge"><?php echo e($unreadressoureCount); ?></span> </i>
+                         <?php endif; ?>
+                        Courses</a></li>
                     <li><a href="<?php echo e(route('Assignments')); ?>">Assignments</a></li>
                     <li><a href="<?php echo e(route('studentsubass')); ?>">Submission</a></li>
                 </ul>
