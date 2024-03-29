@@ -9,15 +9,23 @@
     <?php if(auth()->guard()->check()): ?>
     <?php if(auth()->user()->role === 'Admin'): ?>
     <nav>
-        
+
         <a href="javascript:void(0);" onclick="history.back();" style="color: aliceblue;font-size:25px">
             <label for="exampleInputname" class="formbold-form-label"><i class="fas fa-arrow-left"></i></label>
         </a>
-             
+
         <label class="logo" >ScolarNet</label>
         <ul>
             <li><a class="active" href="<?php echo e(route('home')); ?>">Home</a></li>
-            <li><a href="<?php echo e(route('contacts.index')); ?>">Message</a></li>
+            <li>
+                <a href="<?php echo e(route('contacts.index')); ?>" class="notification-icon">
+                    <i class="fas fa-bell"></i>
+
+                    <?php if($unreadMessageCount > 0): ?>
+                        <span class="badge"><?php echo e($unreadMessageCount); ?></span>
+                    <?php endif; ?>
+                    Message </a>
+            </li>
             <li>
                 <a href="#">System<i class="fas fa-caret-down"></i></a>
                 <ul>
@@ -49,7 +57,7 @@
         <a href="javascript:void(0);" onclick="history.back();" style="color: aliceblue;font-size:25px">
             <label for="exampleInputname" class="formbold-form-label"><i class="fas fa-arrow-left"></i></label>
         </a>
-             
+
         <label class="logo">ScolarNet</label>
         <ul>
             <li><a class="active" href="<?php echo e(route('home')); ?>">Home</a></li>
@@ -58,8 +66,8 @@
                 <ul>
                     <li><a href="<?php echo e(route('Myclasse', ['studentId' => auth()->id()])); ?>">My Class</a></li>
                     <li><a href="<?php echo e(route('myCourses')); ?>">Courses</a></li>
-                    <li><a href="<?php echo e(route('Assignments')); ?>#">Assignments</a></li> 
-                    <li><a href="#">Submission</a></li>
+                    <li><a href="<?php echo e(route('Assignments')); ?>">Assignments</a></li>
+                    <li><a href="<?php echo e(route('exercice.index')); ?>">Submission</a></li>
                 </ul>
             </li>
             <li>
@@ -85,11 +93,11 @@
     </nav>
     <?php elseif(auth()->user()->role === 'Teacher'): ?>
     <nav>
-        
+
         <a href="javascript:void(0);" onclick="history.back();" style="color: aliceblue;font-size:25px">
             <label for="exampleInputname" class="formbold-form-label"><i class="fas fa-arrow-left"></i></label>
         </a>
-             
+
         <label class="logo">ScolarNet</label>
         <ul>
             <li><a class="active" href="<?php echo e(route('home')); ?>">Home</a></li>

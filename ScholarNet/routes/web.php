@@ -10,7 +10,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ResourceController;
 use \App\Http\Controllers\AssignmentController;
 use \App\Http\Controllers\publicationController;
-use App\Http\Controllers\StudentSubmitedAssignmentController;
+use App\Http\Controllers\AssignmentSubmissionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -118,5 +118,11 @@ Route::get('/Assignment/{assignment}/details',[AssignmentController::class,'show
 
 
 Route::get('/ShowDocuments/{assignment}',[AssignmentController::class,'showdoc'])->name('showdocA');
-Route::get('/assignment/submit',[StudentSubmitedAssignmentController::class,'create'])->name('studentsubass');
+Route::get('/Assignment/{assignment}/submit',[AssignmentSubmissionsController::class,'create'])->name('studentsubass');
 
+
+Route::post('/Assignment/{assignment}/store',[AssignmentSubmissionsController::class,'store'])->name('exercice.store');
+Route::get('/MySubmittedAssignments',[AssignmentSubmissionsController::class,'index'])->name('exercice.index');
+
+Route::get('/assignments/{assignment}/submissions', [AssignmentSubmissionsController::class,'submissions'])->name('assignment.submissions');
+Route::put('/assignment-student/{id}/update-note', [AssignmentSubmissionsController::class, 'updateNote'])->name('update_note');

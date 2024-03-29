@@ -81,7 +81,7 @@
                          <?php endif; ?>
                         Courses</a></li>
                     <li><a href="<?php echo e(route('Assignments')); ?>">Assignments</a></li>
-                    <li><a href="<?php echo e(route('studentsubass')); ?>">Submission</a></li>
+                    <li><a href="<?php echo e(route('exercice.index')); ?>">Submission</a></li>
                 </ul>
             </li>
             <li>
@@ -124,9 +124,9 @@
                 </ul>
             </li>
             <li>
-                <a href="#">Assinments<i class="fas fa-caret-down"></i></a>
+                <a href="#">Assignments<i class="fas fa-caret-down"></i></a>
                 <ul>
-                    <li><a href="<?php echo e(route('assignmentscreate')); ?>">Add Assinment</a></li>
+                    <li><a href="<?php echo e(route('assignmentscreate')); ?>">Add Assignment</a></li>
                     <li><a href="<?php echo e(route('Assignmentt')); ?>">My Assignments</a></li>
                 </ul>
             </li>

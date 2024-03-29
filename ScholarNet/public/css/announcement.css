@@ -48,15 +48,15 @@
             border-radius: 10%;
             background-color: #FFF;
             width: 330px; /* Increase width for larger image */
-            height:450px;
+            height:500px;
             position:relative;
         }
 
         .sup {
             position: absolute; /* Position the delete button absolutely */
             bottom: 10px; /* Adjust this value as needed to control the distance from the bottom */
-            left: 120px; /* Adjust this value as needed to control the distance from the right */
-            
+            left: 35%; /* Adjust this value as needed to control the distance from the right */
+
             background-color: #ff4444; /* Red background color */
             color: #fff; /* White text color */
             border: none; /* No border */
@@ -64,7 +64,7 @@
             border-radius: 4px; /* Rounded corners */
             cursor: pointer; /* Cursor on hover */
         }
-        
+
         .sup:hover {
             background-color: #cc0000; /* Darker red background color on hover */
         }

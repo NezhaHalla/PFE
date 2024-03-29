@@ -39,6 +39,10 @@ class User extends Authenticatable
         return $this->hasMany(Resource::class,'id_teacher');
     }
 
+    public function exercice(){
+        return $this->hasMany(assignment_submissions::class,'id_student');
+    }
+
     public function soumestres()
     {
         return $this->belongsToMany(Soumestre::class, 'student_soumestres', 'id_student', 'id_soumestre');

@@ -66,10 +66,10 @@
                     @if (auth()->user()->role === "Student")
                         @if(strtotime($Assignment->deadline) > strtotime(now()))
                             <div class="d-grid gap-2 col-6 mx-auto" >
-                                <a href="{{ route('studentsubass') }}" class="btn btn-success" type="button" style="position:absolute; bottom: 20px;left:23%;width:500px;height:40px;">Submit My Assignment</a>
+                                <a href="{{ route('studentsubass',$Assignment->id) }}" class="btn btn-success" type="button" style="position:absolute; bottom: 20px;left:23%;width:500px;height:40px;">Submit My Assignment</a>
                             </div>
                         @endif
-                    @endif
+                    @endif 
             </article>
         </div>
         </div>

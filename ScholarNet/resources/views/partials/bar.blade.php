@@ -81,7 +81,7 @@
                          @endif
                         Courses</a></li>
                     <li><a href="{{ route('Assignments') }}">Assignments</a></li>
-                    <li><a href="{{ route('studentsubass') }}">Submission</a></li>
+                    <li><a href="{{ route('exercice.index') }}">Submission</a></li>
                 </ul>
             </li>
             <li>
@@ -124,9 +124,9 @@
                 </ul>
             </li>
             <li>
-                <a href="#">Assinments<i class="fas fa-caret-down"></i></a>
+                <a href="#">Assignments<i class="fas fa-caret-down"></i></a>
                 <ul>
-                    <li><a href="{{ route('assignmentscreate') }}">Add Assinment</a></li>
+                    <li><a href="{{ route('assignmentscreate') }}">Add Assignment</a></li>
                     <li><a href="{{ route('Assignmentt') }}">My Assignments</a></li>
                 </ul>
             </li>
