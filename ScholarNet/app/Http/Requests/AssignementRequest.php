@@ -24,11 +24,11 @@ class AssignementRequest extends FormRequest
         return [
             'titre' => 'required|string',
             'description' => 'required|string',
-            'fichier' => 'required|file|max:2048',
+            'fichier' => 'sometimes|nullable|file',
             'role' => 'required|string',
             'deadline' => 'required|date',
             'module_id' => 'required|exists:modules,id',
-          
+
         ];
     }
 }
