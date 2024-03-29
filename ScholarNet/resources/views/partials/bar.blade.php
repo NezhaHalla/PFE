@@ -67,7 +67,7 @@
                     <li><a href="{{ route('Myclasse', ['studentId' => auth()->id()]) }}">My Class</a></li>
                     <li><a href="{{ route('myCourses') }}">Courses</a></li>
                     <li><a href="{{ route('Assignments') }}">Assignments</a></li>
-                    <li><a href="{{ route('studentsubass') }}">Submission</a></li>
+                    <li><a href="{{ route('exercice.index') }}">Submission</a></li>
                 </ul>
             </li>
             <li>

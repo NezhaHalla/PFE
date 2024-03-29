@@ -21,6 +21,11 @@ class Assignment extends Model
         return $this->belongsTo(User::class, 'teacher_id');
     }
 
+    public function exercice()
+    {
+        return $this->hasMany(assignment_submissions::class, 'assignment_id');
+    }
+
     public function students()
     {
         return $this->belongsToMany(User::class, 'assignment_student')->withPivot('note');

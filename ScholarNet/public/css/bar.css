@@ -45,7 +45,6 @@ nav ul li {
 }
 
 nav ul li li {
-    margin-left: -32px;
     font-size: 18px;
     width: 100%;
 }
@@ -67,7 +66,6 @@ nav ul ul {
     top: 100%;
     left: 0;
     min-width: 200px;
-    border-top: 3px solid #063247;
     opacity: 0;
     visibility: hidden;
     background: #063247; /* Added background color for dropdown */
@@ -82,7 +80,6 @@ nav ul ul li {
     width: 200px;
     display: block;
     position: relative;
-    border: 1px solid #042331;
 }
 
 nav ul ul li a {
@@ -126,7 +123,7 @@ section {
     transform: translateY(-50%);
     border-radius: 50%;
     overflow: hidden;
-    
+
     margin-left: 10px;
 }
 

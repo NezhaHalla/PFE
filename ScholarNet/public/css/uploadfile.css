@@ -16,7 +16,7 @@ a {
   font-weight: 400;
 }
 
-h2 {
+h3 {
   text-align: center;
   font-size: 16px;
   font-weight: 600;
@@ -64,11 +64,11 @@ h2 {
 
 /* TABS */
 
-h2.inactive {
+h3.inactive {
   color: #cccccc;
 }
 
-h2.active {
+h3.active {
   color: #0d0d0d;
   font-size: 40px;
     padding-bottom: 40px;
