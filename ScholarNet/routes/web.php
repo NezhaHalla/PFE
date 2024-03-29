@@ -23,6 +23,7 @@ use App\Http\Controllers\AssignmentSubmissionsController;
 |
 */
 Route::get('/',[homeController::class,'index'])->name('home');
+Route::get('/bar',[homeController::class,'showbar'])->name('showbar');
 Route::get('/bar',[homeController::class,'showbar'])->name('showbar')->middleware('auth');
 Route::get('publications/addPublicaion',[publicationController::class,'create'])->name('publication.create')->middleware('auth');
 Route::post('publications/storePublication',[publicationController::class,'store'])->name('publication.store')->middleware('auth');
@@ -108,6 +109,22 @@ Route::delete('/assignments/{assignment}', [AssignmentController::class, 'destro
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
+Route::get('/contacts/{id}', [ContactController::class, 'show'])->name('contacts.show');
+
+Route::get('/assignmentS/search', [AssignmentController::class, 'searchAssignment'])->name('searchAssignment');
+Route::get('/assignmentT/search', [AssignmentController::class, 'searchAssignmentT'])->name('searchAssignmentT');
+
+
+Route::get('/Assignment/{assignment}/details',[AssignmentController::class,'showDetails'])->name('assignment.showDetails');
+
+
+Route::get('/ShowDocuments/{assignment}',[AssignmentController::class,'showdoc'])->name('showdocA');
+Route::get('/Assignment/{assignment}/submit',[AssignmentSubmissionsController::class,'create'])->name('studentsubass');
+
+Route::post('/Assignment/{assignment}/store',[AssignmentSubmissionsController::class,'store'])->name('exercice.store');
+Route::get('/MySubmittedAssignments',[AssignmentSubmissionsController::class,'index'])->name('exercice.index');
+Route::get('/MySubmittedAssignment/destroy/{exercice1}',[AssignmentSubmissionsController::class,'destroy'])->name('exercice.destroy');
+Route::get('/MySubmittedAssignment/download/{exercice}',[AssignmentSubmissionsController::class,'download'])->name('exercice.download');
 Route::get('/contacts/{id}', [ContactController::class, 'show'])->name('contacts.show');
 
 Route::get('/assignmentS/search', [AssignmentController::class, 'searchAssignment'])->name('searchAssignment');
