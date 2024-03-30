@@ -15,7 +15,7 @@
 	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400" rel="stylesheet">
-	
+
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="<?php echo e(asset('css/animate.css')); ?>">
 	<!-- Icomoon Icon Fonts-->
@@ -48,10 +48,18 @@
 			<div class="col-md-6 animate-box">
 				<span><a href="<?php echo e(route('home')); ?>"><- Back To Home</a></span>
 				<h2>Welcome to ScholarNet</h2>
-				<p>Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat cauctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per Mauris in erat justo.</p>
-				<p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed.</p>
-				<p>Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat cauctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per Mauris in erat justo.</p>
-			</div>
+				<p>Bienvenue sur ScholarNet. Nous sommes une plateforme dédiée à l'éducation, offrant un environnement d'apprentissage interactif et accessible à tous. Notre objectif est de fournir les outils et les ressources nécessaires pour aider les étudiants à réussir dans leurs études et à atteindre leurs objectifs éducatifs.
+
+                    Chez ScholarNet, nous croyons fermement en l'importance de l'éducation dans la vie de chacun. C'est pourquoi nous nous efforçons de créer une communauté d'apprentissage dynamique où les étudiants peuvent découvrir de nouvelles connaissances, interagir avec leurs pairs et développer leurs compétences académiques et professionnelles.
+
+                    Que vous soyez un étudiant à la recherche de ressources pédagogiques, un enseignant désireux de partager votre expertise ou simplement un passionné d'apprentissage, vous êtes au bon endroit. Rejoignez-nous sur ScholarNet et ensemble, poursuivons notre quête du savoir et de l'excellence académique.
+
+
+
+
+
+                    .</p>
+				</div>
 			<div class="col-md-6">
 				<img class="img-responsive" src="<?php echo e(asset('image/school.jfif')); ?>" alt="Free HTML5 Bootstrap Template">
 			</div>
@@ -92,4 +100,5 @@
 <?php if (isset($__componentOriginal9881aee3032510140a884de503784c66)): ?>
 <?php $component = $__componentOriginal9881aee3032510140a884de503784c66; ?>
 <?php unset($__componentOriginal9881aee3032510140a884de503784c66); ?>
-<?php endif; ?><?php /**PATH C:\Users\Admin\Documents\PFE\ScholarNet\resources\views/homepage/about.blade.php ENDPATH**/ ?>
+<?php endif; ?>
+<?php /**PATH C:\Users\Admin\Documents\PFE\ScholarNet\resources\views/homepage/about.blade.php ENDPATH**/ ?>

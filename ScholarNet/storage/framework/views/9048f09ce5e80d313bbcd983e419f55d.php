@@ -56,7 +56,7 @@
             }
 
             .message-container {
-                border: 1px solid #ccc;
+                border: 1px solid #242323;
                 border-radius: 5px;
                 padding: 10px;
             }
@@ -78,9 +78,9 @@
         <div class="center-container">
             <div class="card-list">
                 <article class="card">
-                    <h1> Details</h1>
+                    <h1><?php echo e($contact->fname); ?>  <?php echo e($contact->lname); ?></h1>
 
-                    <p><?php echo e($contact->fname); ?>  <?php echo e($contact->lname); ?></p>
+                    <p></p>
                     <p class="email"><strong>Email:</strong><?php echo e($contact->email); ?></p>
                     <p><strong>Subject:</strong> <?php echo e($contact->subject); ?></p>
                     <div class="message-container">
@@ -88,7 +88,7 @@
                         <p><?php echo e($contact->message); ?></p>
                     </div>
                     <!-- Move Created At to the top right -->
-                    <p class="created-at"><strong>Created At:</strong> <?php echo e($contact->created_at); ?></p>
+                    <p class="created-at"> <?php echo e($contact->created_at); ?></p>
                 </article>
             </div>
         </div>

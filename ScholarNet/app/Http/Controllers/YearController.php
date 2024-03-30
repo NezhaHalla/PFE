@@ -10,6 +10,13 @@ class YearController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function showStudentNotesY()
+    {
+
+
+
+        return view('student.Year');
+    }
     public function index()
     {
         //

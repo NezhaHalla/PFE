@@ -66,7 +66,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Assignment::class, 'assignment_student', 'student_id', 'assignment_id')
                     ->withPivot('note');
     }
-    
+
 
     /**
      * The attributes that should be hidden for serialization.

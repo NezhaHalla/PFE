@@ -18,7 +18,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <style>
 
-.formbold-main-wrapper {
+        .formbold-main-wrapper {
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -28,6 +28,7 @@
             .form-container {
                 margin: 80px auto;
                 max-width: 700px; /* Increase the max-width */
+                max-width: 700px; /* Increase the max-width */
                 width: 100%;
                 background: #f9f9f9;
                 border-radius: 10px;
@@ -36,6 +37,7 @@
             }
 
             .formbold-form-input {
+                width: calc(100% - 30px); /* Adjust the width to show two inputs in a line */
                 width: calc(100% - 30px); /* Adjust the width to show two inputs in a line */
                 padding: 13px 22px;
                 border-radius: 5px;
@@ -49,11 +51,22 @@
                 margin-right: 30px; /* Add margin between inputs */
             }
 
+                margin-right: 30px; /* Add margin between inputs */
+            }
+
             .formbold-form-label {
                 color: #07074D;
                 font-size: 14px;
                 line-height: 24px;
                 margin-bottom: 10px;
+                width:100px;
+                padding-top:10px;
+            }
+
+            .formbold-form-group {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 20px;
                 width:100px;
                 padding-top:10px;
             }
@@ -78,10 +91,17 @@
                 margin-top: 25px;
             }
 
+
             .btn-primary:hover {
                 box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
             }
 
+            @media screen and (max-width: 768px) {
+                .formbold-form-input {
+                    width: 100%;
+                    margin-right: 0;
+                }
+            }
             @media screen and (max-width: 768px) {
                 .formbold-form-input {
                     width: 100%;

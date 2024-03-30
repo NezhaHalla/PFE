@@ -21,11 +21,6 @@
             <label for="exampleInputname" class="formbold-form-label"><i class="fas fa-arrow-left"></i></label>
         </a>
 
-
-        <a href="javascript:void(0);" onclick="history.back();" style="color: aliceblue;font-size:25px">
-            <label for="exampleInputname" class="formbold-form-label"><i class="fas fa-arrow-left"></i></label>
-        </a>
-
         <label class="logo" >ScolarNet</label>
         <ul>
             <li><a class="active" href="<?php echo e(route('home')); ?>">Home</a></li>
@@ -38,15 +33,7 @@
                     <?php endif; ?>
                     Message </a>
             </li>
-            <li>
-                <a href="<?php echo e(route('contacts.index')); ?>" class="notification-icon">
-                    <i class="fas fa-bell"></i>
-
-                    <?php if($unreadMessageCount > 0): ?>
-                        <span class="badge"><?php echo e($unreadMessageCount); ?></span>
-                    <?php endif; ?>
-                    Message </a>
-            </li>
+          
             <li>
                 <a href="#">System<i class="fas fa-caret-down"></i></a>
                 <ul>
@@ -79,8 +66,6 @@
             <label for="exampleInputname" class="formbold-form-label"><i class="fas fa-arrow-left"></i></label>
         </a>
 
-      
-
         <label class="logo">ScolarNet</label>
         <ul>
             <li><a class="active" href="<?php echo e(route('home')); ?>">Home</a></li>
@@ -93,11 +78,11 @@
                     </a>
                 <ul>
                     <li><a href="<?php echo e(route('Myclasse', ['studentId' => auth()->id()])); ?>">My Class</a></li>
-                    <li><a href="<?php echo e(route('myCourses')); ?>">
+                    <li><a href="<?php echo e(route('myCourses')); ?>">Courses
                         <?php if($unreadressoureCount > 0): ?>
                         <span class="badge"><?php echo e($unreadressoureCount); ?></span> </i>
                          <?php endif; ?>
-                        Courses</a></li>
+                        </a></li>
                     <li><a href="<?php echo e(route('Assignments')); ?>">Assignments</a></li>
                     <li><a href="<?php echo e(route('exercice.index')); ?>">Submission</a></li>
 
@@ -106,9 +91,9 @@
             <li>
                 <a href="#">Results<i class="fas fa-caret-down"></i></a>
                 <ul>
-                    <li><a href="">Module</a></li>
-                    <li><a href="#">Soumestre</a></li>
-                    <li><a href="#">Year</a></li>
+                    <li><a href="<?php echo e(route('module')); ?>">Module</a></li>
+                    <li><a href="<?php echo e(route('notesS')); ?>">Soumestre</a></li>
+                    <li><a href="<?php echo e(route('year')); ?>">Year</a></li>
                 </ul>
             </li>
             <li>
@@ -131,18 +116,12 @@
             <label for="exampleInputname" class="formbold-form-label"><i class="fas fa-arrow-left"></i></label>
         </a>
 
-
-        <a href="javascript:void(0);" onclick="history.back();" style="color: aliceblue;font-size:25px">
-            <label for="exampleInputname" class="formbold-form-label"><i class="fas fa-arrow-left"></i></label>
-        </a>
-
         <label class="logo">ScolarNet</label>
         <ul>
             <li><a class="active" href="<?php echo e(route('home')); ?>">Home</a></li>
             <li>
                 <a href="#">Classes<i class="fas fa-caret-down"></i></a>
                 <ul>
-                    <li><a href="<?php echo e(route('Myclass', ['teacherId' => auth()->id()])); ?>">My Classes</a></li>
                     <li><a href="<?php echo e(route('Myclass', ['teacherId' => auth()->id()])); ?>">My Classes</a></li>
                      <li><a href="<?php echo e(route('add_resource_form')); ?>">Add course</a></li>
                     <li><a href="<?php echo e(route('MyCourses')); ?>">My courses</a></li>
