@@ -22,13 +22,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Retrieve the unread message count
-        $unreadMessageCount = Contact::where('is_read', false)->count();
+        if (!$this->app->runningInConsole()) {
+            // Retrieve the unread message count
+            $unreadMessageCount = Contact::where('is_read', false)->count();
 
-        // Share the unread message count with all views
-        view()->share('unreadMessageCount', $unreadMessageCount);
-    }
+            // Share the unread message count with all views
+            view()->share('unreadMessageCount', $unreadMessageCount);
+        }
 
 
 
+}
 }
