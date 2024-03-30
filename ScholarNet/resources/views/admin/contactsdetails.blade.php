@@ -47,7 +47,7 @@
             }
 
             .message-container {
-                border: 1px solid #ccc;
+                border: 1px solid #242323;
                 border-radius: 5px;
                 padding: 10px;
             }
@@ -69,9 +69,9 @@
         <div class="center-container">
             <div class="card-list">
                 <article class="card">
-                    <h1> Details</h1>
+                    <h1>{{ $contact->fname }}  {{ $contact->lname }}</h1>
 
-                    <p>{{ $contact->fname }}  {{ $contact->lname }}</p>
+                    <p></p>
                     <p class="email"><strong>Email:</strong>{{ $contact->email }}</p>
                     <p><strong>Subject:</strong> {{ $contact->subject }}</p>
                     <div class="message-container">
@@ -79,7 +79,7 @@
                         <p>{{ $contact->message }}</p>
                     </div>
                     <!-- Move Created At to the top right -->
-                    <p class="created-at"><strong>Created At:</strong> {{ $contact->created_at }}</p>
+                    <p class="created-at"> {{ $contact->created_at }}</p>
                 </article>
             </div>
         </div>

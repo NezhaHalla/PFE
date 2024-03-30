@@ -102,7 +102,7 @@ class AssignmentController extends Controller
         $user = Auth::user();
 
         if ($user->role === 'Teacher') {
-            $teacherAssignments = $user->teacherAssignments;
+            $teacherAssignments = $user->teacherAssignments->sortByDesc('created_at');
             return view('teacher.myAssignement', ['assignments' => $teacherAssignments, 'role' => 'Teacher']);
         } else {
             return redirect()->back()->with('error', 'Unauthorized access.');

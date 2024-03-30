@@ -56,6 +56,8 @@ class AssignmentSubmissionsController extends Controller
             ->where('id', $id)
             ->update(['Note' => $request->input('Note')]);
 
+            $request->session()->put('oldInput', $request->input());
+
         return redirect()->back()->with('success', 'Note updated successfully');
     }
 }
