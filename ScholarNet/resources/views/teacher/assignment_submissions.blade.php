@@ -61,7 +61,7 @@
                     <th>Submitted At</th>
                     <th>Note</th> 
                 </tr>
-            </thead>
+            </thead> 
             <tbody>
                 @foreach($submissions as $submission)
                     <tr>
