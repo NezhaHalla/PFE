@@ -11,7 +11,7 @@ use App\Http\Controllers\ResourceController;
 use \App\Http\Controllers\AssignmentController;
 use \App\Http\Controllers\publicationController;
 use App\Http\Controllers\AssignmentSubmissionsController;
-use App\Http\Controllers\StudentSoumestreController;
+use App\Http\Controllers\SoumestreController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\YearController;
 
@@ -147,7 +147,7 @@ Route::get('/MySubmittedAssignments',[AssignmentSubmissionsController::class,'in
 Route::get('/assignments/{assignment}/submissions', [AssignmentSubmissionsController::class,'submissions'])->name('assignment.submissions');
 Route::put('/assignment-student/{id}/update-note', [AssignmentSubmissionsController::class, 'updateNote'])->name('update_note');
 
-Route::get('/student/notesomesstre', [StudentSoumestreController::class, 'showStudentNotesS'])->name('notesS');
+Route::get('/student/notesomesstre', [SoumestreController::class, 'showStudentNotesS'])->name('notesS');
 Route::get('/Student/Module',[ModuleController::class,'show'])->name('module');
 
 Route::get('/student/Year', [YearController::class, 'showStudentNotesY'])->name('year');
