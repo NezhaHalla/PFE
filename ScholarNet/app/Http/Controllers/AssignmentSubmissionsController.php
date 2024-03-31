@@ -50,13 +50,14 @@ class AssignmentSubmissionsController extends Controller
         $submissions = assignment_submissions::where('assignment_id', $assignmentId)->get();
         return view('teacher.assignment_submissions', compact('submissions'));
     }
-    public function updateNote($id, Request $request)
+    public function updateNote($assignment_id, $student_id, Request $request)
     {
         DB::table('assignment_student')
-            ->where('id', $id)
+            ->where('assignment_id', $assignment_id)
+            ->where('student_id', $student_id)
             ->update(['Note' => $request->input('Note')]);
 
-            $request->session()->put('oldInput', $request->input());
+        $request->session()->put('oldInput', $request->input());
 
         return redirect()->back()->with('success', 'Note updated successfully');
     }

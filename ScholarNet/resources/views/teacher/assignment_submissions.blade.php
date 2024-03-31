@@ -69,7 +69,7 @@
                         <td>{{ $submission->student->name }}</td>
                         <td><a href="{{ route('showdocA', $submission->assignment) }}">{{ $submission->assignment->titre . '.docx' }}</a></td>
                         <td>{{ $submission->created_at->format('Y-m-d H:i:s') }}</td>
-                        <td ><form action="{{ route('update_note', $submission->assignment_id) }}" method="post">
+                        <td ><form action="{{ route('update_note', ['assignment_id' => $submission->assignment_id, 'student_id' => $submission->student->id]) }}" method="post">
                             @csrf
                             @method('PUT')
                             <input type="text" name="Note" value="{{ session('oldInput.Note') }}">

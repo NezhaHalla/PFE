@@ -78,7 +78,7 @@
                         <td><?php echo e($submission->student->name); ?></td>
                         <td><a href="<?php echo e(route('showdocA', $submission->assignment)); ?>"><?php echo e($submission->assignment->titre . '.docx'); ?></a></td>
                         <td><?php echo e($submission->created_at->format('Y-m-d H:i:s')); ?></td>
-                        <td ><form action="<?php echo e(route('update_note', $submission->assignment_id)); ?>" method="post">
+                        <td ><form action="<?php echo e(route('update_note', ['assignment_id' => $submission->assignment_id, 'student_id' => $submission->student->id])); ?>" method="post">
                             <?php echo csrf_field(); ?>
                             <?php echo method_field('PUT'); ?>
                             <input type="text" name="Note" value="<?php echo e(session('oldInput.Note')); ?>">

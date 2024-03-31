@@ -24,7 +24,7 @@
                     <div class="card-body pt-0">
                         <ul class="list-unstyled mb-4">
                             <li>Note : <span class="bold">16</span> </li>
-                            <li>Level : <span class="bold">S3</span></li>
+                            <li>Level : <span class="bold">2eme annee</span></li>
                             <li>Mentions : <span class="bold">bien</span></li>
                         </ul>
 

@@ -145,7 +145,7 @@ Route::post('/Assignment/{assignment}/store',[AssignmentSubmissionsController::c
 Route::get('/MySubmittedAssignments',[AssignmentSubmissionsController::class,'index'])->name('exercice.index');
 
 Route::get('/assignments/{assignment}/submissions', [AssignmentSubmissionsController::class,'submissions'])->name('assignment.submissions');
-Route::put('/assignment-student/{id}/update-note', [AssignmentSubmissionsController::class, 'updateNote'])->name('update_note');
+Route::put('/assignment-student/{assignment_id}/{student_id}/update-note', [AssignmentSubmissionsController::class, 'updateNote'])->name('update_note');
 
 Route::get('/student/notesomesstre', [SoumestreController::class, 'showStudentNotesS'])->name('notesS');
 Route::get('/Student/Module',[ModuleController::class,'show'])->name('module');
