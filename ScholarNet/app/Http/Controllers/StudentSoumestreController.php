@@ -10,16 +10,7 @@ class StudentSoumestreController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function showStudentNotesS()
-    {
-
-        $student = auth()->user();
-        
-        $soumestresWithNotes = $student->soumestres;
-
-
-        return view('student.student_notesoumesstre', compact('student', 'soumestresWithNotes'));
-    }
+ 
     public function index()
     {
         //

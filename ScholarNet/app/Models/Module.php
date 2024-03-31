@@ -16,7 +16,7 @@ class Module extends Model
 
     public function students()
     {
-        return $this->belongsToMany(User::class, 'student__modules', 'id_module', 'id_student');
+        return $this->belongsToMany(User::class, 'student__modules', 'id_module', 'id_student') ->withPivot('Note');
     }
 
     public function soumestres(){

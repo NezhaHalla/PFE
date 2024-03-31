@@ -7,32 +7,37 @@
         <style>
             .card {
                 max-width: 400px; /* Adjust the width as needed */
-
-
             }
-            .pricing{ display: flex;
+            .pricing {
+                display: flex;
                 justify-content: center;
-                align-items: center;}
+                align-items: center;
+            }
         </style>
     </head>
     <body>
-        @foreach($soumestresWithNotes as $soumestre)
         <div style="padding-top: 150px;" class="container mb-5">
             <div class="pricing card-deck flex-column flex-md-row mb-3">
-                <div class="card card-pricing popular shadow text-center px-3 mb-4" >
-                    <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm"><strong>{{ $soumestre->nom }}</strong></span>
+                @foreach($soumestreGrades as $soumestreId => $gradeInfo)
+                <div class="card card-pricing popular shadow text-center px-3 mb-4">
+                    <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm"><strong>Soumestre ID: {{ $soumestreId }}</strong></span>
                     <div class="card-body pt-0">
                         <ul class="list-unstyled mb-4">
-                            <li>Note : <span class="bold">{{ $soumestre->pivot->note }}16</span> </li>
-                            <li>Validation : <span class="bold">Validé</span></li>
-                            <li>Mentions : <span class="bold">bien</span></li>
+                            <!-- Check if the average grade is defined -->
+                            @if(isset($gradeInfo['averageGrade']))
+                                <li>Note Moyenne : <span class="bold">{{ $gradeInfo['averageGrade'] }}</span> </li>
+                                <!-- Add logic for displaying validation and mention -->
+                                <li>Validation : <span class="bold">{{ $gradeInfo['averageGrade'] >= 12 ? 'Validé' : 'Non Validé' }}</span></li>
+                                <li>Mention : <span class="bold">{{ $gradeInfo['averageGrade'] >= 16 ? 'Très Bien' : ($gradeInfo['averageGrade'] >= 14 ? 'Bien' : ($gradeInfo['averageGrade'] >= 12 ? 'Assez Bien' : 'Passable')) }}</span></li>
+                            @else
+                                <li>Note Moyenne : <span class="bold">Aucune note disponible</span> </li>
+                            @endif
+                            <!-- You can add other details as needed -->
                         </ul>
-
                     </div>
                 </div>
-            </div> </div>
                 @endforeach
-
-
+            </div>
+        </div>
     </body>
 </x-master>

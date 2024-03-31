@@ -16,33 +16,38 @@
         <style>
             .card {
                 max-width: 400px; /* Adjust the width as needed */
-
-
             }
-            .pricing{ display: flex;
+            .pricing {
+                display: flex;
                 justify-content: center;
-                align-items: center;}
+                align-items: center;
+            }
         </style>
     </head>
     <body>
-        <?php $__currentLoopData = $soumestresWithNotes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $soumestre): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <div style="padding-top: 150px;" class="container mb-5">
             <div class="pricing card-deck flex-column flex-md-row mb-3">
-                <div class="card card-pricing popular shadow text-center px-3 mb-4" >
-                    <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm"><strong><?php echo e($soumestre->nom); ?></strong></span>
+                <?php $__currentLoopData = $soumestreGrades; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $soumestreId => $gradeInfo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <div class="card card-pricing popular shadow text-center px-3 mb-4">
+                    <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm"><strong>Soumestre ID: <?php echo e($soumestreId); ?></strong></span>
                     <div class="card-body pt-0">
                         <ul class="list-unstyled mb-4">
-                            <li>Note : <span class="bold"><?php echo e($soumestre->pivot->note); ?>16</span> </li>
-                            <li>Validation : <span class="bold">Validé</span></li>
-                            <li>Mentions : <span class="bold">bien</span></li>
+                            <!-- Check if the average grade is defined -->
+                            <?php if(isset($gradeInfo['averageGrade'])): ?>
+                                <li>Note Moyenne : <span class="bold"><?php echo e($gradeInfo['averageGrade']); ?></span> </li>
+                                <!-- Add logic for displaying validation and mention -->
+                                <li>Validation : <span class="bold"><?php echo e($gradeInfo['averageGrade'] >= 12 ? 'Validé' : 'Non Validé'); ?></span></li>
+                                <li>Mention : <span class="bold"><?php echo e($gradeInfo['averageGrade'] >= 16 ? 'Très Bien' : ($gradeInfo['averageGrade'] >= 14 ? 'Bien' : ($gradeInfo['averageGrade'] >= 12 ? 'Assez Bien' : 'Passable'))); ?></span></li>
+                            <?php else: ?>
+                                <li>Note Moyenne : <span class="bold">Aucune note disponible</span> </li>
+                            <?php endif; ?>
+                            <!-- You can add other details as needed -->
                         </ul>
-
                     </div>
                 </div>
-            </div> </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-
+            </div>
+        </div>
     </body>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
