@@ -59,9 +59,9 @@
                     <th>Submitted By</th>
                     <th>File</th>
                     <th>Submitted At</th>
-                    <th>Note</th> <!-- New column for Note -->
+                    <th>Note</th> 
                 </tr>
-            </thead>
+            </thead> 
             <tbody>
                 @foreach($submissions as $submission)
                     <tr>

@@ -148,6 +148,7 @@ Route::get('/assignments/{assignment}/submissions', [AssignmentSubmissionsContro
 Route::put('/assignment-student/{assignment_id}/{student_id}/update-note', [AssignmentSubmissionsController::class, 'updateNote'])->name('update_note');
 
 Route::get('/student/notesomesstre', [SoumestreController::class, 'showStudentNotesS'])->name('notesS');
-Route::get('/Student/Module',[ModuleController::class,'show'])->name('module');
+Route::get('/Student/Module',[ModuleController::class,'index'])->name('module');
 
 Route::get('/student/Year', [YearController::class, 'showStudentNotesY'])->name('year');
+Route::get('/Student/Module/details',[ModuleController::class,'show'])->name('module.detail');

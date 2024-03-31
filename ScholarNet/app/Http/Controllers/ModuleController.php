@@ -12,7 +12,7 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        //
+        return view('student/moduleCard');
     }
 
     /**
@@ -36,7 +36,7 @@ class ModuleController extends Controller
      */
     public function show(Module $module)
     {
-        return view('student/moduleCard');
+        return view('student/detailModule');
     }
 
     /**
