@@ -16,7 +16,9 @@ class AssignmentSubmissionsController extends Controller
     public function store(Assignment $assignment,Request $request){
         $req=$request->validate([
             'fichier'=>'required',
+            
         ]);
+
         $req["id_student"]=auth()->user()->id;
         $req["assignment_id"]=$assignment->id;
         $req['fichier'] = $request->file('fichier')->store('exercices','public');
@@ -47,17 +49,20 @@ class AssignmentSubmissionsController extends Controller
     }
     public function submissions($assignmentId)
     {
+        $submissionA = DB::table('assignment_student')
+        ->where('assignment_id', $assignmentId)
+        ->get();
+
         $submissions = assignment_submissions::where('assignment_id', $assignmentId)->get();
-        return view('teacher.assignment_submissions', compact('submissions'));
+        return view('teacher.assignment_submissions', compact('submissions','submissionA'));
     }
+
     public function updateNote($assignment_id, $student_id, Request $request)
     {
         DB::table('assignment_student')
             ->where('assignment_id', $assignment_id)
             ->where('student_id', $student_id)
             ->update(['Note' => $request->input('Note')]);
-
-        $request->session()->put('oldInput', $request->input());
 
         return redirect()->back()->with('success', 'Note updated successfully');
     }

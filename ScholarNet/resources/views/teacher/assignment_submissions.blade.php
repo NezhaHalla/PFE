@@ -8,7 +8,6 @@
             align-items: center;
             justify-content: center;
             background-color: #EFEFEF;
-
         }
         .container {
             padding-top: 100px; /* Add padding to the top of the container */
@@ -59,9 +58,9 @@
                     <th>Submitted By</th>
                     <th>File</th>
                     <th>Submitted At</th>
-                    <th>Note</th> 
+                    <th>Note</th>
                 </tr>
-            </thead> 
+            </thead>
             <tbody>
                 @foreach($submissions as $submission)
                     <tr>
@@ -69,12 +68,18 @@
                         <td>{{ $submission->student->name }}</td>
                         <td><a href="{{ route('showdocA', $submission->assignment) }}">{{ $submission->assignment->titre . '.docx' }}</a></td>
                         <td>{{ $submission->created_at->format('Y-m-d H:i:s') }}</td>
-                        <td ><form action="{{ route('update_note', ['assignment_id' => $submission->assignment_id, 'student_id' => $submission->student->id]) }}" method="post">
-                            @csrf
-                            @method('PUT')
-                            <input type="text" name="Note" value="{{ session('oldInput.Note') }}">
-                            <button type="submit">Update</button>
-                        </form></td>
+                        <td>
+                            <form action="{{ route('update_note', ['assignment_id' => $submission->assignment_id, 'student_id' => $submission->student->id]) }}" method="post">
+                                @csrf
+                                @method('PUT')
+                                @foreach($submissionA as $submissionData)
+                                @if($submissionData->assignment_id == $submission->assignment_id && $submissionData->student_id == $submission->student->id)
+                                    <input type="text" name="Note" value="{{ $submissionData->Note }}">
+                                @endif
+                                @endforeach
+                                <button type="submit">Update</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

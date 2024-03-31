@@ -10,6 +10,7 @@
 <?php $component->withAttributes(['title' => 'Home']); ?>
 <html>
 	<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-NbZR02M42VbyR1ApWgUJ/LIF7z4O2rpS1fQHElYxLZpGuOrVbR8CxLjnswlft+HSHcARqMKU8hsIAUGNwdhmHQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by freehtml5.co" />
 	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -27,35 +28,21 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400" rel="stylesheet">
-	
+
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="<?php echo e(asset('css/animate.css')); ?>">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="<?php echo e(asset('css/icomoon.css')); ?>">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="<?php echo e(asset('css/bootstrap.css')); ?>">
-
-	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="<?php echo e(asset('css/magnific-popup.css')); ?>">
-
-	<!-- Owl Carousel  -->
-	<link rel="stylesheet" href="<?php echo e(asset('css/owl.carousel.min.css')); ?>">
-	<link rel="stylesheet" href="<?php echo e(asset('css/owl.theme.default.min.css')); ?>">
-
-	<!-- Flexslider  -->
-	<link rel="stylesheet" href="<?php echo e(asset('css/flexslider.css')); ?>">
-
-	<!-- Pricing -->
-	<link rel="stylesheet" href="<?php echo e(asset('css/pricing.css')); ?>">
-
-	<!-- Theme style  -->
-	<link rel="stylesheet" href="<?php echo e(asset('css/style.css')); ?>">
-
-	<!-- Modernizr JS -->
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/icomoon.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="css/flexslider.css">
+	<link rel="stylesheet" href="css/pricing.css">
+	<link rel="stylesheet" href="css/style.css">
 	<script src="<?php echo e(asset('js/modernizr-2.6.2.min.js')); ?>"></script>
 	</head>
 	<body>
-		
+
 	<div class="fh5co-loader"></div>
 	<div id="page">
 	<aside id="fh5co-hero">
@@ -108,7 +95,7 @@
 			   			</div>
 			   		</div>
 		   		</div>
-		   	</li>		   	
+		   	</li>
 		  	</ul>
 	  	</div>
 	</aside>
@@ -235,10 +222,10 @@
 				</div>
 			</div>
 
-            
+
 			<div class="row">
                 <?php $__currentLoopData = $publication; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pub): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    
+
 				<div class="col-lg-4 col-md-4">
 					<div class="fh5co-blog animate-box">
 						<a href="#" class="blog-img-holder" style="background-image: url(<?php echo e(asset('storage/'.$pub->imagepub)); ?>);"></a>
@@ -247,7 +234,7 @@
 							<span class="posted_on"><?php echo e($pub->created_at->format('d/m/Y')); ?></span>
 							<p><?php echo e(Str::limit($pub->description ,200)); ?></p>
                             <p><a href="<?php echo e(route('pub.details',$pub->id)); ?>">Read More</a></p>
-						</div> 
+						</div>
 					</div>
 				</div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -259,7 +246,7 @@
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>
-	
+
 	<!-- jQuery -->
 	<script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
 	<!-- jQuery Easing -->
