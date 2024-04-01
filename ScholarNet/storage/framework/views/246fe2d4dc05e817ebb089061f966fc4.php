@@ -45,6 +45,7 @@
         </style>
     </head>
     <body>
+       
         <div class="center-container">
         <div class="card-list">
             <article class="card">
@@ -78,7 +79,7 @@
                                 <a href="<?php echo e(route('studentsubass',$Assignment->id)); ?>" class="btn btn-success" type="button" style="position:absolute; bottom: 20px;left:23%;width:500px;height:40px;">Submit My Assignment</a>
                             </div>
                         <?php endif; ?>
-                    <?php endif; ?> 
+                    <?php endif; ?>
             </article>
         </div>
         </div>

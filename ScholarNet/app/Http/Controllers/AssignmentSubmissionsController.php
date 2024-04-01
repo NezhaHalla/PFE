@@ -14,9 +14,20 @@ class AssignmentSubmissionsController extends Controller
     }
 
     public function store(Assignment $assignment,Request $request){
+        $studentId = auth()->user()->id;
+
+
+        $existingSubmission = assignment_submissions::where('assignment_id', $assignment->id)
+            ->where('id_student', $studentId)
+            ->exists();
+
+            if ($existingSubmission) {
+                return to_route('assignment.showDetails',$assignment->id)->with('danger',"You have already submitted this assignment.");
+            }
+
         $req=$request->validate([
             'fichier'=>'required',
-            
+
         ]);
 
         $req["id_student"]=auth()->user()->id;

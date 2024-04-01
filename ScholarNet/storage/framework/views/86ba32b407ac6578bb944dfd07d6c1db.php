@@ -13,6 +13,11 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <style>
+            .card {
+                max-width: 400px; 
+            }
+        </style>
     </head>
     <body>
 
@@ -56,7 +61,7 @@
                             <li>Note : <span class="bold">19.25</span></li>
                             <li>Validation : <span class="bold">Validé</span></li>
                         </ul>
-                        <button type="button" class="btn btn-outline-secondary mb-3">See Details</button>
+                        <button type="button" class="btn btn-outline-secondary mb-3"><a style="text-decoration:none; color:grey;" href="<?php echo e(route("module.detail")); ?>">See Details</a></button>
                     </div>
                 </div>
             </div>

@@ -99,7 +99,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         if (!$user) {
-            return redirect()->back()->with('error', 'User not found');
+            return redirect()->back()->with('danger', 'User not found');
         }
         $user->delete();
         return redirect()->back()->with('success', 'User deleted successfully');
@@ -121,7 +121,7 @@ public function update(UpdateRequest $request, $id) {
 
     $user = User::find($id);
     if (!$user) {
-        return redirect()->back()->with('error', 'User not found');
+        return redirect()->back()->with('danger', 'User not found');
     }
     $user->name = $val['name'];
     $user->email = $val['email'];

@@ -110,7 +110,7 @@
                     <td>{{ $contact->fname }} {{ $contact->lname }}</td>
                     <td>
                         <a title="show-details" href="{{ route('contacts.show', ['id' => $contact->id]) }}">
-                            message...
+                            {{ strlen($contact->message) > 15? substr($contact->message, 0, 15) . '.....' : $contact->message }}
                         </a>
                     </td>
                 </tr>
