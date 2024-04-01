@@ -48,7 +48,7 @@
 
             .view-submissions-button {
                 position: absolute;
-                bottom: 50px;
+                bottom: 0px;
                 right: 300px; /* Adjusted right position */
                 width: 170px;
                 background-color: #4CAF50;

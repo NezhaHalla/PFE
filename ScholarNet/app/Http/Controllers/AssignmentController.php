@@ -105,7 +105,7 @@ class AssignmentController extends Controller
             $teacherAssignments = $user->teacherAssignments->sortByDesc('created_at');
             return view('teacher.myAssignement', ['assignments' => $teacherAssignments, 'role' => 'Teacher']);
         } else {
-            return redirect()->back()->with('error', 'Unauthorized access.');
+            return redirect()->back()->with('danger', 'Unauthorized access.');
         }
     }
 
@@ -158,7 +158,6 @@ public function show($id)
 }
 public function destroy(Assignment $assignment)
     {
-        // Votre logique de suppression de l'assignation ici
         $assignment->delete();
 
         return redirect()->back()->with('success', 'Assignation supprimée avec succès.');

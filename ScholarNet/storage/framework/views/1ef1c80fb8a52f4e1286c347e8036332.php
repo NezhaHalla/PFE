@@ -67,7 +67,7 @@
             color: #666;
         }
         .btn-primary {
-            text-align: center;
+           
             background-color: #4682B4;
             padding: 6px 12px;
             border-radius: 6px;
