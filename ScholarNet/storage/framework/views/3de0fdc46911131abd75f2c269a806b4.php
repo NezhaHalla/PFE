@@ -188,7 +188,7 @@ unset($__errorArgs, $__bag); ?>
                     </div>
                     <div class="mb-3 formbold-form-group">
                         <label class="formbold-form-label">Class</label>
-                        <select class="formbold-form-input" name="class_id" <?php echo e(Auth::user()->role !== 'Admin' ? 'disabled' : ''); ?>>
+                        <select class="formbold-form-input" name="class_id">
                             <option value="">Select Class</option>
                             <?php $__currentLoopData = $classes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $class): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <option value="<?php echo e($class->id); ?>" <?php echo e(old('class_id') == $class->id ? 'selected' : ''); ?>><?php echo e($class->Name); ?></option>
@@ -204,8 +204,8 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-
-                        <select class="formbold-form-input" name="semester_id" <?php echo e(Auth::user()->role !== 'Admin' ? 'disabled' : ''); ?>>
+                        <label class="formbold-form-label">Soumestre</label>
+                        <select class="formbold-form-input" name="semester_id">
                             <option value="">Select Soumestre</option>
                             <?php $__currentLoopData = $Soumestres; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Soumestre): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <option value="<?php echo e($Soumestre->id); ?>" <?php echo e(old('semester_id') == $Soumestre->id ? 'selected' : ''); ?>><?php echo e($Soumestre->nom); ?></option>

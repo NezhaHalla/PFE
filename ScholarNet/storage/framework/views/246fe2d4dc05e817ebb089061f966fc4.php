@@ -65,6 +65,7 @@
                         <div class="div2"><a title="Download"  class="aadd" href="<?php echo e(route('showdocA',$Assignment)); ?>"><?php echo e($Assignment->titre.'.docx'); ?></a></div>
                         <div class="div3">size : <?php echo e($fileSizeInKB); ?> KB</div>
                     </div>
+                    <div style="bottom:20px;">
                     <?php endif; ?>
                     <?php if(auth()->user()->id === $Assignment->teacher->id): ?>
                     <form action="<?php echo e(route('assignments.destroy',$Assignment->id)); ?>" method="post">
@@ -79,7 +80,8 @@
                                 <a href="<?php echo e(route('studentsubass',$Assignment->id)); ?>" class="btn btn-success" type="button" style="position:absolute; bottom: 20px;left:23%;width:500px;height:40px;">Submit My Assignment</a>
                             </div>
                         <?php endif; ?>
-                    <?php endif; ?>
+                    <?php endif; ?> 
+                    </div>
             </article>
         </div>
         </div>

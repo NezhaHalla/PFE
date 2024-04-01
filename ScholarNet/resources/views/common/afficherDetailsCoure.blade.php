@@ -33,6 +33,20 @@
         right:10px;
         top: 40%;
     }
+    .sup {
+                position: absolute;
+                bottom: 0px;
+                right: 120px;
+                width: 170px;
+                background-color: #ff4444;
+                color: #fff;
+                border: none;
+                padding: 8px 16px;
+                border-radius: 4px;
+                cursor: pointer;
+                margin-bottom: 10px; /* Adjusted margin */
+            }
+
         </style>
     </head>
     <body>
@@ -78,5 +92,5 @@
         </div>
         </div>
     </body>
-   
+
 </x-master>

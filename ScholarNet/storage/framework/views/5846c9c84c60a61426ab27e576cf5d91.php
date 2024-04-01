@@ -119,7 +119,7 @@
                     <td><?php echo e($contact->fname); ?> <?php echo e($contact->lname); ?></td>
                     <td>
                         <a title="show-details" href="<?php echo e(route('contacts.show', ['id' => $contact->id])); ?>">
-                            <?php echo e(strlen($contact->message) > 15? substr($contact->message, 0, 15) . '.......' : $contact->message); ?>
+                            <?php echo e(strlen($contact->message) > 15? substr($contact->message, 0, 15) . '.....' : $contact->message); ?>
 
                         </a>
                     </td>

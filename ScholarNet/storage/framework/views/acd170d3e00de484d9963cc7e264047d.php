@@ -43,7 +43,7 @@
             }
             .sup {
                 position: absolute;
-                bottom: 50px;
+                bottom: 0px;
                 right: 120px;
                 width: 170px;
                 background-color: #ff4444;
