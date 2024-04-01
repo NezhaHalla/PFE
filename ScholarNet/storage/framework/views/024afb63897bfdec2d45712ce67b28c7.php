@@ -17,7 +17,6 @@
             align-items: center;
             justify-content: center;
             background-color: #EFEFEF;
-
         }
         .container {
             padding-top: 100px; /* Add padding to the top of the container */
@@ -68,7 +67,7 @@
                     <th>Submitted By</th>
                     <th>File</th>
                     <th>Submitted At</th>
-                    <th>Note</th> 
+                    <th>Note</th>
                 </tr>
             </thead>
             <tbody>
@@ -78,12 +77,18 @@
                         <td><?php echo e($submission->student->name); ?></td>
                         <td><a href="<?php echo e(route('showdocA', $submission->assignment)); ?>"><?php echo e($submission->assignment->titre . '.docx'); ?></a></td>
                         <td><?php echo e($submission->created_at->format('Y-m-d H:i:s')); ?></td>
-                        <td ><form action="<?php echo e(route('update_note', $submission->assignment_id)); ?>" method="post">
-                            <?php echo csrf_field(); ?>
-                            <?php echo method_field('PUT'); ?>
-                            <input type="text" name="Note" value="<?php echo e(session('oldInput.Note')); ?>">
-                            <button type="submit">Update</button>
-                        </form></td>
+                        <td>
+                            <form action="<?php echo e(route('update_note', ['assignment_id' => $submission->assignment_id, 'student_id' => $submission->student->id])); ?>" method="post">
+                                <?php echo csrf_field(); ?>
+                                <?php echo method_field('PUT'); ?>
+                                <?php $__currentLoopData = $submissionA; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $submissionData): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php if($submissionData->assignment_id == $submission->assignment_id && $submissionData->student_id == $submission->student->id): ?>
+                                    <input type="text" name="Note" value="<?php echo e($submissionData->Note); ?>">
+                                <?php endif; ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <button type="submit">Update</button>
+                            </form>
+                        </td>
                     </tr>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>

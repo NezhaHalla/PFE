@@ -55,6 +55,7 @@
                         <div class="div2"><a title="Download"  class="aadd" href="{{ route('showdocA',$Assignment) }}">{{ $Assignment->titre.'.docx' }}</a></div>
                         <div class="div3">size : {{ $fileSizeInKB }} KB</div>
                     </div>
+                    <div style="bottom:20px;">
                     @endif
                     @if (auth()->user()->id === $Assignment->teacher->id)
                     <form action="{{ route('assignments.destroy',$Assignment->id) }}" method="post">
@@ -70,6 +71,7 @@
                             </div>
                         @endif
                     @endif 
+                    </div>
             </article>
         </div>
         </div>

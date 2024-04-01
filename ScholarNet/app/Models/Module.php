@@ -29,7 +29,7 @@ class Module extends Model
     }
     public function assignments()
     {
-        return $this->hasMany(Assignment::class);
+        return $this->hasMany(Assignment::class,'module_id');
     }
 
 }

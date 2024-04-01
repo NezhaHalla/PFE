@@ -151,4 +151,4 @@ Route::get('/student/notesomesstre', [SoumestreController::class, 'showStudentNo
 Route::get('/Student/Module',[ModuleController::class,'index'])->name('module');
 
 Route::get('/student/Year', [YearController::class, 'showStudentNotesY'])->name('year');
-Route::get('/Student/Module/details',[ModuleController::class,'show'])->name('module.detail');
+Route::get('/Student/Module/{module}/details',[ModuleController::class,'show'])->name('module.detail');

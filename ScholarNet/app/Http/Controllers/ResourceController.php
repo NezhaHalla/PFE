@@ -22,6 +22,7 @@ class ResourceController extends Controller
 {
     $student = auth()->user();
     $courses = $student->modules->flatMap->resource->sortByDesc('created_at');
+    
     $courses1=$courses->map(function($course){
         $createdAt1=Carbon::parse($course->created_at);
         $course->createdAt=$createdAt1->diffForHumans();

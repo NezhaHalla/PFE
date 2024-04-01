@@ -28,22 +28,14 @@
                                             <th>Mention</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><a href="#">Langace C</a></td>
-                                            <td>15.25</td>
-                                            <td>Good</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="#">Programming Shell</a></td>
-                                            <td>12.50</td>
-                                            <td>Not Bad</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="#">Shell and Linux</a></td>
-                                            <td>17.75</td>
-                                            <td>Very Good</td>
-                                        </tr>
+                                    <tbody> 
+                                        <?php $__currentLoopData = $assignmentStudent; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $exercice): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <tr>
+                                                <td><a href="<?php echo e(route("exercice.index")); ?>"><?php echo e($exercice->name); ?></a></td>
+                                                <td><?php echo e($exercice->Note); ?></td>
+                                                <td><?php echo e($exercice->mention); ?></td>
+                                            </tr>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </tbody>
                                 </table>
                             </div>
