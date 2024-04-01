@@ -35,6 +35,12 @@ class User extends Authenticatable
         return $this->hasMany(Module::class,'id_teacher');
     }
 
+    public function hasRole($role)
+{
+    return $this->role === $role;
+}
+
+
     public function resource(){
         return $this->hasMany(Resource::class,'id_teacher');
     }
