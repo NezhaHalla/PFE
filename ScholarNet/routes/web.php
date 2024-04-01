@@ -21,12 +21,11 @@ use App\Http\Controllers\YearController;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
+| routes are loaded by the RouteServiceProvider and all of them will 
 | be assigned to the "web" middleware group. Make something great!
 |
 */
 Route::get('/',[homeController::class,'index'])->name('home');
-Route::get('/bar',[homeController::class,'showbar'])->name('showbar');
 Route::get('/bar',[homeController::class,'showbar'])->name('showbar')->middleware('auth');
 Route::get('publications/addPublicaion',[publicationController::class,'create'])->name('publication.create')->middleware('auth');
 Route::post('publications/storePublication',[publicationController::class,'store'])->name('publication.store')->middleware('auth');

@@ -2,7 +2,8 @@
     <head>
         <link rel="stylesheet" href="{{ asset('css/uploadfile.css') }}">
     </head>
-    <body style=" background-image: url('{{ asset('image/students-study-clipart-xl.png') }}');">
+    {{-- <body style=" background-image: url('{{ asset('image/students-study-clipart-xl.png') }}');"> --}}
+        <body>
         <div class="wrapper fadeInDown">
         <div id="formContent" >
           <h3 class="active"> Submit Your Assignment </h3>
@@ -17,7 +18,7 @@
           <div id="formFooter">
             <a class="underlineHover" href="{{ route('assignment.showDetails',$assignment->id) }}">Return to Assignment details</a>
           </div>
-      
+
         </div>
       </div>
     </body>
