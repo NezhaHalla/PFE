@@ -22,6 +22,8 @@
         </a>
 
         <label class="logo" >ScolarNet</label>
+        <a href="#" style="text-decoration: none;color:white;margin-left:265px;position: absolute;bottom:25%">You're in <?php echo e($title); ?></a>
+        
         <ul>
             <li><a class="active" href="<?php echo e(route('home')); ?>">Home</a></li>
             <li>
@@ -33,7 +35,7 @@
                     <?php endif; ?>
                     Message </a>
             </li>
-          
+
             <li>
                 <a href="#">System<i class="fas fa-caret-down"></i></a>
                 <ul>
@@ -67,6 +69,7 @@
         </a>
 
         <label class="logo">ScolarNet</label>
+        <a href="#" style="text-decoration: none;color:white;margin-left:265px;position: absolute;bottom:25%">You're in <?php echo e($title); ?></a>
         <ul>
             <li><a class="active" href="<?php echo e(route('home')); ?>">Home</a></li>
             <li>
@@ -117,6 +120,8 @@
         </a>
 
         <label class="logo">ScolarNet</label>
+        <a href="#" style="text-decoration: none;color:white;margin-left:265px;position: absolute;bottom:25%">You're in <?php echo e($title); ?></a>
+        
         <ul>
             <li><a class="active" href="<?php echo e(route('home')); ?>">Home</a></li>
             <li>

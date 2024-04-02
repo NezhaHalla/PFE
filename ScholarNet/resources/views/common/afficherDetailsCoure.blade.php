@@ -65,8 +65,10 @@
                     <div>{{ $course->titre }}</div>
                     <div>{{ $course->description }}</div>
                     <div class="doc">
+                        @if (trim($course->fichier) !== '' || $course->fihier !== null )
                         <div class="div2"><a title="Download"  class="aadd" href="{{ route('showdoc',$course) }}">{{ $course->titre.'.docx' }}</a></div>
                         <div class="div3">size : {{ $fileSizeInKB }} KB</div>
+                        @endif
                     </div>
                 {{-- </figure>
                 <div class="icons">

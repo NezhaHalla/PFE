@@ -11,7 +11,8 @@
     <head>
         <link rel="stylesheet" href="<?php echo e(asset('css/uploadfile.css')); ?>">
     </head>
-    <body style=" background-image: url('<?php echo e(asset('image/students-study-clipart-xl.png')); ?>');">
+    
+        <body>
         <div class="wrapper fadeInDown">
         <div id="formContent" >
           <h3 class="active"> Submit Your Assignment </h3>
@@ -33,7 +34,7 @@ unset($__errorArgs, $__bag); ?>
           <div id="formFooter">
             <a class="underlineHover" href="<?php echo e(route('assignment.showDetails',$assignment->id)); ?>">Return to Assignment details</a>
           </div>
-      
+
         </div>
       </div>
     </body>
@@ -47,4 +48,5 @@ unset($__errorArgs, $__bag); ?>
 <?php if (isset($__componentOriginal9881aee3032510140a884de503784c66)): ?>
 <?php $component = $__componentOriginal9881aee3032510140a884de503784c66; ?>
 <?php unset($__componentOriginal9881aee3032510140a884de503784c66); ?>
-<?php endif; ?><?php /**PATH C:\Users\user\Documents\PFE\ScholarNet\resources\views/student/submitmyassignment.blade.php ENDPATH**/ ?>
+<?php endif; ?>
+<?php /**PATH C:\Users\user\Documents\PFE\ScholarNet\resources\views/student/submitmyassignment.blade.php ENDPATH**/ ?>

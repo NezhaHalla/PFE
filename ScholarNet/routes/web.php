@@ -26,7 +26,6 @@ use App\Http\Controllers\YearController;
 |
 */
 Route::get('/',[homeController::class,'index'])->name('home');
-Route::get('/bar',[homeController::class,'showbar'])->name('showbar');
 Route::get('/bar',[homeController::class,'showbar'])->name('showbar')->middleware('auth');
 Route::get('publications/addPublicaion',[publicationController::class,'create'])->name('publication.create')->middleware('auth');
 Route::post('publications/storePublication',[publicationController::class,'store'])->name('publication.store')->middleware('auth');
@@ -61,7 +60,10 @@ Route::post('/addclass', [ClassController::class, 'store'])->name('class.store')
 Route::get('/MyCourses',[ResourceController::class,'index'])->name('myCourses');
 
 Route::get('/Myclass/{studentId}', [UserController::class, 'showmyclass'])->name('Myclasse')->middleware('auth');
+Route::get('/Myclass/{class_id}/students', [UserController::class, 'showStudents'])->name('showStudents')->middleware('auth');
+
 Route::get('/teacher/classes/{teacherId}', [UserController::class, 'showTeacherClasses'])->name('Myclass')->middleware('auth');
+
 
 Route::get('/Student/MyCourses',[ResourceController::class,'index'])->name('myCourses');
 Route::get('/Teacher/MyCourses',[ResourceController::class,'show'])->name('MyCourses');
