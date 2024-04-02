@@ -7,6 +7,7 @@ use App\Models\Assignment;
 use Illuminate\Http\Request;
 use App\Models\student__modules;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class ModuleController extends Controller
 {
@@ -86,6 +87,7 @@ class ModuleController extends Controller
      */
     public function show(Module $module)
     {
+        Gate::authorize('module',$module);
         $assignments1=Assignment::where('module_id',$module->id)->get();
         $assignmentStudent=$assignments1->map(function($ass){
             $ass1=DB::table('assignment_student')

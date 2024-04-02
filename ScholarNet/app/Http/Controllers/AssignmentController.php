@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\File;
-
-
-
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Assignment;
 use Carbon\Carbon;
-use App\Http\Requests\AssignementRequest;
+
+
+
 use App\Models\Module;
+use Illuminate\Http\File;
+use App\Models\Assignment;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use App\Http\Requests\AssignementRequest;
+
 class AssignmentController extends Controller
 {
     public function Assignmentstudent()
@@ -76,6 +78,7 @@ class AssignmentController extends Controller
     }
 
     public function showDetails(Assignment $assignment){
+        Gate::authorize('assignment-details',$assignment);
         $Assignment=Assignment::findOrFail($assignment->id);
         $Assignment->createdAt=(Carbon::parse($Assignment->created_at))->diffForHumans();
         if(trim($assignment->fichier) !== '' || $Assignment->fihier !== null ){
@@ -89,6 +92,7 @@ class AssignmentController extends Controller
     }
 
     public function showdoc(Assignment $assignment){
+        Gate::authorize('assignment-details',$assignment);
         if(trim($assignment->fichier) !== '' || $assignment->fihier !== null ){
         $path = 'storage/'.$assignment->fichier;
         return response()->download($path);
@@ -146,6 +150,7 @@ class AssignmentController extends Controller
 public function show($id)
 {
     $assignment = Assignment::findOrFail($id);
+    Gate::authorize('assignment-details',$assignment);
     $assignment->createdAt = $assignment->created_at->diffForHumans();
     if (trim($assignment->fichier) !== '' || $assignment->fichier !== null) {
         $file = new File('storage/' . $assignment->fichier);
@@ -158,6 +163,7 @@ public function show($id)
 }
 public function destroy(Assignment $assignment)
     {
+        Gate::authorize('assignment-details',$assignment);
         $assignment->delete();
 
         return to_route("Assignmentt")->with('danger', 'Assignation supprimée avec succès.');

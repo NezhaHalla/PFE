@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Module;
 use App\Models\Resource;
-use App\Models\User;
-use App\Http\Requests\ResourceRequest;
 use App\Models\Soumestre;
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\File;
+use Illuminate\Support\Facades\Gate;
+use App\Http\Requests\ResourceRequest;
 
 
 class ResourceController extends Controller
@@ -38,7 +39,7 @@ class ResourceController extends Controller
      * Show the form for creating a new resource.
      */
     public function showAddResourceForm()
-    {
+    { 
         $teacherId = Auth::id();
         $modules = Module::where('id_teacher', $teacherId)->get();
         return view('teacher.add_resource', compact('modules', 'teacherId'));
@@ -55,6 +56,7 @@ class ResourceController extends Controller
   }
 
   public function downloads(Resource $resource){
+    Gate::authorize('cours-details',$resource);
     return response()->download('storage/'.$resource->fichier);
   }
 
@@ -101,8 +103,7 @@ class ResourceController extends Controller
      */
     public function showDetails(Resource $resource)
     {
-
-
+        Gate::authorize('cours-details',$resource);
         $file = new File('storage/'.$resource->fichier);
         $fileSizeInBytes = $file->getSize();
         $fileSizeInKB = round($fileSizeInBytes / 1024, 2);
@@ -116,6 +117,7 @@ class ResourceController extends Controller
     }
 
     public function showdoc(Resource $resource){
+        Gate::authorize('cours-details',$resource);
         $path = 'storage/'.$resource->fichier;
         return response()->download($path);
     }
@@ -126,6 +128,7 @@ class ResourceController extends Controller
      */
     public function destroy(Resource $resource)
     {
+        Gate::authorize('cours-details',$resource);
         $resource->delete();
         return redirect()->back()->with('success', 'Course deleted successfully');
     }
