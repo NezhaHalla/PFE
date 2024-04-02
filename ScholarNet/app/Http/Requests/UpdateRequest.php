@@ -25,7 +25,6 @@ class UpdateRequest extends FormRequest
             'name' => 'string|max:255',
             'email' => 'email|max:255',
             'gender' => 'in:Male,Female',
-            'class_id' => 'exists:classes,id',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }

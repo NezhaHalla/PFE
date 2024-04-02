@@ -8,7 +8,7 @@
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['title' => 'My Assignments']); ?>
-
+<div style="padding:50px">
     <form action="<?php echo e(route('searchAssignmentT')); ?>" method="GET">
         <div class="input-group rounded" style="padding-top:60px;text-align:center; width:500px;left:35%">
             <input type="search" class="form-control rounded" name="search" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
@@ -42,6 +42,7 @@
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
     </div>
+</div>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal9881aee3032510140a884de503784c66)): ?>

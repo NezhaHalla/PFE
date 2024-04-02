@@ -1,5 +1,5 @@
 <x-master title="My Assignments">
-
+<div style="padding:50px">
     <form action="{{ route('searchAssignmentT') }}" method="GET">
         <div class="input-group rounded" style="padding-top:60px;text-align:center; width:500px;left:35%">
             <input type="search" class="form-control rounded" name="search" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
@@ -32,6 +32,7 @@
             @endforeach
         </div>
     </div>
+</div>
 </x-master>
 
 <style>

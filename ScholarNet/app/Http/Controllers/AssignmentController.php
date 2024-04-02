@@ -160,6 +160,6 @@ public function destroy(Assignment $assignment)
     {
         $assignment->delete();
 
-        return redirect()->back()->with('success', 'Assignation supprimée avec succès.');
+        return to_route("Assignmentt")->with('danger', 'Assignation supprimée avec succès.');
     }
 }

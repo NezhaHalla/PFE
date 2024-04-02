@@ -126,8 +126,11 @@ public function update(UpdateRequest $request, $id) {
     $user->name = $val['name'];
     $user->email = $val['email'];
     $user->gender = $val['gender'];
-    $user->class_id = $val['class_id'];
+   
 
+    if (isset($val['class_id'])) {
+        $user->class_id = $val['class_id'];
+    }
     if ($request->hasFile('image')) {
         $imagePath = $request->file('image')->store('blog', 'public');
         $user->image = $imagePath;
@@ -205,6 +208,12 @@ public function update(UpdateRequest $request, $id) {
                     if (!isset($students[$classId])) {
                         $students[$classId] = [];
                     }
+                    $numStudents = User::where('role', 'student')
+                    ->where('class_id', $class->id)
+                    ->count();
+
+                    $class->num_students = $numStudents;
+
                     $students[$classId][] = $student;
 
                     if (!in_array($class, $classes)) {
@@ -215,6 +224,13 @@ public function update(UpdateRequest $request, $id) {
         }
 
         return view('teacher.Myclasses', compact('teacher', 'classes', 'students'));
+    }
+    public function showStudents($class_id) {
+        $students = User::where('role', 'student')
+                             ->where('class_id', $class_id)
+                             ->get();
+
+        return view('teacher.showStudents', compact('students'));
     }
 
     public function showEmailPage(){

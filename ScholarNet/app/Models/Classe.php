@@ -13,5 +13,5 @@ class Classe extends Model
      'Branch',
      'Level',
      'Year'];
-
+   
 }

@@ -12,6 +12,7 @@
 	<head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-NbZR02M42VbyR1ApWgUJ/LIF7z4O2rpS1fQHElYxLZpGuOrVbR8CxLjnswlft+HSHcARqMKU8hsIAUGNwdhmHQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 	<meta name="description" content="Free HTML5 Website Template by freehtml5.co" />
 	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
 	<meta name="author" content="freehtml5.co" />
@@ -30,15 +31,15 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400" rel="stylesheet">
 
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
-	<link rel="stylesheet" href="css/icomoon.css">
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/magnific-popup.css">
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
-	<link rel="stylesheet" href="css/flexslider.css">
-	<link rel="stylesheet" href="css/pricing.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="<?php echo e(asset('css/animate.css')); ?>">
+	<link rel="stylesheet" href="<?php echo e(asset('css/icomoon.css')); ?>">
+	<link rel="stylesheet" href="<?php echo e(asset('css/bootstrap.css')); ?>">
+	<link rel="stylesheet" href="<?php echo e(asset('css/magnific-popup.css')); ?>">
+	<link rel="stylesheet" href="<?php echo e(asset('css/owl.carousel.min.css')); ?>">
+	<link rel="stylesheet" href="<?php echo e(asset('css/owl.theme.default.min.css')); ?>">
+	<link rel="stylesheet" href="<?php echo e(asset('css/flexslider.css')); ?>">
+	<link rel="stylesheet" href="<?php echo e(asset('css/pricing.css')); ?>">
+	<link rel="stylesheet" href="<?php echo e(asset('css/style.css')); ?>">
 	<script src="<?php echo e(asset('js/modernizr-2.6.2.min.js')); ?>"></script>
 	</head>
 	<body>
@@ -112,44 +113,44 @@
 				<div class="col-md-3 col-sm-6 text-center animate-box">
 					<div class="services">
 						<span class="icon">
-							<i class="icon-shop"></i>
+							<i class="fas fa-shield-alt"></i>
 						</span>
 						<div class="desc">
-							<h3><a href="#">Business</a></h3>
-							<p>The Business Management branch focuses on developing leadership, strategic planning, and decision-making skills essential for success in the corporate world.</p>
+							<h3><a href="#">Cybersecurity</a></h3>
+							<p>Team of <b>8 instructors</b>, class size <b>capped at 35</b>, <b>2-year</b> structure with <b>2 semesters</b> per year, each with <b>4 modules</b>.</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 text-center animate-box">
 					<div class="services">
 						<span class="icon">
-							<i class="icon-banknote"></i>
+							<i class="fas fa-robot"></i>
 						</span>
 						<div class="desc">
-							<h3><a href="#">Accounting</a></h3>
-							<p>The Accounting branch at our school is renowned for its comprehensive curriculum that covers financial accounting, managerial accounting, auditing, and taxation.</p>
+							<h3><a href="#">Artificial Intelligence</a></h3>
+							<p>Faculty of <b>8 teachers</b>, <b>40 students</b> per class, <b>2 years</b> with <b>2 semesters</b> per year and <b>4 modules</b> per semester.</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 text-center animate-box">
 					<div class="services">
 						<span class="icon">
-							<i class="icon-lab2"></i>
+							<i class="fas fa-laptop"></i>
 						</span>
 						<div class="desc">
-							<h3><a href="#">Science &amp; Technology</a></h3>
-							<p>In the Science & Technology branch, students embark on a journey of discovery, exploring the realms of physics, chemistry, biology, and engineering.</p>
+							<h3><a href="#">Computer Science</a></h3>
+							<p> <b>6 instructors</b>, class size limited to <b>40 students</b>, <b>2-year</b> program with <b>2 semesters</b> annually and <b> 4 modules</b> per semester.</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 text-center animate-box">
 					<div class="services">
 						<span class="icon">
-							<i class="icon-world"></i>
+							<i class="fas fa-code"></i>
 						</span>
 						<div class="desc">
 							<h3><a href="#">Web &amp; Programming</a></h3>
-							<p>Our Web and Programming branch is a hub of innovation, where students delve into the dynamic world of coding, web development, and software engineering.</p>
+							<p><b>7 professors</b>, maximum of <b>50 students</b> per session, <b>2-year</b> curriculum with <b>2 semesters </b>each year and <b>4 modules</b> per semester</p>
 						</div>
 					</div>
 				</div>
@@ -244,7 +245,7 @@
 
 
 	<div class="gototop js-top">
-		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+		<a href="#" class="js-gotop"><i class="fas fa-arrow-up"></i></a>
 	</div>
 
 	<!-- jQuery -->
