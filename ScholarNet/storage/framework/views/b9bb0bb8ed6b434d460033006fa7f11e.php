@@ -80,7 +80,7 @@
                     <i class="fas fa-caret-down"></i>
                     </a>
                 <ul>
-                    <li><a href="<?php echo e(route('Myclasse', ['studentId' => auth()->id()])); ?>">My Class</a></li>
+                    <li><a href="<?php echo e(route('Myclasse')); ?>">My Class</a></li>
                     <li><a href="<?php echo e(route('myCourses')); ?>">Courses
                         <?php if($unreadressoureCount > 0): ?>
                         <span class="badge"><?php echo e($unreadressoureCount); ?></span> </i>
@@ -127,7 +127,7 @@
             <li>
                 <a href="#">Classes<i class="fas fa-caret-down"></i></a>
                 <ul>
-                    <li><a href="<?php echo e(route('Myclass', ['teacherId' => auth()->id()])); ?>">My Classes</a></li>
+                    <li><a href="<?php echo e(route('Myclass')); ?>">My Classes</a></li>
                      <li><a href="<?php echo e(route('add_resource_form')); ?>">Add course</a></li>
                     <li><a href="<?php echo e(route('MyCourses')); ?>">My courses</a></li>
                 </ul>

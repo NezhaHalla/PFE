@@ -67,9 +67,15 @@ class SoumestreController extends Controller
             $averageGrade = $gradeInfo['totalGrade'] / $gradeInfo['moduleCount'];
 
             $soumestreGrades[$soumestreId]['averageGrade'] = $averageGrade;
-        }
 
-        return view('student.student_notesoumesstre', compact('student', 'soumestreGrades'));
+
+
+        }
+        $semester = Soumestre::find($soumestreId);
+
+      
+
+        return view('student.student_notesoumesstre', compact('student', 'soumestreGrades','semester'));
     }
 
 
