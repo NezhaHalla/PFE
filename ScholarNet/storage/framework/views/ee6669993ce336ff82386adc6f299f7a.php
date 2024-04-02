@@ -24,7 +24,7 @@
                 <div class="card-heading" style="background: url('<?php echo e(asset('storage/images/pass.jpg')); ?>') top left/cover no-repeat;width: 29.1%;display: table-cell;" ></div>
                 <div class="card-body">
                     <h2 class="title">Modify Password</h2>
-                    <form method="POST" action="<?php echo e(route('password.update',auth()->user()->id )); ?>">
+                    <form method="POST" action="<?php echo e(route('password.update')); ?>">
                         <?php echo csrf_field(); ?>
                         <div class="input-group">
                             <input class="input--style-2" type="password" placeholder="Current Password" name="Current_password">

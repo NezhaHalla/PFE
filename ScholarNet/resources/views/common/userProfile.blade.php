@@ -1,4 +1,7 @@
-<x-master :title="$user->name">
+@php
+    $name="Profile $user->name"
+@endphp
+<x-master :title="$name">
     <section style="background-color: #ffffff;">
         <div class="container py-5">
             <div class="row">

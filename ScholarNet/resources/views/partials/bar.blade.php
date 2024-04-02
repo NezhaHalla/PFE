@@ -80,7 +80,7 @@
                     <i class="fas fa-caret-down"></i>
                     </a>
                 <ul>
-                    <li><a href="{{ route('Myclasse', ['studentId' => auth()->id()]) }}">My Class</a></li>
+                    <li><a href="{{ route('Myclasse') }}">My Class</a></li>
                     <li><a href="{{ route('myCourses') }}">Courses
                         @if ($unreadressoureCount > 0)
                         <span class="badge">{{ $unreadressoureCount }}</span> </i>
@@ -127,7 +127,7 @@
             <li>
                 <a href="#">Classes<i class="fas fa-caret-down"></i></a>
                 <ul>
-                    <li><a href="{{ route('Myclass', ['teacherId' => auth()->id()]) }}">My Classes</a></li>
+                    <li><a href="{{ route('Myclass') }}">My Classes</a></li>
                      <li><a href="{{ route('add_resource_form') }}">Add course</a></li>
                     <li><a href="{{ route('MyCourses') }}">My courses</a></li>
                 </ul>

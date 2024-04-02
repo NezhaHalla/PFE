@@ -25,10 +25,10 @@
                 <div class="card-body p-0">
                   <ul class="list-group list-group-flush rounded-3">
                     <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                        <button type="button" class="btn btn-primary" style="width: 100%; height:100%;">My Saved Courses</button>
+                        <a href="<?php echo e(route('myCourses')); ?>" type="button" class="btn btn-primary" style="width: 100%; height:100%;">My Courses</a>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                        <button type="button" class="btn btn-primary" style="width: 100%; height:100%;">My Submitted Assignments</button>
+                        <a href="<?php echo e(route('exercice.index')); ?>" type="button" class="btn btn-primary" style="width: 100%; height:100%;">My Submitted Assignments</a>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                         <a href="<?php echo e(route('password.show')); ?>" type="button" class="btn btn-primary" style="width: 100%; height:100%;">Modify Password</a>
@@ -46,10 +46,12 @@
                 <div class="card-body p-0">
                   <ul class="list-group list-group-flush rounded-3">
                     <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                        <button type="button" class="btn btn-primary" style="width: 100%; height:100%;">My Courses</button>
+                        <a href="<?php echo e(route('MyCourses')); ?>"type="button" class="btn btn-primary" style="width: 100%; height:100%;">My Courses</a>
+
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                        <button type="button" class="btn btn-primary" style="width: 100%; height:100%;">My Assignments</button>
+                        <a href="<?php echo e(route('Assignmentt')); ?>" type="button" class="btn btn-primary" style="width: 100%; height:100%;">My Assignments</a>
+
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                         <a href="<?php echo e(route('password.show')); ?>" type="button" class="btn btn-primary" style="width: 100%; height:100%;">Modify Password</a>
@@ -146,4 +148,5 @@
 <?php if (isset($__componentOriginal9881aee3032510140a884de503784c66)): ?>
 <?php $component = $__componentOriginal9881aee3032510140a884de503784c66; ?>
 <?php unset($__componentOriginal9881aee3032510140a884de503784c66); ?>
-<?php endif; ?><?php /**PATH C:\Users\user\Documents\PFE\ScholarNet\resources\views/common/profile.blade.php ENDPATH**/ ?>
+<?php endif; ?>
+<?php /**PATH C:\Users\user\Documents\PFE\ScholarNet\resources\views/common/profile.blade.php ENDPATH**/ ?>

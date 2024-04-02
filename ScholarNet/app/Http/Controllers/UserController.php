@@ -151,7 +151,9 @@ public function update(UpdateRequest $request, $id) {
         return view('common/modifypassword');
     }
 
-    public function storepass(Requestpassword $request,User $user){
+    public function storepass(Requestpassword $request){
+        $userid=auth()->user()->id;
+        $user=User::findOrFail($userid);
         if(Hash::check($request->Current_password,$user->password)){
             $user->password=Hash::make($request->New_password);
             $user->save();
@@ -160,7 +162,8 @@ public function update(UpdateRequest $request, $id) {
             return redirect()->back()->with('danger','Verify your current password');
         }
     }
-    public function showmyclass($studentId) {
+    public function showmyclass() {
+        $studentId=auth()->user()->id;
         $student = User::findOrFail($studentId);
 
         $class = Classe::findOrFail($student->class_id);
@@ -181,7 +184,8 @@ public function update(UpdateRequest $request, $id) {
             }
     }
 
-    public function showTeacherClasses($teacherId) {
+    public function showTeacherClasses() {
+        $teacherId=auth()->user()->id;
         $teacher = User::findOrFail($teacherId);
 
         $modules = Module::where('id_teacher', $teacherId)->get();
