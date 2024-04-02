@@ -64,7 +64,7 @@ Route::get('/Student/MyCourses',[ResourceController::class,'index'])->name('myCo
 Route::get('/Teacher/MyCourses',[ResourceController::class,'show'])->name('MyCourses')->middleware('auth','teacher');
 Route::get('/Cours/{resource}/details',[ResourceController::class,'showDetails'])->name('showDetails')->middleware('auth'); //comman t et s
 Route::get('/{user}/profile',[UserController::class,'show'])->name('showProfile')->middleware('auth');
-
+Route::get('/Myclass/{class_id}/students', [UserController::class, 'showStudents'])->name('showStudents')->middleware('auth','teacher');
 Route::get('/resource/add', [ResourceController::class, 'showAddResourceForm'])->name('add_resource_form')->middleware('auth','teacher');
 Route::post('/resource/add', [ResourceController::class, 'store'])->name('store_resource')->middleware('auth','teacher');
 
